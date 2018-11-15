@@ -18,7 +18,7 @@
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20160527 (538314023)
  */
-DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
+DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 {
     /*
      * iASL Warning: There were 41 external control methods found during
@@ -470,9 +470,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000000)
     Name (SS1, 0x00)
     Name (SS2, 0x00)
     Name (SS3, One)
-    One
     Name (SS4, One)
-    One
     OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0767)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
