@@ -5,20 +5,20 @@
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of dsdt.aml, Thu Nov 15 13:23:32 2018
+ * Disassembly of dsdt.aml, Wed Nov 28 14:07:06 2018
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00026878 (157816)
+ *     Length           0x00026BC4 (158660)
  *     Revision         0x02
- *     Checksum         0xEF
+ *     Checksum         0xF9
  *     OEM ID           "LENOVO"
  *     OEM Table ID     "SKL     "
  *     OEM Revision     0x00000000 (0)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20160527 (538314023)
  */
-DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
+DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 {
     /*
      * iASL Warning: There were 41 external control methods found during
@@ -423,6 +423,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         External (\_SB.PCI0.RP18.PXSX.WGST, 0x08, 0x00)
         External (\_SB.PCI0.RP19.PXSX.WGST, 0x08, 0x00)
         External (\_SB.PCI0.RP20.PXSX.WGST, 0x08, 0x00)
+        External (\TBTS, 0x01, 0x00)
+        External (\RTBT, 0x01, 0x00)
         External (\_GPE.TBNF, 0x08, 0x00)
         External (\ADBG, 0x08, 0x01)
         External (\_SB.GGIV, 0x08, 0x01)
@@ -471,7 +473,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     Name (SS2, 0x00)
     Name (SS3, One)
     Name (SS4, One)
-    OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0767)
+    OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0771)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -1650,7 +1652,12 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         RTBC,   8, 
         TBCD,   16, 
         TBTE,   8, 
-        RWAN,   8
+        RWAN,   8, 
+        WDCT,   16, 
+        WLCT,   16, 
+        WDC2,   16, 
+        WMXS,   16, 
+        WMNS,   16
     }
 
     Scope (\_SB)
@@ -5591,6 +5598,18 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     Notify (GLAN, 0x02) // Device Wake
                 }
             }
+
+            Method (GLST, 0, Serialized)
+            {
+                If ((DVID == 0xFFFF))
+                {
+                    Return (0x00)
+                }
+                Else
+                {
+                    Return (0x01)
+                }
+            }
         }
     }
 
@@ -5853,6 +5872,8 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 OperationRegion (MC11, SystemMemory, \XWMB, 0x9000)
                 Field (MC11, DWordAcc, Lock, Preserve)
                 {
+                    Offset (0x81A0), 
+                    LFU3,   6, 
                     Offset (0x81C4), 
                         ,   2, 
                     UPSW,   2
@@ -5871,21 +5892,45 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 OperationRegion (UPSC, SystemMemory, (\XWMB + U3PS), 0x0100)
                 Field (UPSC, DWordAcc, Lock, Preserve)
                 {
+                        ,   5, 
+                    PLS1,   4, 
+                        ,   13, 
+                    PLC1,   1, 
                     Offset (0x03), 
                     CAS1,   1, 
                     Offset (0x10), 
+                        ,   5, 
+                    PLS2,   4, 
+                        ,   13, 
+                    PLC2,   1, 
                     Offset (0x13), 
                     CAS2,   1, 
                     Offset (0x20), 
+                        ,   5, 
+                    PLS3,   4, 
+                        ,   13, 
+                    PLC3,   1, 
                     Offset (0x23), 
                     CAS3,   1, 
                     Offset (0x30), 
+                        ,   5, 
+                    PLS4,   4, 
+                        ,   13, 
+                    PLC4,   1, 
                     Offset (0x33), 
                     CAS4,   1, 
                     Offset (0x40), 
+                        ,   5, 
+                    PLS5,   4, 
+                        ,   13, 
+                    PLC5,   1, 
                     Offset (0x43), 
                     CAS5,   1, 
                     Offset (0x50), 
+                        ,   5, 
+                    PLS6,   4, 
+                        ,   13, 
+                    PLC6,   1, 
                     Offset (0x53), 
                     CAS6,   1, 
                     Offset (0x60), 
@@ -5902,19 +5947,81 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     CASA,   1
                 }
 
+                Field (UPSC, DWordAcc, Lock, Preserve)
+                {
+                    PSC1,   32, 
+                    Offset (0x10), 
+                    PSC2,   32, 
+                    Offset (0x20), 
+                    PSC3,   32, 
+                    Offset (0x30), 
+                    PSC4,   32, 
+                    Offset (0x40), 
+                    PSC5,   32, 
+                    Offset (0x50), 
+                    PSC6,   32
+                }
+
                 UPSW = 0x03
+                STGE = 0x01
+                LFU3 = 0x3F
+                Name (PSCO, 0xFFFFFFFF)
+                Sleep (0x01)
+                If (((PLS1 == 0x03) && PLC1))
+                {
+                    PSCO = (0xFFFFFFFD & PSC1) /* \_SB_.PCI0.XHC_._PS3.PSC1 */
+                    PSCO |= 0x00400000 /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                    PSC1 = PSCO /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                }
+
+                If (((PLS2 == 0x03) && PLC2))
+                {
+                    PSCO = (0xFFFFFFFD & PSC2) /* \_SB_.PCI0.XHC_._PS3.PSC2 */
+                    PSCO |= 0x00400000 /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                    PSC2 = PSCO /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                }
+
+                If (((PLS3 == 0x03) && PLC3))
+                {
+                    PSCO = (0xFFFFFFFD & PSC3) /* \_SB_.PCI0.XHC_._PS3.PSC3 */
+                    PSCO |= 0x00400000 /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                    PSC3 = PSCO /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                }
+
+                If (((PLS4 == 0x03) && PLC4))
+                {
+                    PSCO = (0xFFFFFFFD & PSC4) /* \_SB_.PCI0.XHC_._PS3.PSC4 */
+                    PSCO |= 0x00400000 /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                    PSC4 = PSCO /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                }
+
+                If (((PLS5 == 0x03) && PLC5))
+                {
+                    PSCO = (0xFFFFFFFD & PSC5) /* \_SB_.PCI0.XHC_._PS3.PSC5 */
+                    PSCO |= 0x00400000 /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                    PSC5 = PSCO /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                }
+
+                If (((PLS6 == 0x03) && PLC6))
+                {
+                    PSCO = (0xFFFFFFFD & PSC6) /* \_SB_.PCI0.XHC_._PS3.PSC6 */
+                    PSCO |= 0x00400000 /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                    PSC6 = PSCO /* \_SB_.PCI0.XHC_._PS3.PSCO */
+                }
+
                 STGE = 0x01
                 If (((((((CAS1 || CAS2) || CAS3) || CAS4) || CAS5) || 
                     CAS6) || ((PCHV () == SPTH) && (((CAS7 || CAS8) || CAS9) || CASA))))
                 {
                     D3HE = 0x00
-                    Sleep (0x0A)
+                    Sleep (0x01)
                 }
                 Else
                 {
                     D3HE = 0x01
                 }
 
+                LFU3 = 0x00
                 ^PDBM &= ~0x02
                 ^D0D3 = 0x03
                 ^MEMB = Local2
@@ -13126,6 +13233,18 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Name (NRPN, 0x00)
                 Name (MXIE, 0x00)
                 Name (ISD3, 0x00)
+                Method (RPPC, 1, Serialized)
+                {
+                    If ((Arg0 == 0x00))
+                    {
+                        RPOF ()
+                    }
+                    Else
+                    {
+                        RPON ()
+                    }
+                }
+
                 Method (RPON, 0, Serialized)
                 {
                     If ((ISD3 == 0x00))
@@ -13409,6 +13528,18 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Name (NRPN, 0x00)
                 Name (MXIE, 0x00)
                 Name (ISD3, 0x00)
+                Method (RPPC, 1, Serialized)
+                {
+                    If ((Arg0 == 0x00))
+                    {
+                        RPOF ()
+                    }
+                    Else
+                    {
+                        RPON ()
+                    }
+                }
+
                 Method (RPON, 0, Serialized)
                 {
                     If ((ISD3 == 0x00))
@@ -13692,6 +13823,18 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Name (NRPN, 0x00)
                 Name (MXIE, 0x00)
                 Name (ISD3, 0x00)
+                Method (RPPC, 1, Serialized)
+                {
+                    If ((Arg0 == 0x00))
+                    {
+                        RPOF ()
+                    }
+                    Else
+                    {
+                        RPON ()
+                    }
+                }
+
                 Method (RPON, 0, Serialized)
                 {
                     If ((ISD3 == 0x00))
@@ -19633,6 +19776,21 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         }
     }
 
+    Method (RLTR, 0, NotSerialized)
+    {
+        ADBG ("RLTR")
+        Local0 = (0x68 + \MMRP (\TBSE))
+        ADBG (Concatenate ("LTR=", ToHexString (Local0)))
+        OperationRegion (RP_X, SystemMemory, Local0, 0x02)
+        Field (RP_X, WordAcc, NoLock, Preserve)
+        {
+                ,   10, 
+            TLTR,   1
+        }
+
+        TLTR = 0x01
+    }
+
     Scope (\_SB)
     {
         OperationRegion (ITSS, SystemMemory, 0xFDC43100, 0x0208)
@@ -21712,6 +21870,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 \_SB.CAGS (Arg1)
             }
 
+            \RLTR ()
             If (TRDO)
             {
                 ADBG ("Drng TBT_ON")
@@ -23476,6 +23635,10 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     {
                         Return (0x01)
                     }
+                    ElseIf ((_T_0 == 0x25268086))
+                    {
+                        Return (0x01)
+                    }
                     Else
                     {
                         Return (0x00)
@@ -23696,27 +23859,31 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 If (CondRefOf (SVID))
                 {
+                    Name (WRDI, Package (0x02)
+                    {
+                        0x00, 
+                        Package (0x0C)
+                        {
+                            0x07, 
+                            0x01, 
+                            0x80, 
+                            0x74, 
+                            0x74, 
+                            0x74, 
+                            0x74, 
+                            0x80, 
+                            0x74, 
+                            0x74, 
+                            0x74, 
+                            0x74
+                        }
+                    })
                     If (((SVID == 0x00108086) || (SVID == 0x10108086)))
                     {
-                        Name (WRDI, Package (0x02)
-                        {
-                            0x00, 
-                            Package (0x0C)
-                            {
-                                0x07, 
-                                0x01, 
-                                0x80, 
-                                0x74, 
-                                0x74, 
-                                0x74, 
-                                0x74, 
-                                0x80, 
-                                0x74, 
-                                0x74, 
-                                0x74, 
-                                0x74
-                            }
-                        })
+                        Return (WRDI) /* \_SB_.PCI0.RP01.PXSX.WRDS.WRDI */
+                    }
+                    ElseIf ((SVID == 0x00148086))
+                    {
                         Return (WRDI) /* \_SB_.PCI0.RP01.PXSX.WRDS.WRDI */
                     }
                 }
@@ -25571,7 +25738,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (_HID, "INT33A1" /* Intel Power Engine */)  // _HID: Hardware ID
             Name (_CID, EisaId ("PNP0D80") /* Windows-compatible System Power Management Controller */)  // _CID: Compatible ID
             Name (_UID, 0x01)  // _UID: Unique ID
-            Name (DEVY, Package (0x42)
+            Name (DEVY, Package (0x44)
             {
                 Package (0x03)
                 {
@@ -26575,7 +26742,37 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Package (0x03)
                 {
                     "\\_SB.PCI0.RP09.PXSX.TBDU.XHC", 
+                    0x00, 
+                    Package (0x02)
+                    {
+                        0x00, 
+                        Package (0x02)
+                        {
+                            0xFF, 
+                            0x03
+                        }
+                    }
+                }, 
+
+                Package (0x03)
+                {
+                    "\\_SB.PCI0.GLAN", 
                     0x01, 
+                    Package (0x02)
+                    {
+                        0x00, 
+                        Package (0x02)
+                        {
+                            0xFF, 
+                            0x03
+                        }
+                    }
+                }, 
+
+                Package (0x03)
+                {
+                    "\\_SB.PCI0.RP09", 
+                    0x00, 
                     Package (0x02)
                     {
                         0x00, 
@@ -27078,11 +27275,6 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         If (((PEPC & 0x40000000) != 0x00))
                         {
                             DerefOf (DEVY [0x36]) [0x01] = 0x01
-                        }
-
-                        If (((PEPC & 0x80000000) == 0x00))
-                        {
-                            DerefOf (DEVY [0x40]) [0x01] = 0x00
                         }
 
                         If (((PEPC & 0x04) == 0x00))
@@ -27677,6 +27869,16 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
+                        If (((\RTBT == 0x01) && (\TBTS == 0x01)))
+                        {
+                            DerefOf (DEVY [0x43]) [0x01] = 0x01
+                        }
+
+                        If ((\_SB.PCI0.GLAN.GLST () == 0x00))
+                        {
+                            DerefOf (DEVY [0x42]) [0x01] = 0x00
+                        }
+
                         Return (DEVY) /* \_SB_.PEPD.DEVY */
                     }
 
@@ -28018,6 +28220,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         TIF2,   8, 
         Offset (0xD78), 
         BTHI,   1, 
+        TBAS,   1, 
         Offset (0xD79), 
         HDIR,   1, 
         HDEH,   1, 
@@ -29591,7 +29794,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Package (0x02)
                 {
                     0x00, 
-                    "InternalStorageTamper"
+                    "Reserved"
                 }, 
 
                 Package (0x02)
@@ -29650,7 +29853,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Package (0x02)
                 {
-                    0x00, 
+                    0x1A, 
                     "PreBootForThunderboltDevice"
                 }, 
 
@@ -29672,7 +29875,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     "ThunderboltBIOSAssistMode"
                 }
             })
-            Name (VSEL, Package (0x1A)
+            Name (VSEL, Package (0x1B)
             {
                 Package (0x02)
                 {
@@ -29858,6 +30061,13 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     "Enable", 
                     "", 
                     "Disable"
+                }, 
+
+                Package (0x03)
+                {
+                    "Disable", 
+                    "Enable", 
+                    "Pre-BootACL"
                 }
             })
             Name (VLST, Package (0x11)
@@ -32648,7 +32858,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (_Q7F, 0, NotSerialized)  // _Qxx: EC Query
         {
-            Fatal (0x01, 0x80010000, 0x00011ABF)
+            Fatal (0x01, 0x80010000, 0x00011BE9)
         }
 
         Method (_Q46, 0, NotSerialized)  // _Qxx: EC Query
@@ -34837,19 +35047,16 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         ElseIf ((\VPSC == 0x01))
                         {
                             \CICF = 0x0D
-                            If ((\_SB.IETM.DPTE == 0x00))
-                            {
-                                \FLPF (0x00)
-                            }
-                            Else
-                            {
-                                \FLPF (0x01)
-                            }
+                            \FLPF (0x02)
                         }
                         ElseIf ((\VMMC == 0x01))
                         {
                             \CICF = 0x0B
-                            If ((\_SB.IETM.DPTE == 0x00))
+                            If (((SMMC == 0x01) || (SMMC == 0x03)))
+                            {
+                                \FLPF (0x02)
+                            }
+                            ElseIf ((\_SB.IETM.DPTE == 0x00))
                             {
                                 \FLPF (0x00)
                             }
@@ -34861,14 +35068,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         ElseIf ((\VMSC == 0x01))
                         {
                             \CICF = 0x0C
-                            If ((\_SB.IETM.DPTE == 0x00))
-                            {
-                                \FLPF (0x00)
-                            }
-                            Else
-                            {
-                                \FLPF (0x01)
-                            }
+                            \FLPF (0x0E)
                         }
                         ElseIf ((\VIFC == 0x01))
                         {
