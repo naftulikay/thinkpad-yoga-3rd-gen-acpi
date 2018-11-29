@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20160108-64
- * Copyright (c) 2000 - 2016 Intel Corporation
+ * AML/ASL+ Disassembler version 20181031 (64-bit version)
+ * Copyright (c) 2000 - 2018 Intel Corporation
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of dsdt.aml, Wed Nov 28 14:07:06 2018
+ * Disassembly of dsdt.aml, Thu Nov 29 00:02:55 2018
  *
  * Original Table Header:
  *     Signature        "DSDT"
@@ -20,192 +20,222 @@
  */
 DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 {
-    /*
-     * iASL Warning: There were 41 external control methods found during
-     * disassembly, but additional ACPI tables to resolve these externals
-     * were not specified. This resulting disassembler output file may not
-     * compile because the disassembler did not know how many arguments
-     * to assign to these methods. To specify the tables needed to resolve
-     * external control method references, the -e option can be used to
-     * specify the filenames. Note: SSDTs can be dynamically loaded at
-     * runtime and may or may not be available via the host OS.
-     * Example iASL invocations:
-     *     iasl -e ssdt1.aml ssdt2.aml ssdt3.aml -d dsdt.aml
-     *     iasl -e dsdt.aml ssdt2.aml -d ssdt1.aml
-     *     iasl -e ssdt*.aml -d dsdt.aml
-     *
-     * In addition, the -fe option can be used to specify a file containing
-     * control method external declarations with the associated method
-     * argument counts. Each line of the file must be of the form:
-     *     External (<method pathname>, MethodObj, <argument count>)
-     * Invocation:
-     *     iasl -fe refs.txt -d dsdt.aml
-     *
-     * The following methods were unresolved and many not compile properly
-     * because the disassembler had to guess at the number of arguments
-     * required for each:
-     */
-    External (_SB_.PCI0.CTCD, MethodObj)    // Warning: Unresolved method, guessing 1 arguments
-    External (_SB_.PCI0.CTCN, MethodObj)    // Warning: Unresolved method, guessing 1 arguments
-    External (_SB_.PCI0.GFX0.AINT, MethodObj)    // Warning: Unresolved method, guessing 2 arguments
-    External (_SB_.PCI0.GFX0.GSCI, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.GFX0.GSSE, MethodObj)    // Warning: Unresolved method, guessing 1 arguments
-    External (_SB_.PCI0.GFX0.IUEH, MethodObj)    // Warning: Unresolved method, guessing 1 arguments
-    External (_SB_.PCI0.GFX0.VLOC, MethodObj)    // Warning: Unresolved method, guessing 1 arguments
-    External (_SB_.PCI0.HDAS.PS0X, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.HDAS.PS3X, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.PAUD.PUAM, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP01.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP02.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP03.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP04.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP05.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP06.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP07.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP08.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP09.PEGP.NVST, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP09.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP10.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP11.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP12.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP13.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP14.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP15.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP16.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP17.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP18.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP19.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.RP20.PON_, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.XHC_.DUAM, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.XHC_.PS0X, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.XHC_.PS3X, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.XHC_.RHUB.INIR, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.XHC_.RHUB.PS0X, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.XHC_.RHUB.PS2X, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.PCI0.XHC_.RHUB.PS3X, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (_SB_.TPM_.PTS_, MethodObj)    // Warning: Unresolved method, guessing 1 arguments
-    External (_SB_.UBTC.NTFY, MethodObj)    // Warning: Unresolved method, guessing 0 arguments
-    External (HIWC, MethodObj)    // Warning: Unresolved method, guessing 1 arguments
-
-    External (_PR_.BGIA, IntObj)
-    External (_PR_.BGMA, IntObj)
-    External (_PR_.BGMS, IntObj)
+    External (_GPE.TBNF, MethodObj)    // 0 Arguments
+    External (_PR_.BGIA, UnknownObj)
+    External (_PR_.BGMA, UnknownObj)
+    External (_PR_.BGMS, UnknownObj)
     External (_PR_.CFGD, UnknownObj)
-    External (_PR_.CLVL, IntObj)
-    External (_PR_.CPPC, UnknownObj)
+    External (_PR_.CLVL, UnknownObj)
+    External (_PR_.CPPC, IntObj)
     External (_PR_.DSAE, UnknownObj)
     External (_PR_.DTS1, UnknownObj)
     External (_PR_.DTS2, UnknownObj)
     External (_PR_.DTS3, UnknownObj)
     External (_PR_.DTS4, UnknownObj)
     External (_PR_.DTSE, UnknownObj)
-    External (_PR_.DTSF, IntObj)
-    External (_PR_.ELNG, IntObj)
-    External (_PR_.EMNA, IntObj)
+    External (_PR_.DTSF, UnknownObj)
+    External (_PR_.ELNG, UnknownObj)
+    External (_PR_.EMNA, UnknownObj)
     External (_PR_.EPCS, UnknownObj)
     External (_PR_.PDTS, UnknownObj)
     External (_PR_.PKGA, UnknownObj)
     External (_PR_.POWS, UnknownObj)
-    External (_PR_.PR00.LPSS, UnknownObj)
-    External (_PR_.PR00.TPSS, UnknownObj)
+    External (_PR_.PR00, DeviceObj)
+    External (_PR_.PR00.LPSS, PkgObj)
+    External (_PR_.PR00.TPSS, PkgObj)
     External (_PR_.TRPD, UnknownObj)
     External (_PR_.TRPF, UnknownObj)
-    External (_SB_.IETM, UnknownObj)
+    External (_SB_.GGIV, MethodObj)    // 1 Arguments
+    External (_SB_.GGOV, MethodObj)    // 1 Arguments
+    External (_SB_.IETM, DeviceObj)
     External (_SB_.IETM.DPTE, UnknownObj)
-    External (_SB_.PCI0.B0D4.NPCC, UnknownObj)
+    External (_SB_.PCI0.B0D4.NPCC, PkgObj)
+    External (_SB_.PCI0.CTCD, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.CTCN, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.GFX0, DeviceObj)
+    External (_SB_.PCI0.GFX0.AINT, MethodObj)    // 2 Arguments
     External (_SB_.PCI0.GFX0.ALSI, UnknownObj)
     External (_SB_.PCI0.GFX0.CBLV, UnknownObj)
     External (_SB_.PCI0.GFX0.CDCK, UnknownObj)
     External (_SB_.PCI0.GFX0.CLID, UnknownObj)
-    External (_SB_.PCI0.GFX0.DD1F, UnknownObj)
-    External (_SB_.PCI0.GFX0.DRDY, IntObj)
+    External (_SB_.PCI0.GFX0.DD1F, DeviceObj)
+    External (_SB_.PCI0.GFX0.DRDY, UnknownObj)
+    External (_SB_.PCI0.GFX0.GSCI, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.GFX0.GSSE, UnknownObj)
+    External (_SB_.PCI0.GFX0.IUEH, MethodObj)    // 1 Arguments
     External (_SB_.PCI0.GFX0.STAT, UnknownObj)
     External (_SB_.PCI0.GFX0.TCHE, UnknownObj)
-    External (_SB_.PCI0.HDAS.PPMS, IntObj)
-    External (_SB_.PCI0.HIDW, UnknownObj)
-    External (_SB_.PCI0.HIWC, UnknownObj)
-    External (_SB_.PCI0.LPCB.H_EC.XDAT, UnknownObj)
-    External (_SB_.PCI0.PEG0.PG00.PEGP, UnknownObj)
-    External (_SB_.PCI0.PEG1.PG01.PEGP, UnknownObj)
-    External (_SB_.PCI0.PEG2.PG02.PEGP, UnknownObj)
+    External (_SB_.PCI0.GFX0.VLOC, MethodObj)    // 1 Arguments
+    External (_SB_.PCI0.HDAS.PPMS, MethodObj)    // 1 Arguments
+    External (_SB_.PCI0.HDAS.PS0X, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.HDAS.PS3X, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.HIDW, MethodObj)    // 4 Arguments
+    External (_SB_.PCI0.HIWC, MethodObj)    // 1 Arguments
+    External (_SB_.PCI0.ISP0, DeviceObj)
+    External (_SB_.PCI0.LPCB.H_EC.XDAT, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.PAUD.PUAM, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.PEG0, DeviceObj)
+    External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
+    External (_SB_.PCI0.PEG0.PG00.PEGP, DeviceObj)
+    External (_SB_.PCI0.PEG1, DeviceObj)
+    External (_SB_.PCI0.PEG1.PG01.PEGP, DeviceObj)
+    External (_SB_.PCI0.PEG2, DeviceObj)
+    External (_SB_.PCI0.PEG2.PG02.PEGP, DeviceObj)
     External (_SB_.PCI0.PTDP, UnknownObj)
-    External (_SB_.PCI0.RP02.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP02.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP03.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP03.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP04.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP04.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP01.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP01.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP01.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP01.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP02.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP02.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP02.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP02.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP03.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP03.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP03.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP03.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP04.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP04.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP04.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP04.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP05.PON_, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP05.PWRG, UnknownObj)
-    External (_SB_.PCI0.RP05.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP05.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP05.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP05.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP05.PXSX.WIST, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP05.RSTG, UnknownObj)
     External (_SB_.PCI0.RP05.SCLK, UnknownObj)
-    External (_SB_.PCI0.RP06.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP06.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP07.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP07.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP08.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP08.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP06.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP06.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP06.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP06.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP07.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP07.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP07.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP07.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP08.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP08.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP08.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP08.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP09.PEGP.NVST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP09.PON_, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP09.PWRG, UnknownObj)
-    External (_SB_.PCI0.RP09.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP09.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP09.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP09.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP09.PXSX.WIST, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP09.RSTG, UnknownObj)
     External (_SB_.PCI0.RP09.SCLK, UnknownObj)
-    External (_SB_.PCI0.RP10.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP10.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP11.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP11.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP12.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP12.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP10.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP10.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP10.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP10.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP11.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP11.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP11.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP11.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP12.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP12.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP12.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP12.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP13.PON_, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP13.PWRG, UnknownObj)
-    External (_SB_.PCI0.RP13.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP13.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP13.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP13.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP13.PXSX.WIST, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP13.RSTG, UnknownObj)
     External (_SB_.PCI0.RP13.SCLK, UnknownObj)
-    External (_SB_.PCI0.RP14.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP14.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP15.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP15.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP16.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP16.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP14.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP14.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP14.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP14.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP15.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP15.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP15.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP15.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP16.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP16.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP16.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP16.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP17.PON_, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP17.PWRG, UnknownObj)
-    External (_SB_.PCI0.RP17.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP17.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP17.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP17.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP17.PXSX.WIST, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.RP17.RSTG, UnknownObj)
     External (_SB_.PCI0.RP17.SCLK, UnknownObj)
-    External (_SB_.PCI0.RP18.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP18.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP19.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP19.PXSX.WIST, IntObj)
-    External (_SB_.PCI0.RP20.PXSX.WGST, IntObj)
-    External (_SB_.PCI0.RP20.PXSX.WIST, IntObj)
+    External (_SB_.PCI0.RP18.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP18.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP18.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP18.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP19.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP19.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP19.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP19.PXSX.WIST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP20.PON_, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP20.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP20.PXSX.WGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.RP20.PXSX.WIST, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.SAT0.NVM1.VLPM, UnknownObj)
     External (_SB_.PCI0.SAT0.NVM2.VLPM, UnknownObj)
     External (_SB_.PCI0.SAT0.NVM3.VLPM, UnknownObj)
-    External (_SB_.PCI0.SAT0.PRIM, UnknownObj)
-    External (_SB_.PCI0.SAT0.PRIM.GTME, UnknownObj)
-    External (_SB_.PCI0.SAT0.SCND, UnknownObj)
-    External (_SB_.PCI0.SAT0.SCND.GTME, UnknownObj)
-    External (_SB_.PCI0.SAT0.SCND.MSTR, UnknownObj)
-    External (_SB_.PCI0.SAT0.SDSM, IntObj)
-    External (_TZ_.ETMD, UnknownObj)
-    External (_TZ_.TZ00, UnknownObj)
-    External (_TZ_.TZ01, UnknownObj)
+    External (_SB_.PCI0.SAT0.PRIM, DeviceObj)
+    External (_SB_.PCI0.SAT0.PRIM.GTME, IntObj)
+    External (_SB_.PCI0.SAT0.SCND, DeviceObj)
+    External (_SB_.PCI0.SAT0.SCND.GTME, IntObj)
+    External (_SB_.PCI0.SAT0.SCND.MSTR, DeviceObj)
+    External (_SB_.PCI0.SAT0.SDSM, MethodObj)    // 4 Arguments
+    External (_SB_.PCI0.XHC_.DUAM, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.XHC_.PS0X, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.XHC_.PS3X, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.XHC_.RHUB.INIR, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.XHC_.RHUB.PS0X, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.XHC_.RHUB.PS2X, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.XHC_.RHUB.PS3X, MethodObj)    // 0 Arguments
+    External (_SB_.SGOV, MethodObj)    // 2 Arguments
+    External (_SB_.TBFP, MethodObj)    // 1 Arguments
+    External (_SB_.TPM_.PTS_, MethodObj)    // 1 Arguments
+    External (_SB_.UBTC.NTFY, MethodObj)    // 0 Arguments
+    External (_TZ_.ETMD, IntObj)
+    External (_TZ_.TZ00, DeviceObj)
+    External (_TZ_.TZ01, DeviceObj)
+    External (ADBG, MethodObj)    // 1 Arguments
     External (ALSE, UnknownObj)
+    External (BNUM, UnknownObj)
     External (BRTL, UnknownObj)
     External (CFGD, UnknownObj)
     External (DIDX, UnknownObj)
     External (GSMI, UnknownObj)
-    External (HIDW, IntObj)
     External (IGDS, UnknownObj)
     External (LHIH, UnknownObj)
     External (LIDS, UnknownObj)
     External (LLOW, UnknownObj)
-    External (M32B, IntObj)
-    External (M32L, IntObj)
-    External (M64B, IntObj)
-    External (M64L, IntObj)
-    External (PC00, UnknownObj)
+    External (M32B, UnknownObj)
+    External (M32L, UnknownObj)
+    External (M64B, UnknownObj)
+    External (M64L, UnknownObj)
+    External (MMRP, MethodObj)    // 1 Arguments
+    External (MMTB, MethodObj)    // 1 Arguments
+    External (ODV0, IntObj)
+    External (ODV1, IntObj)
+    External (ODV2, IntObj)
+    External (ODV3, IntObj)
+    External (ODV4, IntObj)
+    External (ODV5, IntObj)
+    External (ODV6, IntObj)
+    External (ODV7, IntObj)
+    External (ODV8, IntObj)
+    External (ODV9, IntObj)
+    External (ODVA, IntObj)
+    External (ODVB, IntObj)
+    External (ODVC, IntObj)
+    External (ODVD, IntObj)
+    External (ODVE, IntObj)
+    External (ODVF, IntObj)
+    External (ODVG, IntObj)
+    External (ODVH, IntObj)
+    External (ODVI, IntObj)
+    External (ODVJ, IntObj)
+    External (PC00, IntObj)
     External (PC01, UnknownObj)
     External (PC02, UnknownObj)
     External (PC03, UnknownObj)
@@ -222,252 +252,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     External (PC14, UnknownObj)
     External (PC15, UnknownObj)
     External (PTTB, UnknownObj)
+    External (RTBT, IntObj)
     External (SGMD, UnknownObj)
-
-    If (Zero)
-    {
-        External (LHIH, 0x00, 0x00)
-        External (LLOW, 0x00, 0x00)
-        External (IGDS, 0x00, 0x00)
-        External (LIDS, 0x00, 0x00)
-        External (BRTL, 0x00, 0x00)
-        External (ALSE, 0x00, 0x00)
-        External (GSMI, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0, 0x06, 0x00)
-        External (\_SB.PCI0.GFX0.ALSI, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.CDCK, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.CBLV, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.GSSE, 0x00, 0x00)
-        External (\_SB.PCI0.ISP0, 0x06, 0x00)
-        External (\_SB.PCI0.PEG0, 0x06, 0x00)
-        External (\_SB.PCI0.PEG0.PEGP, 0x06, 0x00)
-        External (\_SB.PCI0.PEG1, 0x06, 0x00)
-        External (\_SB.PCI0.PEG2, 0x06, 0x00)
-        External (\_SB.PCI0.GFX0.DD1F, 0x06, 0x00)
-        External (\_SB.PCI0.GFX0.AINT, 0x08, 0x02)
-        External (\_SB.PCI0.GFX0.GSCI, 0x08, 0x00)
-        External (\_PR.PR00, 0x06, 0x00)
-        External (\_PR.PR00.LPSS, 0x04, 0x00)
-        External (\_PR.PR00.TPSS, 0x04, 0x00)
-        External (\_PR.CPPC, 0x01, 0x00)
-        External (\_TZ.TZ00, 0x06, 0x00)
-        External (\_TZ.TZ01, 0x06, 0x00)
-        External (\_TZ.ETMD, 0x01, 0x00)
-        External (M64B, 0x00, 0x00)
-        External (M64L, 0x00, 0x00)
-        External (M32B, 0x00, 0x00)
-        External (M32L, 0x00, 0x00)
-        External (\_SB.PCI0.XHC.PS0X, 0x08, 0x00)
-        External (\_SB.PCI0.XHC.PS3X, 0x08, 0x00)
-        External (\_SB.PCI0.XHC.RHUB.PS0X, 0x08, 0x00)
-        External (\_SB.PCI0.XHC.RHUB.PS2X, 0x08, 0x00)
-        External (\_SB.PCI0.XHC.RHUB.PS3X, 0x08, 0x00)
-        External (\_SB.PCI0.XHC.RHUB.INIR, 0x08, 0x00)
-        External (\_SB.PCI0.LPCB.H_EC.XDAT, 0x08, 0x00)
-        External (\_SB.PCI0.HDAS.PS0X, 0x08, 0x00)
-        External (\_SB.PCI0.HDAS.PS3X, 0x08, 0x00)
-        External (\_SB.PCI0.HDAS.PPMS, 0x08, 0x01)
-        External (\_SB.PCI0.HIDW, 0x08, 0x04)
-        External (\_SB.PCI0.HIWC, 0x08, 0x01)
-        External (\_SB.PCI0.SAT0.NVM1.VLPM, 0x00, 0x00)
-        External (\_SB.PCI0.SAT0.NVM2.VLPM, 0x00, 0x00)
-        External (\_SB.PCI0.SAT0.NVM3.VLPM, 0x00, 0x00)
-        External (\_SB.PCI0.SAT0.SDSM, 0x08, 0x04)
-        External (\_SB.PCI0.RP05.PWRG, 0x00, 0x00)
-        External (\_SB.PCI0.RP05.RSTG, 0x00, 0x00)
-        External (\_SB.PCI0.RP05.SCLK, 0x00, 0x00)
-        External (\_SB.PCI0.RP09.PWRG, 0x00, 0x00)
-        External (\_SB.PCI0.RP09.RSTG, 0x00, 0x00)
-        External (\_SB.PCI0.RP09.SCLK, 0x00, 0x00)
-        External (\_SB.PCI0.RP13.PWRG, 0x00, 0x00)
-        External (\_SB.PCI0.RP13.RSTG, 0x00, 0x00)
-        External (\_SB.PCI0.RP13.SCLK, 0x00, 0x00)
-        External (\_SB.PCI0.RP17.PWRG, 0x00, 0x00)
-        External (\_SB.PCI0.RP17.RSTG, 0x00, 0x00)
-        External (\_SB.PCI0.RP17.SCLK, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.VLOC, 0x08, 0x01)
-        External (\_SB.TBFP, 0x08, 0x01)
-        External (\PC00, 0x01, 0x00)
-        External (\PC01, 0x00, 0x00)
-        External (\PC02, 0x00, 0x00)
-        External (\PC03, 0x00, 0x00)
-        External (\PC04, 0x00, 0x00)
-        External (\PC05, 0x00, 0x00)
-        External (\PC06, 0x00, 0x00)
-        External (\PC07, 0x00, 0x00)
-        External (\PC08, 0x00, 0x00)
-        External (\PC09, 0x00, 0x00)
-        External (\PC10, 0x00, 0x00)
-        External (\PC11, 0x00, 0x00)
-        External (\PC12, 0x00, 0x00)
-        External (\PC13, 0x00, 0x00)
-        External (\PC14, 0x00, 0x00)
-        External (\PC15, 0x00, 0x00)
-        External (\_PR.CFGD, 0x00, 0x00)
-        External (\SGMD, 0x00, 0x00)
-        External (\BNUM, 0x00, 0x00)
-        External (\_PR.DTSF, 0x00, 0x00)
-        External (\_PR.DTSE, 0x00, 0x00)
-        External (\_PR.DTS1, 0x00, 0x00)
-        External (\_PR.DTS2, 0x00, 0x00)
-        External (\_PR.PDTS, 0x00, 0x00)
-        External (\_PR.PKGA, 0x00, 0x00)
-        External (\_PR.DTS3, 0x00, 0x00)
-        External (\_PR.DTS4, 0x00, 0x00)
-        External (\_PR.TRPD, 0x00, 0x00)
-        External (\_PR.TRPF, 0x00, 0x00)
-        External (\_PR.DSAE, 0x00, 0x00)
-        External (\_PR.BGMA, 0x00, 0x00)
-        External (\_PR.BGMS, 0x00, 0x00)
-        External (\_PR.BGIA, 0x00, 0x00)
-        External (\_SB.IETM, 0x06, 0x00)
-        External (\_PR.POWS, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.IUEH, 0x08, 0x01)
-        External (\_PR.EPCS, 0x00, 0x00)
-        External (\_PR.EMNA, 0x00, 0x00)
-        External (\_PR.ELNG, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.TCHE, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.STAT, 0x00, 0x00)
-        External (\_SB.TPM.PTS, 0x08, 0x01)
-        External (\_SB.PCI0.PAUD.PUAM, 0x08, 0x00)
-        External (\_SB.PCI0.XHC.DUAM, 0x08, 0x00)
-        External (\_SB.PCI0.RP01.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP02.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP03.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP04.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP05.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP06.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP07.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP08.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP09.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP10.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP11.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP12.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP13.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP14.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP15.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP16.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP17.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP18.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP19.PON, 0x08, 0x00)
-        External (\_SB.PCI0.RP20.PON, 0x08, 0x00)
-        External (\_SB.PCI0.GFX0.IUEH, 0x08, 0x01)
-        External (\TBTD, 0x08, 0x01)
-        External (\TBTF, 0x08, 0x01)
-        External (\MMRP, 0x08, 0x01)
-        External (\MMTB, 0x08, 0x01)
-        External (\_SB.PCI0.RP01.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP02.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP03.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP04.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP05.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP06.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP07.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP08.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP09.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP10.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP11.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP12.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP13.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP14.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP15.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP16.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP17.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP18.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP19.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.RP20.PXSX, 0x06, 0x00)
-        External (\_SB.PCI0.PEG0.PG00.PEGP, 0x06, 0x00)
-        External (\_SB.PCI0.PEG1.PG01.PEGP, 0x06, 0x00)
-        External (\_SB.PCI0.PEG2.PG02.PEGP, 0x06, 0x00)
-        External (\CFGD, 0x00, 0x00)
-        External (\_SB.PCI0.GFX0.CLID, 0x00, 0x00)
-        External (\PTTB, 0x00, 0x00)
-        External (DIDX, 0x00, 0x00)
-        External (\_SB.PCI0.RP01.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP02.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP03.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP04.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP05.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP06.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP07.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP08.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP09.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP10.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP11.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP12.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP13.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP14.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP15.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP16.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP17.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP18.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP19.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP20.PXSX.WIST, 0x08, 0x00)
-        External (\_SB.PCI0.RP01.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP02.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP03.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP04.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP05.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP06.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP07.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP08.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP09.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP10.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP11.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP12.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP13.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP14.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP15.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP16.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP17.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP18.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP19.PXSX.WGST, 0x08, 0x00)
-        External (\_SB.PCI0.RP20.PXSX.WGST, 0x08, 0x00)
-        External (\TBTS, 0x01, 0x00)
-        External (\RTBT, 0x01, 0x00)
-        External (\_GPE.TBNF, 0x08, 0x00)
-        External (\ADBG, 0x08, 0x01)
-        External (\_SB.GGIV, 0x08, 0x01)
-        External (\_SB.UBTC.NTFY, 0x08, 0x00)
-        External (\_SB.PCI0.GFX0.DRDY, 0x00, 0x00)
-        External (\_SB.PCI0.SAT0.PRIM, 0x06, 0x00)
-        External (\_SB.PCI0.SAT0.SCND, 0x06, 0x00)
-        External (\_SB.PCI0.SAT0.SCND.MSTR, 0x06, 0x00)
-        External (\_SB.PCI0.SAT0.PRIM.GTME, 0x01, 0x00)
-        External (\_SB.PCI0.SAT0.SCND.GTME, 0x01, 0x00)
-        External (\_SB.GGOV, 0x08, 0x01)
-        External (\_SB.SGOV, 0x08, 0x02)
-        External (\_SB.PCI0.RP09.PEGP.NVST, 0x08, 0x00)
-        External (\_PR.CLVL, 0x00, 0x00)
-        External (\ADBG, 0x08, 0x01)
-        External (\ODV0, 0x01, 0x00)
-        External (\ODV1, 0x01, 0x00)
-        External (\ODV2, 0x01, 0x00)
-        External (\ODV3, 0x01, 0x00)
-        External (\ODV4, 0x01, 0x00)
-        External (\ODV5, 0x01, 0x00)
-        External (\ODV6, 0x01, 0x00)
-        External (\ODV7, 0x01, 0x00)
-        External (\ODV8, 0x01, 0x00)
-        External (\ODV9, 0x01, 0x00)
-        External (\ODVA, 0x01, 0x00)
-        External (\ODVB, 0x01, 0x00)
-        External (\ODVC, 0x01, 0x00)
-        External (\ODVD, 0x01, 0x00)
-        External (\ODVE, 0x01, 0x00)
-        External (\ODVF, 0x01, 0x00)
-        External (\ODVG, 0x01, 0x00)
-        External (\ODVH, 0x01, 0x00)
-        External (\ODVI, 0x01, 0x00)
-        External (\ODVJ, 0x01, 0x00)
-        External (\STDV, 0x01, 0x00)
-        External (\_SB.IETM, 0x06, 0x00)
-        External (\_SB.PCI0.CTCN, 0x08, 0x00)
-        External (\_SB.PCI0.CTCD, 0x08, 0x00)
-        External (\_SB.PCI0.PTDP, 0x00, 0x00)
-        External (\_SB.PCI0.B0D4.NPCC, 0x04, 0x00)
-        External (\_SB.IETM.DPTE, 0x00, 0x00)
-    }
+    External (STDV, IntObj)
+    External (TBTD, MethodObj)    // 1 Arguments
+    External (TBTF, MethodObj)    // 1 Arguments
+    External (TBTS, IntObj)
 
     Name (SS1, 0x00)
     Name (SS2, 0x00)
@@ -3161,7 +2951,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     0x00000CF7,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x00000CF8,         // Length
-                    ,, , TypeStatic)
+                    ,, , TypeStatic, DenseTranslation)
                 IO (Decode16,
                     0x0CF8,             // Range Minimum
                     0x0CF8,             // Range Maximum
@@ -3174,7 +2964,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     0x0000FFFF,         // Range Maximum
                     0x00000000,         // Translation Offset
                     0x0000F300,         // Length
-                    ,, , TypeStatic)
+                    ,, , TypeStatic, DenseTranslation)
                 DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, Cacheable, ReadWrite,
                     0x00000000,         // Granularity
                     0x000A0000,         // Range Minimum
@@ -3739,7 +3529,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                         Return (Buffer (0x01)
                         {
-                             0x00                                             /* . */
+                             0x00                                             // .
                         })
                     }
 
@@ -3769,7 +3559,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         {
                             Return (Buffer (0x02)
                             {
-                                 0x01, 0x03                                       /* .. */
+                                 0x01, 0x03                                       // ..
                             })
                         }
 
@@ -3794,7 +3584,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
         }
@@ -4226,16 +4016,16 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         })
         Name (RXEV, Package (0x0A)
         {
-            Buffer (0x18) {}, 
-            Buffer (0x18) {}, 
-            Buffer (0x18) {}, 
-            Buffer (0x18) {}, 
-            Buffer (0x18) {}, 
-            Buffer (0x18) {}, 
-            Buffer (0x18) {}, 
-            Buffer (0x18) {}, 
-            Buffer (0x0B) {}, 
-            Buffer (0x0C) {}
+            Buffer (0x18){}, 
+            Buffer (0x18){}, 
+            Buffer (0x18){}, 
+            Buffer (0x18){}, 
+            Buffer (0x18){}, 
+            Buffer (0x18){}, 
+            Buffer (0x18){}, 
+            Buffer (0x18){}, 
+            Buffer (0x0B){}, 
+            Buffer (0x0C){}
         })
     }
 
@@ -4892,8 +4682,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (_UID, "IoTraps")  // _UID: Unique ID
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
             {
-                Local0 = ResourceTemplate ()
+                Local0 = Buffer (0x02)
                     {
+                         0x79, 0x00                                       // y.
                     }
                 Name (BUF0, ResourceTemplate ()
                 {
@@ -4987,7 +4778,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -5022,7 +4813,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
         }
@@ -5039,7 +4830,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
         }
@@ -5556,7 +5347,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -5698,7 +5489,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -6299,7 +6090,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -6354,15 +6144,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     Local0++
                                 }
 
-                                If ((U2CP != 0x00)) {}
-                                If ((U3CP != 0x00)) {}
+                                If ((U2CP != 0x00)){}
+                                If ((U3CP != 0x00)){}
                                 Return (0x00)
                             }
 
                             If ((Local1 == 0x03))
                             {
-                                If ((U2CP != 0x00)) {}
-                                If ((U3CP != 0x00)) {}
+                                If ((U2CP != 0x00)){}
+                                If ((U3CP != 0x00)){}
                                 PUPS = 0x03
                                 Local0 = 0x00
                                 While ((Local0 < 0x07D0))
@@ -6376,8 +6166,8 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     Local0++
                                 }
 
-                                If ((U2CP != 0x03)) {}
-                                If ((U3CP != 0x03)) {}
+                                If ((U2CP != 0x03)){}
+                                If ((U3CP != 0x03)){}
                                 UXPE = Local2
                                 Return (0x00)
                             }
@@ -6385,30 +6175,29 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             Return (0x00)
                         }
 
-                        While (One)
+                        Switch (ToInteger (Arg2))
                         {
-                            _T_0 = ToInteger (Arg2)
-                            If ((_T_0 == 0x00))
+                            Case (0x00)
                             {
                                 Return (Buffer (0x01)
                                 {
-                                     0xF3                                             /* . */
+                                     0xF3                                             // .
                                 })
                             }
-                            ElseIf ((_T_0 == 0x01))
+                            Case (0x01)
                             {
                                 Return (0x01)
                             }
-                            ElseIf ((_T_0 == 0x04))
+                            Case (0x04)
                             {
                                 Local1 = DerefOf (Arg3 [0x00])
                                 SPPS (Local1, 0x00)
                             }
-                            ElseIf ((_T_0 == 0x05))
+                            Case (0x05)
                             {
                                 If (CondRefOf (\_SB.PCI0.LPCB.H_EC.XDAT))
                                 {
-                                    If ((\_SB.PCI0.LPCB.H_EC.XDAT == 0x01))
+                                    If ((\_SB.PCI0.LPCB.H_EC.XDAT () == 0x01))
                                     {
                                         Notify (\_SB.PCI0.XDCI, 0x80) // Status Change
                                     }
@@ -6420,7 +6209,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                                 Return (0x00)
                             }
-                            ElseIf ((_T_0 == 0x06))
+                            Case (0x06)
                             {
                                 OperationRegion (XDBD, SystemMemory, XDBA (), 0x00110000)
                                 Field (XDBD, DWordAcc, NoLock, Preserve)
@@ -6456,7 +6245,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                                 Return (0x00)
                             }
-                            ElseIf ((_T_0 == 0x07))
+                            Case (0x07)
                             {
                                 OperationRegion (XD22, SystemMemory, XDBA (), 0x00110000)
                                 Field (XD22, WordAcc, NoLock, Preserve)
@@ -6470,14 +6259,13 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 Return (Local0)
                             }
 
-                            Break
                         }
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -6626,7 +6414,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 ADBG ("HDAS _DSM")
                 If (PCIC (Arg0))
                 {
@@ -6635,62 +6422,54 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 If ((Arg0 == ToUUID ("a69f886e-6ceb-4594-a41f-7b5dce24c553")))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Return (Buffer (One)
                             {
-                                 0x0F                                             /* . */
+                                 0x0F                                             // .
                             })
                         }
-                        ElseIf ((_T_0 == 0x01))
+                        Case (0x01)
                         {
                             ADBG ("_DSM Fun 1 NHLT")
                             Return (NBUF) /* \_SB_.PCI0.HDAS.NBUF */
                         }
-                        ElseIf ((_T_0 == 0x02))
+                        Case (0x02)
                         {
                             ADBG ("_DSM Fun 2 FMSK")
                             Return (ADFM) /* \ADFM */
                         }
-                        ElseIf ((_T_0 == 0x03))
+                        Case (0x03)
                         {
                             ADBG ("_DSM Fun 3 PPMS")
                             If (CondRefOf (\_SB.PCI0.HDAS.PPMS))
                             {
-                                Return (\_SB.PCI0.HDAS.PPMS) /* External reference */
-                                Arg3
+                                Return (\_SB.PCI0.HDAS.PPMS (Arg3))
                             }
 
                             Return (0x00)
                         }
-                        Else
+                        Default
                         {
                             ADBG ("_DSM Fun NOK")
                             Return (Buffer (One)
                             {
-                                 0x00                                             /* . */
+                                 0x00                                             // .
                             })
                         }
 
-                        Break
                     }
                 }
 
                 If (CondRefOf (HIWC))
                 {
-                    If (HIWC)
+                    If (HIWC (Arg0))
                     {
-                        Arg0
                         If (CondRefOf (HIDW))
                         {
-                            Return (HIDW) /* External reference */
-                            Arg0
-                            Arg1
-                            Arg2
-                            Arg3
+                            Return (HIDW (Arg0, Arg1, Arg2, Arg3))
                         }
                     }
                 }
@@ -6698,7 +6477,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 ADBG ("_DSM UUID NOK")
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
         }
@@ -6792,17 +6571,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -6834,7 +6611,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP01._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -6842,28 +6619,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -6895,7 +6672,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -6905,7 +6682,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -6923,13 +6700,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -7052,17 +6828,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -7094,7 +6868,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP02._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7102,28 +6876,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7155,7 +6929,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7165,7 +6939,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7183,13 +6957,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -7312,17 +7085,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -7354,7 +7125,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP03._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7362,28 +7133,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7415,7 +7186,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7425,7 +7196,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7443,13 +7214,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -7572,17 +7342,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -7614,7 +7382,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP04._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7622,28 +7390,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7675,7 +7443,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7685,7 +7453,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7703,13 +7471,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -7832,17 +7599,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -7874,7 +7639,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP05._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7882,28 +7647,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -7935,7 +7700,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7945,7 +7710,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -7963,13 +7728,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -8092,17 +7856,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -8134,7 +7896,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP06._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8142,28 +7904,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8195,7 +7957,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -8205,7 +7967,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -8223,13 +7985,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -8352,17 +8113,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -8394,7 +8153,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP07._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8402,28 +8161,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8455,7 +8214,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -8465,7 +8224,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -8483,13 +8242,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -8612,17 +8370,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -8654,7 +8410,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP08._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8662,28 +8418,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8715,7 +8471,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -8725,7 +8481,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -8743,13 +8499,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -8872,17 +8627,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -8914,7 +8667,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP09._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8922,28 +8675,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -8975,7 +8728,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -8985,7 +8738,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -9003,13 +8756,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -9132,17 +8884,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -9174,7 +8924,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP10._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -9182,28 +8932,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -9235,7 +8985,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -9245,7 +8995,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -9263,13 +9013,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -9392,17 +9141,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -9434,7 +9181,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP11._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -9442,28 +9189,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -9495,7 +9242,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -9505,7 +9252,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -9523,13 +9270,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -9652,17 +9398,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -9694,7 +9438,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP12._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -9702,28 +9446,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -9755,7 +9499,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -9765,7 +9509,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -9783,13 +9527,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -9912,17 +9655,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -9954,7 +9695,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP13._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -9962,28 +9703,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -10015,7 +9756,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10025,7 +9766,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10043,13 +9784,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -10172,17 +9912,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -10214,7 +9952,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP14._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -10222,28 +9960,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -10275,7 +10013,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10285,7 +10023,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10303,13 +10041,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -10432,17 +10169,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -10474,7 +10209,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP15._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -10482,28 +10217,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -10535,7 +10270,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10545,7 +10280,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10563,13 +10298,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -10692,17 +10426,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -10734,7 +10466,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP16._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -10742,28 +10474,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -10795,7 +10527,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10805,7 +10537,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -10823,13 +10555,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -10952,17 +10683,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -10994,7 +10723,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP17._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11002,28 +10731,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11055,7 +10784,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11065,7 +10794,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11083,13 +10812,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -11212,17 +10940,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -11254,7 +10980,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP18._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11262,28 +10988,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11315,7 +11041,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11325,7 +11051,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11343,13 +11069,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -11472,17 +11197,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -11514,7 +11237,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP19._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11522,28 +11245,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11575,7 +11298,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11585,7 +11308,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11603,13 +11326,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -11732,17 +11454,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -11774,7 +11494,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP20._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11782,28 +11502,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -11835,7 +11555,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11845,7 +11565,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -11863,13 +11583,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -11992,17 +11711,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -12034,7 +11751,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP21._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12042,28 +11759,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12095,7 +11812,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12105,7 +11822,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12123,13 +11840,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -12252,17 +11968,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -12294,7 +12008,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP22._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12302,28 +12016,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12355,7 +12069,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12365,7 +12079,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12383,13 +12097,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -12512,17 +12225,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -12554,7 +12265,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP23._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12562,28 +12273,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12615,7 +12326,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12625,7 +12336,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12643,13 +12354,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -12772,17 +12482,15 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             })
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_0 = ToInteger (Arg2)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Name (OPTS, Buffer (0x02)
                             {
-                                 0x00, 0x00                                       /* .. */
+                                 0x00, 0x00                                       // ..
                             })
                             CreateBitField (OPTS, 0x00, FUN0)
                             CreateBitField (OPTS, 0x04, FUN4)
@@ -12814,7 +12522,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             Return (OPTS) /* \_SB_.PCI0.RP24._DSM.OPTS */
                         }
-                        ElseIf ((_T_0 == 0x04))
+                        Case (0x04)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12822,28 +12530,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                                 Else
                                 {
                                     Return (Buffer (0x10)
                                     {
-                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                                        /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                                        /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
                                     })
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x05))
+                        Case (0x05)
                         {
                             If ((Arg1 == 0x01))
                             {
                                 Return (0x01)
                             }
                         }
-                        ElseIf ((_T_0 == 0x06))
+                        Case (0x06)
                         {
                             If ((Arg1 >= 0x02))
                             {
@@ -12875,7 +12583,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x08))
+                        Case (0x08)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12885,7 +12593,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
                         }
-                        ElseIf ((_T_0 == 0x09))
+                        Case (0x09)
                         {
                             If ((ECR1 == 0x01))
                             {
@@ -12903,13 +12611,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             }
                         }
 
-                        Break
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -12955,16 +12662,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 If (CondRefOf (\_SB.PCI0.SAT0.SDSM))
                 {
-                    Return (\_SB.PCI0.SAT0.SDSM) /* External reference */
-                    Arg0
-                    Arg1
-                    Arg2
-                    Arg3
+                    Return (\_SB.PCI0.SAT0.SDSM (Arg0, Arg1, Arg2, Arg3))
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -13015,7 +12718,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (RDCA, 5, Serialized)
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 OperationRegion (RPAL, SystemMemory, (\_SB.PCI0.GPCB () + ((0x000B8000 + 0x0100) + Arg1)), 0x04)
                 Field (RPAL, DWordAcc, Lock, Preserve)
                 {
@@ -13044,37 +12746,35 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     CRGC = Arg0
                 }
 
-                While (One)
+                Switch (ToInteger (Arg4))
                 {
-                    _T_0 = ToInteger (Arg4)
-                    If ((_T_0 == 0x00))
+                    Case (0x00)
                     {
                         Return (RPCD) /* \_SB_.PCI0.SAT0.RDCA.RPCD */
                     }
-                    ElseIf ((_T_0 == 0x02))
+                    Case (0x02)
                     {
                         CAIR = Arg1
                         Return (CADR) /* \_SB_.PCI0.SAT0.RDCA.CADR */
                     }
-                    ElseIf ((_T_0 == 0x01))
+                    Case (0x01)
                     {
                         Local0 = (Arg2 & RPCD) /* \_SB_.PCI0.SAT0.RDCA.RPCD */
                         Local0 |= Arg3
                         RPCD = Local0
                     }
-                    ElseIf ((_T_0 == 0x03))
+                    Case (0x03)
                     {
                         CAIR = Arg1
                         Local0 = (Arg2 & CADR) /* \_SB_.PCI0.SAT0.RDCA.CADR */
                         Local0 |= Arg3
                         CADR = Local0
                     }
-                    Else
+                    Default
                     {
                         Return (0x00)
                     }
 
-                    Break
                 }
 
                 Return (0x00)
@@ -13082,12 +12782,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (ARPC, 4, Serialized)
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 ADBG (Concatenate ("NRPN: ", ToHexString (Arg0)))
-                While (One)
+                Switch (ToInteger (Arg0))
                 {
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == 0x04))
+                    Case (0x04)
                     {
                         If (CondRefOf (\_SB.PCI0.RP05.PWRG))
                         {
@@ -13104,7 +12802,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             CopyObject (\_SB.PCI0.RP05.SCLK, Arg3)
                         }
                     }
-                    ElseIf ((_T_0 == 0x08))
+                    Case (0x08)
                     {
                         If (CondRefOf (\_SB.PCI0.RP09.PWRG))
                         {
@@ -13121,7 +12819,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             CopyObject (\_SB.PCI0.RP09.SCLK, Arg3)
                         }
                     }
-                    ElseIf ((_T_0 == 0x0C))
+                    Case (0x0C)
                     {
                         If (CondRefOf (\_SB.PCI0.RP13.PWRG))
                         {
@@ -13138,7 +12836,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             CopyObject (\_SB.PCI0.RP13.SCLK, Arg3)
                         }
                     }
-                    ElseIf ((_T_0 == 0x10))
+                    Case (0x10)
                     {
                         If (CondRefOf (\_SB.PCI0.RP17.PWRG))
                         {
@@ -13155,12 +12853,11 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             CopyObject (\_SB.PCI0.RP17.SCLK, Arg3)
                         }
                     }
-                    Else
+                    Default
                     {
                         ADBG (Concatenate ("ERR!NRPN: ", ToHexString (Arg0)))
                     }
 
-                    Break
                 }
             }
 
@@ -14210,29 +13907,26 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (VMMH, 2, Serialized)
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If ((!CondRefOf (\_SB.VMON) || !CondRefOf (\_SB.VMOF)))
             {
                 Return (Zero)
             }
 
-            While (One)
+            Switch (ToInteger (Arg0))
             {
-                _T_0 = ToInteger (Arg0)
-                If ((_T_0 == 0x00))
+                Case (0x00)
                 {
                     HDAA = Arg1
                 }
-                ElseIf ((_T_0 == 0x01))
+                Case (0x01)
                 {
                     DISA = Arg1
                 }
-                Else
+                Default
                 {
                     Return (Zero)
                 }
 
-                Break
             }
 
             If ((!DISA && !HDAA))
@@ -14363,8 +14057,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 })
                 CreateDWordField (BUFF, \_SB.PCI0.SIRC.ADDB._Y21._BAS, ADDR)  // _BAS: Base Address
                 CreateDWordField (BUFF, \_SB.PCI0.SIRC.ADDB._Y21._LEN, LENG)  // _LEN: Length
-                Local0 = ResourceTemplate ()
+                Local0 = Buffer (0x02)
                     {
+                         0x79, 0x00                                       // y.
                     }
                 If ((((Arg0 == 0x01) || (Arg0 == 0x03)) || (Arg0 == 0x04)))
                 {
@@ -14393,8 +14088,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
             {
-                Local0 = ResourceTemplate ()
+                Local0 = Buffer (0x02)
                     {
+                         0x79, 0x00                                       // y.
                     }
                 ConcatenateResTemplate (Local0, ADDB (SMD0, SB00, SB10), Local1)
                 Local0 = Local1
@@ -14546,7 +14242,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -14604,7 +14300,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -14662,7 +14358,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -14720,7 +14416,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -14778,7 +14474,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -14836,7 +14532,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -14893,7 +14589,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -14950,7 +14646,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -15005,7 +14701,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -15078,7 +14774,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -15151,7 +14847,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -15190,7 +14886,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     {
                         Return (Buffer (One)
                         {
-                             0x03                                             /* . */
+                             0x03                                             // .
                         })
                     }
                 }
@@ -15203,7 +14899,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Return (Buffer (0x01)
             {
-                 0x00                                             /* . */
+                 0x00                                             // .
             })
         }
 
@@ -15217,7 +14913,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     {
                         Return (Buffer (One)
                         {
-                             0x03                                             /* . */
+                             0x03                                             // .
                         })
                     }
                 }
@@ -15230,7 +14926,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Return (Buffer (0x01)
             {
-                 0x00                                             /* . */
+                 0x00                                             // .
             })
         }
     }
@@ -15242,9 +14938,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (HID2, 0x00)
             Name (SBFB, ResourceTemplate ()
             {
-                I2cSerialBus (0x0020, ControllerInitiated, 0x00061A80,
+                I2cSerialBusV2 (0x0020, ControllerInitiated, 0x00061A80,
                     AddressingMode7Bit, "\\_SB.PCI0.I2C0",
-                    0x00, ResourceConsumer, _Y26,
+                    0x00, ResourceConsumer, _Y26, Exclusive,
                     )
             })
             Name (SBFI, ResourceTemplate ()
@@ -15344,7 +15040,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -15405,9 +15101,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Name (SBFB, ResourceTemplate ()
                 {
-                    I2cSerialBus (0x0000, ControllerInitiated, 0x00061A80,
+                    I2cSerialBusV2 (0x0000, ControllerInitiated, 0x00061A80,
                         AddressingMode7Bit, "\\_SB.PCI0.I2C0",
-                        0x00, ResourceConsumer, _Y28,
+                        0x00, ResourceConsumer, _Y28, Exclusive,
                         )
                 })
                 Name (SBFI, ResourceTemplate ()
@@ -15448,9 +15144,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Name (SBFB, ResourceTemplate ()
                 {
-                    I2cSerialBus (0x0038, ControllerInitiated, 0x00061A80,
+                    I2cSerialBusV2 (0x0038, ControllerInitiated, 0x00061A80,
                         AddressingMode7Bit, "\\_SB.PCI0.I2C0",
-                        0x00, ResourceConsumer, ,
+                        0x00, ResourceConsumer, , Exclusive,
                         )
                 })
                 Name (SBFI, ResourceTemplate ()
@@ -15486,9 +15182,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Name (SBFB, ResourceTemplate ()
                 {
-                    I2cSerialBus (0x003F, ControllerInitiated, 0x00061A80,
+                    I2cSerialBusV2 (0x003F, ControllerInitiated, 0x00061A80,
                         AddressingMode7Bit, "\\_SB.PCI0.I2C0",
-                        0x00, ResourceConsumer, ,
+                        0x00, ResourceConsumer, , Exclusive,
                         )
                 })
                 Name (SBFI, ResourceTemplate ()
@@ -15524,9 +15220,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (HID2, 0x00)
             Name (SBFB, ResourceTemplate ()
             {
-                I2cSerialBus (0x004C, ControllerInitiated, 0x00061A80,
+                I2cSerialBusV2 (0x004C, ControllerInitiated, 0x00061A80,
                     AddressingMode7Bit, "\\_SB.PCI0.I2C1",
-                    0x00, ResourceConsumer, _Y2C,
+                    0x00, ResourceConsumer, _Y2C, Exclusive,
                     )
             })
             Name (SBFG, ResourceTemplate ()
@@ -15667,7 +15363,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
 
@@ -15717,9 +15413,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Name (SBUF, ResourceTemplate ()
                 {
-                    I2cSerialBus (0x006E, ControllerInitiated, 0x00061A80,
+                    I2cSerialBusV2 (0x006E, ControllerInitiated, 0x00061A80,
                         AddressingMode7Bit, "\\_SB.PCI0.I2C1",
-                        0x00, ResourceConsumer, ,
+                        0x00, ResourceConsumer, , Exclusive,
                         )
                 })
                 Return (SBUF) /* \_SB_.PCI0.I2C1.IMP3._CRS.SBUF */
@@ -15784,13 +15480,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 Name (BBUF, ResourceTemplate ()
                 {
-                    SpiSerialBus (0x0000, PolarityLow, FourWireMode, 0x08,
+                    SpiSerialBusV2 (0x0000, PolarityLow, FourWireMode, 0x08,
                         ControllerInitiated, 0x00989680, ClockPolarityLow,
                         ClockPhaseFirst, "\\_SB.PCI0.SPI1",
-                        0x00, ResourceConsumer, _Y2E,
+                        0x00, ResourceConsumer, _Y2E, Exclusive,
                         )
                     GpioIo (Exclusive, PullDefault, 0x0000, 0x0000, IoRestrictionOutputOnly,
                         "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
@@ -15853,44 +15548,42 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     ITRG = 0x01
                 }
 
-                While (One)
+                Switch (ToInteger (SDS7))
                 {
-                    _T_0 = ToInteger (SDS7)
-                    If ((_T_0 == 0x01))
+                    Case (0x01)
                     {
                         SPEX = 0x00989680
                         PHAX = 0x00
                     }
-                    ElseIf ((_T_0 == 0x02))
+                    Case (0x02)
                     {
                         SPEX = 0x002DC6C0
                         PHAX = 0x00
                     }
-                    ElseIf ((_T_0 == 0x03))
+                    Case (0x03)
                     {
                         SPEX = 0x007A1200
                         PHAX = 0x01
                     }
-                    ElseIf ((_T_0 == 0x04))
+                    Case (0x04)
                     {
                         SPEX = 0x007A1200
                         PHAX = 0x00
                     }
-                    ElseIf ((_T_0 == 0x05))
+                    Case (0x05)
                     {
                         SPEX = 0x00F42400
                         PHAX = 0x00
                     }
-                    ElseIf ((_T_0 == 0x06))
+                    Case (0x06)
                     {
                         SPEX = 0x002DC6C0
                         PHAX = 0x00
                     }
-                    Else
+                    Default
                     {
                     }
 
-                    Break
                 }
 
                 If ((SDS7 == 0x01))
@@ -15948,10 +15641,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Name (SBFG, ResourceTemplate ()
                 {
-                    UartSerialBus (0x0001C200, DataBitsEight, StopBitsOne,
+                    UartSerialBusV2 (0x0001C200, DataBitsEight, StopBitsOne,
                         0xC0, LittleEndian, ParityTypeNone, FlowControlHardware,
                         0x0020, 0x0020, "\\_SB.PCI0.UA00",
-                        0x00, ResourceConsumer, ,
+                        0x00, ResourceConsumer, , Exclusive,
                         )
                     GpioIo (Exclusive, PullDefault, 0x0000, 0x0000, IoRestrictionOutputOnly,
                         "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
@@ -15980,10 +15673,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 KIL3 = GNUM (GBTK)
                 Name (SBFI, ResourceTemplate ()
                 {
-                    UartSerialBus (0x0001C200, DataBitsEight, StopBitsOne,
+                    UartSerialBusV2 (0x0001C200, DataBitsEight, StopBitsOne,
                         0xC0, LittleEndian, ParityTypeNone, FlowControlHardware,
                         0x0020, 0x0020, "\\_SB.PCI0.UA00",
-                        0x00, ResourceConsumer, ,
+                        0x00, ResourceConsumer, , Exclusive,
                         )
                     GpioIo (Exclusive, PullDefault, 0x0000, 0x0000, IoRestrictionOutputOnly,
                         "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
@@ -16041,10 +15734,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Name (BUF1, ResourceTemplate ()
                 {
-                    UartSerialBus (0x0001C200, DataBitsEight, StopBitsOne,
+                    UartSerialBusV2 (0x0001C200, DataBitsEight, StopBitsOne,
                         0xC0, LittleEndian, ParityTypeNone, FlowControlHardware,
                         0x0040, 0x0040, "\\_SB.PCI0.UA01",
-                        0x00, ResourceConsumer, ,
+                        0x00, ResourceConsumer, , Exclusive,
                         )
                 })
                 Name (BUF2, ResourceTemplate ()
@@ -16693,8 +16386,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (PCIC (Arg0))
                     {
                         Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -16705,77 +16396,73 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     {
                         If ((Arg1 >= Zero))
                         {
-                            While (One)
+                            Switch (ToInteger (Arg2))
                             {
-                                _T_0 = ToInteger (Arg2)
-                                If ((_T_0 == 0x00))
+                                Case (0x00)
                                 {
                                     If ((EMH4 == 0x01))
                                     {
                                         Return (Buffer (0x02)
                                         {
-                                             0x61, 0x02                                       /* a. */
+                                             0x61, 0x02                                       // a.
                                         })
                                     }
 
                                     Return (Buffer (0x02)
                                     {
-                                         0x21, 0x02                                       /* !. */
+                                         0x21, 0x02                                       // !.
                                     })
                                 }
-                                ElseIf ((_T_0 == 0x05))
+                                Case (0x05)
                                 {
                                     Return (Buffer (0x01)
                                     {
-                                         0x03                                             /* . */
+                                         0x03                                             // .
                                     })
                                 }
-                                ElseIf ((_T_0 == 0x06))
+                                Case (0x06)
                                 {
                                     Return (Buffer (0x01)
                                     {
-                                         0x05                                             /* . */
+                                         0x05                                             // .
                                     })
                                 }
-                                ElseIf ((_T_0 == 0x09))
+                                Case (0x09)
                                 {
-                                    While (One)
+                                    Switch (EMDS)
                                     {
-                                        _T_1 = EMDS /* \EMDS */
-                                        If ((_T_1 == 0x00))
+                                        Case (0x00)
                                         {
                                             Return (Buffer (0x01)
                                             {
-                                                 0x00                                             /* . */
+                                                 0x00                                             // .
                                             })
                                         }
-                                        ElseIf ((_T_1 == 0x01))
+                                        Case (0x01)
                                         {
                                             Return (Buffer (0x01)
                                             {
-                                                 0x01                                             /* . */
+                                                 0x01                                             // .
                                             })
                                         }
-                                        ElseIf ((_T_1 == 0x04))
+                                        Case (0x04)
                                         {
                                             Return (Buffer (0x01)
                                             {
-                                                 0x04                                             /* . */
+                                                 0x04                                             // .
                                             })
                                         }
 
-                                        Break
                                     }
                                 }
 
-                                Break
                             }
                         }
                     }
 
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
 
@@ -16805,23 +16492,18 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 If (CondRefOf (HIWC))
                 {
-                    If (HIWC)
+                    If (HIWC (Arg0))
                     {
-                        Arg0
                         If (CondRefOf (HIDW))
                         {
-                            Return (HIDW) /* External reference */
-                            Arg0
-                            Arg1
-                            Arg2
-                            Arg3
+                            Return (HIDW (Arg0, Arg1, Arg2, Arg3))
                         }
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
         }
@@ -16841,23 +16523,18 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 If (CondRefOf (HIWC))
                 {
-                    If (HIWC)
+                    If (HIWC (Arg0))
                     {
-                        Arg0
                         If (CondRefOf (HIDW))
                         {
-                            Return (HIDW) /* External reference */
-                            Arg0
-                            Arg1
-                            Arg2
-                            Arg3
+                            Return (HIDW (Arg0, Arg1, Arg2, Arg3))
                         }
                     }
                 }
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
         }
@@ -17103,7 +16780,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
 
                 \_SB.PCI0.LPCB.EC.HKEY.WGIN ()
-                If ((\WLAC == 0x02)) {}
+                If ((\WLAC == 0x02)){}
                 ElseIf ((ELNK && (\WLAC == 0x01)))
                 {
                     DCWL = 0x00
@@ -17253,14 +16930,27 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         HSUN = Local0
                     }
                 }
-                ElseIf ((Local2 && !WBON))
+                Else
                 {
-                    \WBEC (0x07, 0x00)
-                    \WBEC (0x06, 0x00)
-                    Sleep (0x64)
+                    If ((Local2 && !WBON))
+                    {
+                        \WBEC (0x07, 0x00)
+                        \WBEC (0x06, 0x00)
+                        Sleep (0x64)
+                    }
+
+                    If ((Local1 != 0xFF))
+                    {
+                        \WBEC (0x07, Local1)
+                    }
+
+                    If ((Local0 != 0xFF))
+                    {
+                        \WBEC (0x06, Local0)
+                    }
                 }
 
-                If ((Arg0 == 0x03)) {}
+                If ((Arg0 == 0x03)){}
                 If ((Arg0 == 0x07))
                 {
                     Sleep (0x01F4)
@@ -17486,11 +17176,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (ECNT, 1, Serialized)
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
-                While (One)
+                Switch (ToInteger (Arg0))
                 {
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == 0x00))
+                    Case (0x00)
                     {
                         \_SB.PCI0.LPCB.EC.LED (0x0A, 0x80)
                         \_SB.PCI0.LPCB.EC.LED (0x00, 0x80)
@@ -17498,32 +17186,31 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         \_SB.PCI0.LPCB.EC.SYSC (0x10)
                         Return (0x00)
                     }
-                    ElseIf ((_T_0 == 0x01))
+                    Case (0x01)
                     {
                         \_SB.PCI0.LPCB.EC.LED (0x00, 0xA0)
                         \_SB.PCI0.LPCB.EC.LED (0x0A, 0xA0)
                         \_SB.SGOV (0x0203000F, 0x00)
                         Return (0x00)
                     }
-                    ElseIf ((_T_0 == 0x02))
+                    Case (0x02)
                     {
                         \_SB.SGOV (0x02010003, 0x00)
                         Sleep (0x0A)
                         Return (0x00)
                     }
-                    ElseIf ((_T_0 == 0x03))
+                    Case (0x03)
                     {
                         ESLP = 0x01
                         \_SB.SGOV (0x02010003, 0x01)
                         \_SB.PCI0.LPCB.EC.SYSC (0x01)
                         Return (0x00)
                     }
-                    Else
+                    Default
                     {
                         Return (0xFF)
                     }
 
-                    Break
                 }
             }
 
@@ -17763,7 +17450,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         If (DHKC)
                         {
                             Acquire (XDHK, 0xFFFF)
-                            If ((Arg0 < 0x1000)) {}
+                            If ((Arg0 < 0x1000)){}
                             ElseIf ((Arg0 < 0x2000))
                             {
                                 DHKH = Arg0
@@ -18015,9 +17702,17 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         {
                             \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x6001)
                         }
-                        ElseIf ((!DSML && (Arg0 & 0x0100)))
+                        Else
                         {
-                            DSML = 0x01
+                            If ((!DSML && (Arg0 & 0x0100)))
+                            {
+                                DSML = 0x01
+                            }
+
+                            If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x00020000))
+                            {
+                                \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x1012)
+                            }
                         }
                     }
 
@@ -18294,30 +17989,27 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Method (SMPS, 1, Serialized)
                 {
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (((Arg0 & ~0xFFFF) != 0x00))
                     {
                         Return (0x80000000)
                     }
 
-                    While (One)
+                    Switch ((Arg0 & 0xFFFF))
                     {
-                        _T_0 = (Arg0 & 0xFFFF)
-                        If ((_T_0 == 0x00))
+                        Case (0x00)
                         {
                             Local1 = 0x0100
                         }
-                        ElseIf ((_T_0 == 0x0100))
+                        Case (0x0100)
                         {
                             Local1 = \_SB.PCI0.LPCB.EC.HWAT
                             Local1 |= (0x2D << 0x10)
                         }
-                        Else
+                        Default
                         {
                             Local1 = 0x80000000
                         }
 
-                        Break
                     }
 
                     Return (Local1)
@@ -18361,7 +18053,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (BATW, 1, NotSerialized)
             {
-                If (\BT2T) {}
+                If (\BT2T){}
             }
 
             Field (ECOR, ByteAcc, NoLock, Preserve)
@@ -18480,7 +18172,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     HIID = (Arg0 | 0x04)
                     Name (BTYP, Buffer (0x05)
                     {
-                         0x00, 0x00, 0x00, 0x00, 0x00                     /* ..... */
+                         0x00, 0x00, 0x00, 0x00, 0x00                     // .....
                     })
                     BTYP = SBCH /* \_SB_.PCI0.LPCB.EC__.SBCH */
                     Arg1 [0x0B] = BTYP /* \_SB_.PCI0.LPCB.EC__.GBIF.BTYP */
@@ -18566,7 +18258,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     HIID = (Arg0 | 0x04)
                     Name (BTYP, Buffer (0x05)
                     {
-                         0x00, 0x00, 0x00, 0x00, 0x00                     /* ..... */
+                         0x00, 0x00, 0x00, 0x00, 0x00                     // .....
                     })
                     BTYP = SBCH /* \_SB_.PCI0.LPCB.EC__.SBCH */
                     Arg1 [0x12] = BTYP /* \_SB_.PCI0.LPCB.EC__.GBIX.BTYP */
@@ -18609,7 +18301,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     Local0 = 0x00
                 }
 
-                If ((Arg1 & 0x07)) {}
+                If ((Arg1 & 0x07)){}
                 Else
                 {
                     Local0 |= 0x04
@@ -18682,29 +18374,42 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         B1I3 = Local3
                     }
                 }
-                ElseIf (\_SB.PCI0.LPCB.EC.AC._PSR ())
+                Else
                 {
-                    If ((Arg0 == 0x00))
+                    If (\_SB.PCI0.LPCB.EC.AC._PSR ())
                     {
-                        Arg3 [0x00] = B0I0 /* \_SB_.PCI0.LPCB.EC__.B0I0 */
-                        Arg3 [0x01] = B0I1 /* \_SB_.PCI0.LPCB.EC__.B0I1 */
-                        Arg3 [0x02] = B0I2 /* \_SB_.PCI0.LPCB.EC__.B0I2 */
-                        Arg3 [0x03] = B0I3 /* \_SB_.PCI0.LPCB.EC__.B0I3 */
+                        If ((Arg0 == 0x00))
+                        {
+                            Arg3 [0x00] = B0I0 /* \_SB_.PCI0.LPCB.EC__.B0I0 */
+                            Arg3 [0x01] = B0I1 /* \_SB_.PCI0.LPCB.EC__.B0I1 */
+                            Arg3 [0x02] = B0I2 /* \_SB_.PCI0.LPCB.EC__.B0I2 */
+                            Arg3 [0x03] = B0I3 /* \_SB_.PCI0.LPCB.EC__.B0I3 */
+                        }
+                        Else
+                        {
+                            Arg3 [0x00] = B1I0 /* \_SB_.PCI0.LPCB.EC__.B1I0 */
+                            Arg3 [0x01] = B1I1 /* \_SB_.PCI0.LPCB.EC__.B1I1 */
+                            Arg3 [0x02] = B1I2 /* \_SB_.PCI0.LPCB.EC__.B1I2 */
+                            Arg3 [0x03] = B1I3 /* \_SB_.PCI0.LPCB.EC__.B1I3 */
+                        }
                     }
                     Else
                     {
-                        Arg3 [0x00] = B1I0 /* \_SB_.PCI0.LPCB.EC__.B1I0 */
-                        Arg3 [0x01] = B1I1 /* \_SB_.PCI0.LPCB.EC__.B1I1 */
-                        Arg3 [0x02] = B1I2 /* \_SB_.PCI0.LPCB.EC__.B1I2 */
-                        Arg3 [0x03] = B1I3 /* \_SB_.PCI0.LPCB.EC__.B1I3 */
+                        Arg3 [0x00] = Local0
+                        Arg3 [0x01] = Local1
+                        Arg3 [0x02] = Local2
+                        Arg3 [0x03] = Local3
                     }
-                }
-                Else
-                {
-                    Arg3 [0x00] = Local0
-                    Arg3 [0x01] = Local1
-                    Arg3 [0x02] = Local2
-                    Arg3 [0x03] = Local3
+
+                    If ((((Local0 & 0x04) == 0x00) && ((Local2 > 0x00) && 
+                        (Local3 > 0x00))))
+                    {
+                        BSWA &= ~Local5
+                        Arg3 [0x00] = Local0
+                        Arg3 [0x01] = Local1
+                        Arg3 [0x02] = Local2
+                        Arg3 [0x03] = Local3
+                    }
                 }
 
                 Release (BATM)
@@ -18801,7 +18506,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     "", 
                     0x00
                 })
-                Name (BT0P, Package (0x04) {})
+                Name (BT0P, Package (0x04){})
                 Method (_STA, 0, NotSerialized)  // _STA: Status
                 {
                     If (\H8DR)
@@ -18925,55 +18630,51 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 Method (SCRQ, 1, Serialized)
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     Name (SCRS, 0x00)
                     Local0 = Arg0
                     Local1 = 0x00
                     ADBG (Concatenate ("SCRQ =", ToHexString (Local0)))
                     If (((Local0 & 0x80000000) == 0x00))
                     {
-                        While (One)
+                        Switch ((Local0 & 0xFFFF))
                         {
-                            _T_0 = (Local0 & 0xFFFF)
-                            If ((_T_0 == 0x00))
+                            Case (0x00)
                             {
                                 Local2 = 0x01000000
                             }
-                            ElseIf ((_T_0 == 0x0200))
+                            Case (0x0200)
                             {
                                 Return (0x01)
                             }
-                            ElseIf ((_T_0 == 0x0210))
+                            Case (0x0210)
                             {
                                 Return (0x01)
                             }
-                            ElseIf ((_T_0 == 0x0211))
+                            Case (0x0211)
                             {
                                 Return (0x01)
                             }
-                            ElseIf ((_T_0 == 0x0212))
+                            Case (0x0212)
                             {
                                 Return (0x01)
                             }
-                            ElseIf ((_T_0 == 0x0300))
+                            Case (0x0300)
                             {
                                 Return (0x01)
                             }
-                            ElseIf ((_T_0 == 0x0301))
+                            Case (0x0301)
                             {
                                 Return (0x01)
                             }
-                            ElseIf ((_T_0 == 0x0302))
+                            Case (0x0302)
                             {
                                 Return (0x01)
                             }
-                            Else
+                            Default
                             {
                                 Return (0x00)
                             }
 
-                            Break
                         }
 
                         Return (Local2)
@@ -18981,34 +18682,33 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     Else
                     {
                         Local2 = (0x00 + 0x40000000)
-                        While (One)
+                        Switch ((Local0 & 0xFFFF))
                         {
-                            _T_1 = (Local0 & 0xFFFF)
-                            If ((_T_1 == 0x00))
+                            Case (0x00)
                             {
                                 Local2 = 0x01000000
                             }
-                            ElseIf ((_T_1 == 0x0200))
+                            Case (0x0200)
                             {
                                 Local2 = 0x01000000
                             }
-                            ElseIf ((_T_1 == 0x0210))
+                            Case (0x0210)
                             {
                                 \SREQ (0x02, 0x00, 0x00)
                             }
-                            ElseIf ((_T_1 == 0x0211))
+                            Case (0x0211)
                             {
                                 \SREQ (0x02, 0x01, 0x00)
                             }
-                            ElseIf ((_T_1 == 0x0212))
+                            Case (0x0212)
                             {
                                 \SREQ (0x02, 0x02, 0x00)
                             }
-                            ElseIf ((_T_1 == 0x0300))
+                            Case (0x0300)
                             {
                                 Local2 = 0x01000000
                             }
-                            ElseIf ((_T_1 == 0x0301))
+                            Case (0x0301)
                             {
                                 If ((\TBTS == 0x01))
                                 {
@@ -19019,7 +18719,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     Local2 = (0x02 + 0x80000000)
                                 }
                             }
-                            ElseIf ((_T_1 == 0x0302))
+                            Case (0x0302)
                             {
                                 If ((\TBTS == 0x01))
                                 {
@@ -19030,12 +18730,11 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     Local2 = (0x02 + 0x80000000)
                                 }
                             }
-                            Else
+                            Default
                             {
                                 Local2 = (0x01 + 0x80000000)
                             }
 
-                            Break
                         }
 
                         Return (Local2)
@@ -19056,7 +18755,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (GTMP, 1, Serialized)
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 Acquire (BATM, 0xFFFF)
                 If ((\_SB.PCI0.LPCB.EC.HIID != 0x60))
                 {
@@ -19065,43 +18763,41 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
 
                 Local0 = 0x00
-                While (One)
+                Switch (ToInteger (Arg0))
                 {
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == 0x00))
+                    Case (0x00)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIA0
                     }
-                    ElseIf ((_T_0 == 0x02))
+                    Case (0x02)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIA2
                     }
-                    ElseIf ((_T_0 == 0x08))
+                    Case (0x08)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIA8
                     }
-                    ElseIf ((_T_0 == 0x09))
+                    Case (0x09)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIA9
                     }
-                    ElseIf ((_T_0 == 0x0A))
+                    Case (0x0A)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIAA
                     }
-                    ElseIf ((_T_0 == 0x0B))
+                    Case (0x0B)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIAB
                     }
-                    ElseIf ((_T_0 == 0x0C))
+                    Case (0x0C)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIAC
                     }
-                    ElseIf ((_T_0 == 0x0D))
+                    Case (0x0D)
                     {
                         Local0 = \_SB.PCI0.LPCB.EC.SIAD
                     }
 
-                    Break
                 }
 
                 If ((Local0 & 0x80))
@@ -19553,60 +19249,65 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     Mutex (EHLD, 0x00)
     Method (TBTD, 1, Serialized)
     {
-        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         ADBG ("TBTD")
-        While (One)
+        Switch (ToInteger (Arg0))
         {
-            _T_0 = ToInteger (Arg0)
-            If ((Match (Package (0x08)
-                            {
-                                0x01, 
-                                0x02, 
-                                0x03, 
-                                0x04, 
-                                0x05, 
-                                0x06, 
-                                0x07, 
-                                0x08
-                            }, MEQ, _T_0, MTR, Zero, Zero) != Ones))
+            Case (Package (0x08)
+                {
+                    0x01, 
+                    0x02, 
+                    0x03, 
+                    0x04, 
+                    0x05, 
+                    0x06, 
+                    0x07, 
+                    0x08
+                }
+
+)
             {
                 Local0 = 0x1C
             }
-            ElseIf ((Match (Package (0x08)
-                            {
-                                0x09, 
-                                0x0A, 
-                                0x0B, 
-                                0x0C, 
-                                0x0D, 
-                                0x0E, 
-                                0x0F, 
-                                0x10
-                            }, MEQ, _T_0, MTR, Zero, Zero) != Ones))
+            Case (Package (0x08)
+                {
+                    0x09, 
+                    0x0A, 
+                    0x0B, 
+                    0x0C, 
+                    0x0D, 
+                    0x0E, 
+                    0x0F, 
+                    0x10
+                }
+
+)
             {
                 Local0 = 0x1D
             }
-            ElseIf ((Match (Package (0x04)
-                            {
-                                0x11, 
-                                0x12, 
-                                0x13, 
-                                0x14
-                            }, MEQ, _T_0, MTR, Zero, Zero) != Ones))
+            Case (Package (0x04)
+                {
+                    0x11, 
+                    0x12, 
+                    0x13, 
+                    0x14
+                }
+
+)
             {
                 Local0 = 0x1B
             }
-            ElseIf ((Match (Package (0x03)
-                            {
-                                0x15, 
-                                0x16, 
-                                0x17
-                            }, MEQ, _T_0, MTR, Zero, Zero) != Ones))
+            Case (Package (0x03)
+                {
+                    0x15, 
+                    0x16, 
+                    0x17
+                }
+
+)
             {
                 Local0 = 0x01
             }
 
-            Break
         }
 
         ADBG ("Device no")
@@ -19616,105 +19317,102 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
     Method (TBTF, 1, Serialized)
     {
-        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         ADBG ("TBTF")
-        While (One)
+        Switch (ToInteger (Arg0))
         {
-            _T_0 = ToInteger (Arg0)
-            If ((_T_0 == 0x01))
+            Case (0x01)
             {
                 Local0 = (\RPA1 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x02))
+            Case (0x02)
             {
                 Local0 = (\RPA2 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x03))
+            Case (0x03)
             {
                 Local0 = (\RPA3 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x04))
+            Case (0x04)
             {
                 Local0 = (\RPA4 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x05))
+            Case (0x05)
             {
                 Local0 = (\RPA5 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x06))
+            Case (0x06)
             {
                 Local0 = (\RPA6 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x07))
+            Case (0x07)
             {
                 Local0 = (\RPA7 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x08))
+            Case (0x08)
             {
                 Local0 = (\RPA8 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x09))
+            Case (0x09)
             {
                 Local0 = (\RPA9 & 0x0F)
             }
-            ElseIf ((_T_0 == 0x0A))
+            Case (0x0A)
             {
                 Local0 = (\RPAA & 0x0F)
             }
-            ElseIf ((_T_0 == 0x0B))
+            Case (0x0B)
             {
                 Local0 = (\RPAB & 0x0F)
             }
-            ElseIf ((_T_0 == 0x0C))
+            Case (0x0C)
             {
                 Local0 = (\RPAC & 0x0F)
             }
-            ElseIf ((_T_0 == 0x0D))
+            Case (0x0D)
             {
                 Local0 = (\RPAD & 0x0F)
             }
-            ElseIf ((_T_0 == 0x0E))
+            Case (0x0E)
             {
                 Local0 = (\RPAE & 0x0F)
             }
-            ElseIf ((_T_0 == 0x0F))
+            Case (0x0F)
             {
                 Local0 = (\RPAF & 0x0F)
             }
-            ElseIf ((_T_0 == 0x10))
+            Case (0x10)
             {
                 Local0 = (\RPAG & 0x0F)
             }
-            ElseIf ((_T_0 == 0x11))
+            Case (0x11)
             {
                 Local0 = (\RPAH & 0x0F)
             }
-            ElseIf ((_T_0 == 0x12))
+            Case (0x12)
             {
                 Local0 = (\RPAI & 0x0F)
             }
-            ElseIf ((_T_0 == 0x13))
+            Case (0x13)
             {
                 Local0 = (\RPAJ & 0x0F)
             }
-            ElseIf ((_T_0 == 0x14))
+            Case (0x14)
             {
                 Local0 = (\RPAK & 0x0F)
             }
-            ElseIf ((_T_0 == 0x15))
+            Case (0x15)
             {
                 Local0 = 0x00
             }
-            ElseIf ((_T_0 == 0x16))
+            Case (0x16)
             {
                 Local0 = 0x01
             }
-            ElseIf ((_T_0 == 0x17))
+            Case (0x17)
             {
                 Local0 = 0x02
             }
 
-            Break
         }
 
         ADBG ("Function no")
@@ -19956,7 +19654,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 \_SB.PCI0.LPCB.EC.HCMU = 0x01
             }
 
-            If ((Arg0 != 0x05)) {}
+            If ((Arg0 != 0x05)){}
             \_SB.PCI0.LPCB.EC.HKEY.WGPS (Arg0)
         }
 
@@ -20225,7 +19923,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 \CMPR = 0x00
             }
 
-            If ((\WLAC == 0x02)) {}
+            If ((\WLAC == 0x02)){}
             ElseIf ((\_SB.PCI0.LPCB.EC.ELNK && (\WLAC == 0x01)))
             {
                 \_SB.PCI0.LPCB.EC.DCWL = 0x00
@@ -20279,7 +19977,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            If ((\WLAC == 0x02)) {}
+            If ((\WLAC == 0x02)){}
             ElseIf ((\_SB.PCI0.LPCB.EC.ELNK && (\WLAC == 0x01)))
             {
                 \_SB.PCI0.LPCB.EC.DCWL = 0x00
@@ -20721,7 +20419,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         If ((DPTF == 0x01))
         {
             Notify (\_SB.IETM, 0x86) // Device-Specific
-            If ((CHGE == 0x01)) {}
+            If ((CHGE == 0x01)){}
         }
     }
 
@@ -20780,11 +20478,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     Name (GLCK, 0x00)
     Method (GUAM, 1, Serialized)
     {
-        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
-        While (One)
+        Switch (ToInteger (Arg0))
         {
-            _T_0 = ToInteger (Arg0)
-            If ((_T_0 == 0x00))
+            Case (0x00)
             {
                 If ((GLCK == 0x01))
                 {
@@ -20807,7 +20503,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     }
                 }
             }
-            ElseIf ((_T_0 == 0x01))
+            Case (0x01)
             {
                 If ((GLCK == 0x00))
                 {
@@ -20838,12 +20534,11 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     }
                 }
             }
-            Else
+            Default
             {
                 Return (Zero)
             }
 
-            Break
         }
 
         UAMS = (Arg0 && !PWRS)
@@ -21608,130 +21303,127 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (NTFY, 1, Serialized)
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             ADBG ("NTFY")
             If ((NOHP == 0x01))
             {
-                While (One)
+                Switch (ToInteger (Arg0))
                 {
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == 0x01))
+                    Case (0x01)
                     {
                         ADBG ("Notify RP01")
                         Notify (\_SB.PCI0.RP01, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x02))
+                    Case (0x02)
                     {
                         ADBG ("Notify RP02")
                         Notify (\_SB.PCI0.RP02, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x03))
+                    Case (0x03)
                     {
                         ADBG ("Notify RP03")
                         Notify (\_SB.PCI0.RP03, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x04))
+                    Case (0x04)
                     {
                         ADBG ("Notify RP04")
                         Notify (\_SB.PCI0.RP04, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x05))
+                    Case (0x05)
                     {
                         ADBG ("Notify RP05")
                         Notify (\_SB.PCI0.RP05, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x06))
+                    Case (0x06)
                     {
                         ADBG ("Notify RP06")
                         Notify (\_SB.PCI0.RP06, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x07))
+                    Case (0x07)
                     {
                         ADBG ("Notify RP07")
                         Notify (\_SB.PCI0.RP07, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x08))
+                    Case (0x08)
                     {
                         ADBG ("Notify RP08")
                         Notify (\_SB.PCI0.RP08, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x09))
+                    Case (0x09)
                     {
                         ADBG ("Notify RP09")
                         Notify (\_SB.PCI0.RP09, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x0A))
+                    Case (0x0A)
                     {
                         ADBG ("Notify RP10")
                         Notify (\_SB.PCI0.RP10, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x0B))
+                    Case (0x0B)
                     {
                         ADBG ("Notify RP11")
                         Notify (\_SB.PCI0.RP11, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x0C))
+                    Case (0x0C)
                     {
                         ADBG ("Notify RP12")
                         Notify (\_SB.PCI0.RP12, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x0D))
+                    Case (0x0D)
                     {
                         ADBG ("Notify RP13")
                         Notify (\_SB.PCI0.RP13, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x0E))
+                    Case (0x0E)
                     {
                         ADBG ("Notify RP14")
                         Notify (\_SB.PCI0.RP14, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x0F))
+                    Case (0x0F)
                     {
                         ADBG ("Notify RP15")
                         Notify (\_SB.PCI0.RP15, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x10))
+                    Case (0x10)
                     {
                         ADBG ("Notify RP16")
                         Notify (\_SB.PCI0.RP16, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x11))
+                    Case (0x11)
                     {
                         ADBG ("Notify RP17")
                         Notify (\_SB.PCI0.RP17, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x12))
+                    Case (0x12)
                     {
                         ADBG ("Notify RP18")
                         Notify (\_SB.PCI0.RP18, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x13))
+                    Case (0x13)
                     {
                         ADBG ("Notify RP19")
                         Notify (\_SB.PCI0.RP19, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x14))
+                    Case (0x14)
                     {
                         ADBG ("Notify RP20")
                         Notify (\_SB.PCI0.RP20, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x15))
+                    Case (0x15)
                     {
                         ADBG ("Notify PEG0")
                         Notify (\_SB.PCI0.PEG0, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x16))
+                    Case (0x16)
                     {
                         ADBG ("Notify PEG1")
                         Notify (\_SB.PCI0.PEG1, 0x00) // Bus Check
                     }
-                    ElseIf ((_T_0 == 0x17))
+                    Case (0x17)
                     {
                         ADBG ("Notify PEG2")
                         Notify (\_SB.PCI0.PEG2, 0x00) // Bus Check
                     }
 
-                    Break
                 }
             }
 
@@ -22114,9 +21806,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (_UID, "TBFP")  // _UID: Unique ID
             Name (_WDG, Buffer (0x14)
             {
-                /* 0000 */  0x48, 0xFD, 0xCC, 0x86, 0x5E, 0x20, 0x77, 0x4A,  /* H...^ wJ */
-                /* 0008 */  0x9C, 0x48, 0x20, 0x21, 0xCB, 0xED, 0xE3, 0x41,  /* .H !...A */
-                /* 0010 */  0x54, 0x46, 0x01, 0x02                           /* TF.. */
+                /* 0000 */  0x48, 0xFD, 0xCC, 0x86, 0x5E, 0x20, 0x77, 0x4A,  // H...^ wJ
+                /* 0008 */  0x9C, 0x48, 0x20, 0x21, 0xCB, 0xED, 0xE3, 0x41,  // .H !...A
+                /* 0010 */  0x54, 0x46, 0x01, 0x02                           // TF..
             })
             Method (WMTF, 3, NotSerialized)
             {
@@ -22253,7 +21945,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         }
     }
 
-    If (((TBTS == 0x01) && ((TBSE == 0x09) || (TBS1 == 0x09)))) {}
+    If (((TBTS == 0x01) && ((TBSE == 0x09) || (TBS1 == 0x09)))){}
     If (((TBTS == 0x01) && ((TBSE == 0x0A) || (TBS1 == 0x0A))))
     {
         Scope (\_SB.PCI0.RP10)
@@ -22748,155 +22440,159 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
     Method (TBON, 0, Serialized)
     {
-        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         TRDO = 0x01
-        While (One)
+        Switch (ToInteger (\TBSE))
         {
-            _T_0 = ToInteger (\TBSE)
-            If ((_T_0 == 0x01))
+            Case (0x01)
             {
                 If (CondRefOf (\_SB.PCI0.RP01.PON))
                 {
                     \_SB.PCI0.RP01.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x02))
+            Case (0x02)
             {
                 If (CondRefOf (\_SB.PCI0.RP02.PON))
                 {
                     \_SB.PCI0.RP02.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x03))
+            Case (0x03)
             {
                 If (CondRefOf (\_SB.PCI0.RP03.PON))
                 {
                     \_SB.PCI0.RP03.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x04))
+            Case (0x04)
             {
                 If (CondRefOf (\_SB.PCI0.RP04.PON))
                 {
                     \_SB.PCI0.RP04.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x05))
+            Case (0x05)
             {
                 If (CondRefOf (\_SB.PCI0.RP05.PON))
                 {
                     \_SB.PCI0.RP05.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x06))
+            Case (0x06)
             {
                 If (CondRefOf (\_SB.PCI0.RP06.PON))
                 {
                     \_SB.PCI0.RP06.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x07))
+            Case (0x07)
             {
                 If (CondRefOf (\_SB.PCI0.RP07.PON))
                 {
                     \_SB.PCI0.RP07.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x08))
+            Case (0x08)
             {
                 If (CondRefOf (\_SB.PCI0.RP08.PON))
                 {
                     \_SB.PCI0.RP08.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x09))
+            Case (0x09)
             {
                 If (CondRefOf (\_SB.PCI0.RP09.PON))
                 {
                     \_SB.PCI0.RP09.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x0A))
+            Case (0x0A)
             {
                 If (CondRefOf (\_SB.PCI0.RP10.PON))
                 {
                     \_SB.PCI0.RP10.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x0B))
+            Case (0x0B)
             {
                 If (CondRefOf (\_SB.PCI0.RP11.PON))
                 {
                     \_SB.PCI0.RP11.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x0C))
+            Case (0x0C)
             {
                 If (CondRefOf (\_SB.PCI0.RP12.PON))
                 {
                     \_SB.PCI0.RP12.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x0D))
+            Case (0x0D)
             {
                 If (CondRefOf (\_SB.PCI0.RP13.PON))
                 {
                     \_SB.PCI0.RP13.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x0E))
+            Case (0x0E)
             {
                 If (CondRefOf (\_SB.PCI0.RP14.PON))
                 {
                     \_SB.PCI0.RP14.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x0F))
+            Case (0x0F)
             {
                 If (CondRefOf (\_SB.PCI0.RP15.PON))
                 {
                     \_SB.PCI0.RP15.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x10))
+            Case (0x10)
             {
                 If (CondRefOf (\_SB.PCI0.RP16.PON))
                 {
                     \_SB.PCI0.RP16.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x11))
+            Case (0x11)
             {
                 If (CondRefOf (\_SB.PCI0.RP17.PON))
                 {
                     \_SB.PCI0.RP17.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x12))
+            Case (0x12)
             {
                 If (CondRefOf (\_SB.PCI0.RP18.PON))
                 {
                     \_SB.PCI0.RP18.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x13))
+            Case (0x13)
             {
                 If (CondRefOf (\_SB.PCI0.RP19.PON))
                 {
                     \_SB.PCI0.RP19.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x14))
+            Case (0x14)
             {
                 If (CondRefOf (\_SB.PCI0.RP20.PON))
                 {
                     \_SB.PCI0.RP20.PON ()
                 }
             }
-            ElseIf ((_T_0 == 0x15)) {}
-            ElseIf ((_T_0 == 0x16)) {}
-            ElseIf ((_T_0 == 0x17)) {}
-            Break
+            Case (0x15)
+            {
+            }
+            Case (0x16)
+            {
+            }
+            Case (0x17)
+            {
+            }
+
         }
 
         TRDO = 0x00
@@ -22904,22 +22600,22 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
     Scope (\_PR)
     {
-        Processor (PR00, 0x01, 0x00001810, 0x06) {}
-        Processor (PR01, 0x02, 0x00001810, 0x06) {}
-        Processor (PR02, 0x03, 0x00001810, 0x06) {}
-        Processor (PR03, 0x04, 0x00001810, 0x06) {}
-        Processor (PR04, 0x05, 0x00001810, 0x06) {}
-        Processor (PR05, 0x06, 0x00001810, 0x06) {}
-        Processor (PR06, 0x07, 0x00001810, 0x06) {}
-        Processor (PR07, 0x08, 0x00001810, 0x06) {}
-        Processor (PR08, 0x09, 0x00001810, 0x06) {}
-        Processor (PR09, 0x0A, 0x00001810, 0x06) {}
-        Processor (PR10, 0x0B, 0x00001810, 0x06) {}
-        Processor (PR11, 0x0C, 0x00001810, 0x06) {}
-        Processor (PR12, 0x0D, 0x00001810, 0x06) {}
-        Processor (PR13, 0x0E, 0x00001810, 0x06) {}
-        Processor (PR14, 0x0F, 0x00001810, 0x06) {}
-        Processor (PR15, 0x10, 0x00001810, 0x06) {}
+        Processor (PR00, 0x01, 0x00001810, 0x06){}
+        Processor (PR01, 0x02, 0x00001810, 0x06){}
+        Processor (PR02, 0x03, 0x00001810, 0x06){}
+        Processor (PR03, 0x04, 0x00001810, 0x06){}
+        Processor (PR04, 0x05, 0x00001810, 0x06){}
+        Processor (PR05, 0x06, 0x00001810, 0x06){}
+        Processor (PR06, 0x07, 0x00001810, 0x06){}
+        Processor (PR07, 0x08, 0x00001810, 0x06){}
+        Processor (PR08, 0x09, 0x00001810, 0x06){}
+        Processor (PR09, 0x0A, 0x00001810, 0x06){}
+        Processor (PR10, 0x0B, 0x00001810, 0x06){}
+        Processor (PR11, 0x0C, 0x00001810, 0x06){}
+        Processor (PR12, 0x0D, 0x00001810, 0x06){}
+        Processor (PR13, 0x0E, 0x00001810, 0x06){}
+        Processor (PR14, 0x0F, 0x00001810, 0x06){}
+        Processor (PR15, 0x10, 0x00001810, 0x06){}
     }
 
     Scope (\_PR.PR00)
@@ -23449,7 +23145,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Local0 = \_SB.PCI0.LPCB.EC.HWAC
             \RRBF = Local0
             Sleep (0x0A)
-            If ((Local0 & 0x02)) {}
+            If ((Local0 & 0x02)){}
             If ((Local0 & 0x04))
             {
                 Notify (\_SB.LID, 0x02) // Device Wake
@@ -23465,7 +23161,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Notify (\_SB.SLPB, 0x02) // Device Wake
             }
 
-            If ((Local0 & 0x40)) {}
+            If ((Local0 & 0x40)){}
             If ((Local0 & 0x80))
             {
                 Notify (\_SB.SLPB, 0x02) // Device Wake
@@ -23524,7 +23220,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (_L66, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
         {
-            If (\_SB.PCI0.GFX0.GSSE (\_SB.PCI0.GFX0.GSCI ())) {}
+            If (\_SB.PCI0.GFX0.GSSE)
+            {
+                \_SB.PCI0.GFX0.GSCI ()
+            }
             Else
             {
                 \_SB.PCI0.SBUS.CPSC = 0x01
@@ -23573,78 +23272,75 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (WIST, 0, Serialized)
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (VDID)
             {
-                While (One)
+                Switch (ToInteger (VDID))
                 {
-                    _T_0 = ToInteger (VDID)
-                    If ((_T_0 == 0x095A8086))
+                    Case (0x095A8086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x095B8086))
+                    Case (0x095B8086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x31658086))
+                    Case (0x31658086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x31668086))
+                    Case (0x31668086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x08B18086))
+                    Case (0x08B18086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x08B28086))
+                    Case (0x08B28086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x08B38086))
+                    Case (0x08B38086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x08B48086))
+                    Case (0x08B48086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x24F38086))
+                    Case (0x24F38086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x24F48086))
+                    Case (0x24F48086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x24F58086))
+                    Case (0x24F58086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x24F68086))
+                    Case (0x24F68086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x24FD8086))
+                    Case (0x24FD8086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x24FB8086))
+                    Case (0x24FB8086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x25268086))
+                    Case (0x25268086)
                     {
                         Return (0x01)
                     }
-                    Else
+                    Default
                     {
                         Return (0x00)
                     }
 
-                    Break
                 }
             }
             Else
@@ -23655,26 +23351,23 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (WGST, 0, Serialized)
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (VDID)
             {
-                While (One)
+                Switch (ToInteger (VDID))
                 {
-                    _T_0 = ToInteger (VDID)
-                    If ((_T_0 == 0x093C8086))
+                    Case (0x093C8086)
                     {
                         Return (0x01)
                     }
-                    ElseIf ((_T_0 == 0x097C8086))
+                    Case (0x097C8086)
                     {
                         Return (0x01)
                     }
-                    Else
+                    Default
                     {
                         Return (0x00)
                     }
 
-                    Break
                 }
             }
             Else
@@ -23901,8 +23594,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -23916,34 +23607,39 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         {
                             Return (Buffer (0x01)
                             {
-                                 0x03                                             /* . */
+                                 0x03                                             // .
                             })
                         }
                         Else
                         {
                             Return (Buffer (0x01)
                             {
-                                 0x00                                             /* . */
+                                 0x00                                             // .
                             })
                         }
                     }
 
                     If ((Arg2 == One))
                     {
-                        While (One)
+                        Switch (ToInteger (DerefOf (Arg3 [0x00])))
                         {
-                            _T_0 = ToInteger (DerefOf (Arg3 [0x00]))
-                            If ((_T_0 == 0x00)) {}
-                            ElseIf ((_T_0 == 0x01))
+                            Case (0x00)
+                            {
+                            }
+                            Case (0x01)
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (\_SB.SLPB, 0x80) // Status Change
                                 }
                             }
-                            ElseIf ((_T_0 == 0x02)) {}
-                            ElseIf ((_T_0 == 0x03)) {}
-                            ElseIf ((_T_0 == 0x04))
+                            Case (0x02)
+                            {
+                            }
+                            Case (0x03)
+                            {
+                            }
+                            Case (0x04)
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -23951,7 +23647,6 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                 }
                             }
 
-                            Break
                         }
                     }
 
@@ -23959,50 +23654,48 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
                 ElseIf ((Arg0 == ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    While (One)
+                    Switch (ToInteger (Arg2))
                     {
-                        _T_1 = ToInteger (Arg2)
-                        If ((_T_1 == 0x00))
+                        Case (0x00)
                         {
                             If ((Arg1 == Zero))
                             {
                                 Return (Buffer (0x01)
                                 {
-                                     0x07                                             /* . */
+                                     0x07                                             // .
                                 })
                             }
                             Else
                             {
                                 Return (Buffer (0x01)
                                 {
-                                     0x00                                             /* . */
+                                     0x00                                             // .
                                 })
                             }
                         }
-                        ElseIf ((_T_1 == 0x01))
+                        Case (0x01)
                         {
                             Return (\_SB.PCI0.WHIT ())
                         }
-                        ElseIf ((_T_1 == 0x02))
+                        Case (0x02)
                         {
                             Return (\_SB.PCI0.SELF ())
                         }
-                        Else
+                        Default
                         {
                             Return (Buffer (0x01)
                             {
-                                 0x00                                             /* . */
+                                 0x00                                             // .
                             })
                         }
 
-                        Break
                     }
                 }
                 Else
                 {
                     Return (Buffer (0x01)
                     {
-                         0x00                                             /* . */
+                         0x00                                             // .
                     })
                 }
             }
@@ -24049,7 +23742,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -24067,7 +23760,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -24086,7 +23779,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -24097,7 +23790,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         {
             If ((OSYS == 0x07DD))
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
 
             Return (Package (0x01)
@@ -24219,7 +23912,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -24237,7 +23930,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -24258,7 +23951,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24318,7 +24011,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24378,7 +24071,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24438,7 +24131,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24498,7 +24191,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24558,7 +24251,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24618,7 +24311,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24678,7 +24371,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24738,7 +24431,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24798,7 +24491,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24858,7 +24551,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24918,7 +24611,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -24978,7 +24671,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25038,7 +24731,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25098,7 +24791,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25158,7 +24851,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25218,7 +24911,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25278,7 +24971,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25338,7 +25031,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25398,7 +25091,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Return (Package (0x00) {})
+            Return (Package (0x00){})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -25455,7 +25148,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25473,7 +25166,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25491,7 +25184,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25510,7 +25203,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25528,7 +25221,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25546,7 +25239,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25564,7 +25257,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25582,7 +25275,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25600,7 +25293,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25618,7 +25311,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25636,7 +25329,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25654,7 +25347,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25672,7 +25365,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25690,7 +25383,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25708,7 +25401,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -25726,7 +25419,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
             Else
             {
-                Return (Package (0x00) {})
+                Return (Package (0x00){})
             }
         }
     }
@@ -27113,7 +26806,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     {
                         Return (Buffer (One)
                         {
-                             0x7F                                             /* . */
+                             0x7F                                             // .
                         })
                     }
 
@@ -27121,7 +26814,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     {
                         If ((S0ID == 0x00))
                         {
-                            Return (Package (0x00) {})
+                            Return (Package (0x00){})
                         }
 
                         If (((PEPC & 0x00100000) != 0x00))
@@ -27287,7 +26980,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             DerefOf (DEVY [0x0B]) [0x01] = 0x00
                         }
 
-                        If (((PEPC & 0x10) == 0x00)) {}
+                        If (((PEPC & 0x10) == 0x00)){}
                         If (((PEPC & 0x20) == 0x00))
                         {
                             DerefOf (DEVY [0x0C]) [0x01] = 0x00
@@ -27479,7 +27172,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP02.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP02.PXSX.WIST)
+                                If (\_SB.PCI0.RP02.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x1A]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27491,7 +27184,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP03.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP03.PXSX.WIST)
+                                If (\_SB.PCI0.RP03.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x1B]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27503,7 +27196,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP04.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP04.PXSX.WIST)
+                                If (\_SB.PCI0.RP04.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x1C]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27515,7 +27208,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP05.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP05.PXSX.WIST)
+                                If (\_SB.PCI0.RP05.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x1D]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27527,7 +27220,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP06.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP06.PXSX.WIST)
+                                If (\_SB.PCI0.RP06.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x1E]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27539,7 +27232,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP07.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP07.PXSX.WIST)
+                                If (\_SB.PCI0.RP07.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x1F]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27551,7 +27244,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP08.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP08.PXSX.WIST)
+                                If (\_SB.PCI0.RP08.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x20]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27563,7 +27256,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP09.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP09.PXSX.WIST)
+                                If (\_SB.PCI0.RP09.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x21]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27575,7 +27268,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP10.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP10.PXSX.WIST)
+                                If (\_SB.PCI0.RP10.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x22]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27587,7 +27280,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP11.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP11.PXSX.WIST)
+                                If (\_SB.PCI0.RP11.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x23]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27599,7 +27292,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP12.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP12.PXSX.WIST)
+                                If (\_SB.PCI0.RP12.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x24]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27611,7 +27304,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP13.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP13.PXSX.WIST)
+                                If (\_SB.PCI0.RP13.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x25]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27623,7 +27316,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP14.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP14.PXSX.WIST)
+                                If (\_SB.PCI0.RP14.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x26]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27635,7 +27328,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP15.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP15.PXSX.WIST)
+                                If (\_SB.PCI0.RP15.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x27]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27647,7 +27340,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP16.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP16.PXSX.WIST)
+                                If (\_SB.PCI0.RP16.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x28]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27659,7 +27352,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP17.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP17.PXSX.WIST)
+                                If (\_SB.PCI0.RP17.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x29]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27671,7 +27364,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP18.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP18.PXSX.WIST)
+                                If (\_SB.PCI0.RP18.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x2A]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27683,7 +27376,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP19.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP19.PXSX.WIST)
+                                If (\_SB.PCI0.RP19.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x2B]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27695,7 +27388,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP20.PXSX.WIST))
                             {
-                                If (\_SB.PCI0.RP20.PXSX.WIST)
+                                If (\_SB.PCI0.RP20.PXSX.WIST ())
                                 {
                                     DerefOf (DerefOf (DerefOf (DEVY [0x2C]) [0x02]
                                         ) [0x01]) [0x01] = 0x03
@@ -27718,7 +27411,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP02.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP02.PXSX.WGST)
+                                If (\_SB.PCI0.RP02.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x1A]) [0x01] = 0x01
                                 }
@@ -27726,7 +27419,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP03.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP03.PXSX.WGST)
+                                If (\_SB.PCI0.RP03.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x1B]) [0x01] = 0x01
                                 }
@@ -27734,7 +27427,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP04.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP04.PXSX.WGST)
+                                If (\_SB.PCI0.RP04.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x1C]) [0x01] = 0x01
                                 }
@@ -27742,7 +27435,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP05.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP05.PXSX.WGST)
+                                If (\_SB.PCI0.RP05.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x1D]) [0x01] = 0x01
                                 }
@@ -27750,7 +27443,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP06.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP06.PXSX.WGST)
+                                If (\_SB.PCI0.RP06.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x1E]) [0x01] = 0x01
                                 }
@@ -27758,7 +27451,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP07.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP07.PXSX.WGST)
+                                If (\_SB.PCI0.RP07.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x1F]) [0x01] = 0x01
                                 }
@@ -27766,7 +27459,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP08.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP08.PXSX.WGST)
+                                If (\_SB.PCI0.RP08.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x20]) [0x01] = 0x01
                                 }
@@ -27774,7 +27467,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP09.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP09.PXSX.WGST)
+                                If (\_SB.PCI0.RP09.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x21]) [0x01] = 0x01
                                 }
@@ -27782,7 +27475,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP10.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP10.PXSX.WGST)
+                                If (\_SB.PCI0.RP10.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x22]) [0x01] = 0x01
                                 }
@@ -27790,7 +27483,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP11.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP11.PXSX.WGST)
+                                If (\_SB.PCI0.RP11.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x23]) [0x01] = 0x01
                                 }
@@ -27798,7 +27491,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP12.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP12.PXSX.WGST)
+                                If (\_SB.PCI0.RP12.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x24]) [0x01] = 0x01
                                 }
@@ -27806,7 +27499,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP13.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP13.PXSX.WGST)
+                                If (\_SB.PCI0.RP13.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x25]) [0x01] = 0x01
                                 }
@@ -27814,7 +27507,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP14.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP14.PXSX.WGST)
+                                If (\_SB.PCI0.RP14.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x26]) [0x01] = 0x01
                                 }
@@ -27822,7 +27515,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP15.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP15.PXSX.WGST)
+                                If (\_SB.PCI0.RP15.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x27]) [0x01] = 0x01
                                 }
@@ -27830,7 +27523,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP16.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP16.PXSX.WGST)
+                                If (\_SB.PCI0.RP16.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x28]) [0x01] = 0x01
                                 }
@@ -27838,7 +27531,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP17.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP17.PXSX.WGST)
+                                If (\_SB.PCI0.RP17.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x29]) [0x01] = 0x01
                                 }
@@ -27846,7 +27539,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP18.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP18.PXSX.WGST)
+                                If (\_SB.PCI0.RP18.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x2A]) [0x01] = 0x01
                                 }
@@ -27854,7 +27547,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP19.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP19.PXSX.WGST)
+                                If (\_SB.PCI0.RP19.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x2B]) [0x01] = 0x01
                                 }
@@ -27862,7 +27555,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                             If (CondRefOf (\_SB.PCI0.RP20.PXSX.WGST))
                             {
-                                If (\_SB.PCI0.RP20.PXSX.WGST)
+                                If (\_SB.PCI0.RP20.PXSX.WGST ())
                                 {
                                     DerefOf (DEVY [0x2C]) [0x01] = 0x01
                                 }
@@ -27930,7 +27623,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                 Return (Buffer (0x01)
                 {
-                     0x00                                             /* . */
+                     0x00                                             // .
                 })
             }
         }
@@ -28078,7 +27771,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     })
     Method (PTS, 1, NotSerialized)
     {
-        If (Arg0) {}
+        If (Arg0){}
     }
 
     Method (WAK, 1, NotSerialized)
@@ -28768,7 +28461,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     Method (PMON, 2, NotSerialized)
     {
         Local0 = SizeOf (Arg0)
-        Name (TSTR, Buffer (Local0) {})
+        Name (TSTR, Buffer (Local0){})
         TSTR = Arg0
         \DBGB = TSTR /* \PMON.TSTR */
         SMI (0x11, Arg1, 0x00, 0x00, 0x00)
@@ -28864,8 +28557,8 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         }
 
         Local0++
-        Name (STR1, Buffer (Local0) {})
-        Name (STR2, Buffer (Local0) {})
+        Name (STR1, Buffer (Local0){})
+        Name (STR2, Buffer (Local0){})
         STR1 = Arg0
         STR2 = Arg1
         Local1 = Zero
@@ -29205,29 +28898,29 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (_UID, 0x01)  // _UID: Unique ID
             Name (_WDG, Buffer (0xB4)
             {
-                /* 0000 */  0x0E, 0x23, 0xF5, 0x51, 0x77, 0x96, 0xCD, 0x46,  /* .#.Qw..F */
-                /* 0008 */  0xA1, 0xCF, 0xC0, 0xB2, 0x3E, 0xE3, 0x4D, 0xB7,  /* ....>.M. */
-                /* 0010 */  0x41, 0x30, 0x50, 0x05, 0x64, 0x9A, 0x47, 0x98,  /* A0P.d.G. */
-                /* 0018 */  0xF5, 0x33, 0x33, 0x4E, 0xA7, 0x07, 0x8E, 0x25,  /* .33N...% */
-                /* 0020 */  0x1E, 0xBB, 0xC3, 0xA1, 0x41, 0x31, 0x01, 0x06,  /* ....A1.. */
-                /* 0028 */  0xEF, 0x54, 0x4B, 0x6A, 0xED, 0xA5, 0x33, 0x4D,  /* .TKj..3M */
-                /* 0030 */  0x94, 0x55, 0xB0, 0xD9, 0xB4, 0x8D, 0xF4, 0xB3,  /* .U...... */
-                /* 0038 */  0x41, 0x32, 0x01, 0x06, 0xB6, 0xEB, 0xF1, 0x74,  /* A2.....t */
-                /* 0040 */  0x7A, 0x92, 0x7D, 0x4C, 0x95, 0xDF, 0x69, 0x8E,  /* z.}L..i. */
-                /* 0048 */  0x21, 0xE8, 0x0E, 0xB5, 0x41, 0x33, 0x01, 0x06,  /* !...A3.. */
-                /* 0050 */  0xFF, 0x04, 0xEF, 0x7E, 0x28, 0x43, 0x7C, 0x44,  /* ...~(C|D */
-                /* 0058 */  0xB5, 0xBB, 0xD4, 0x49, 0x92, 0x5D, 0x53, 0x8D,  /* ...I.]S. */
-                /* 0060 */  0x41, 0x34, 0x01, 0x06, 0x9E, 0x15, 0xDB, 0x8A,  /* A4...... */
-                /* 0068 */  0x32, 0x1E, 0x5C, 0x45, 0xBC, 0x93, 0x30, 0x8A,  /* 2.\E..0. */
-                /* 0070 */  0x7E, 0xD9, 0x82, 0x46, 0x41, 0x35, 0x01, 0x01,  /* ~..FA5.. */
-                /* 0078 */  0xFD, 0xD9, 0x51, 0x26, 0x1C, 0x91, 0x69, 0x4B,  /* ..Q&..iK */
-                /* 0080 */  0xB9, 0x4E, 0xD0, 0xDE, 0xD5, 0x96, 0x3B, 0xD7,  /* .N....;. */
-                /* 0088 */  0x41, 0x36, 0x01, 0x06, 0x1A, 0x65, 0x64, 0x73,  /* A6...eds */
-                /* 0090 */  0x2F, 0x13, 0xE7, 0x4F, 0xAD, 0xAA, 0x40, 0xC6,  /* /..O..@. */
-                /* 0098 */  0xC7, 0xEE, 0x2E, 0x3B, 0x41, 0x37, 0x01, 0x06,  /* ...;A7.. */
-                /* 00A0 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  /* !...f... */
-                /* 00A8 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  /* ......). */
-                /* 00B0 */  0x42, 0x41, 0x01, 0x00                           /* BA.. */
+                /* 0000 */  0x0E, 0x23, 0xF5, 0x51, 0x77, 0x96, 0xCD, 0x46,  // .#.Qw..F
+                /* 0008 */  0xA1, 0xCF, 0xC0, 0xB2, 0x3E, 0xE3, 0x4D, 0xB7,  // ....>.M.
+                /* 0010 */  0x41, 0x30, 0x50, 0x05, 0x64, 0x9A, 0x47, 0x98,  // A0P.d.G.
+                /* 0018 */  0xF5, 0x33, 0x33, 0x4E, 0xA7, 0x07, 0x8E, 0x25,  // .33N...%
+                /* 0020 */  0x1E, 0xBB, 0xC3, 0xA1, 0x41, 0x31, 0x01, 0x06,  // ....A1..
+                /* 0028 */  0xEF, 0x54, 0x4B, 0x6A, 0xED, 0xA5, 0x33, 0x4D,  // .TKj..3M
+                /* 0030 */  0x94, 0x55, 0xB0, 0xD9, 0xB4, 0x8D, 0xF4, 0xB3,  // .U......
+                /* 0038 */  0x41, 0x32, 0x01, 0x06, 0xB6, 0xEB, 0xF1, 0x74,  // A2.....t
+                /* 0040 */  0x7A, 0x92, 0x7D, 0x4C, 0x95, 0xDF, 0x69, 0x8E,  // z.}L..i.
+                /* 0048 */  0x21, 0xE8, 0x0E, 0xB5, 0x41, 0x33, 0x01, 0x06,  // !...A3..
+                /* 0050 */  0xFF, 0x04, 0xEF, 0x7E, 0x28, 0x43, 0x7C, 0x44,  // ...~(C|D
+                /* 0058 */  0xB5, 0xBB, 0xD4, 0x49, 0x92, 0x5D, 0x53, 0x8D,  // ...I.]S.
+                /* 0060 */  0x41, 0x34, 0x01, 0x06, 0x9E, 0x15, 0xDB, 0x8A,  // A4......
+                /* 0068 */  0x32, 0x1E, 0x5C, 0x45, 0xBC, 0x93, 0x30, 0x8A,  // 2.\E..0.
+                /* 0070 */  0x7E, 0xD9, 0x82, 0x46, 0x41, 0x35, 0x01, 0x01,  // ~..FA5..
+                /* 0078 */  0xFD, 0xD9, 0x51, 0x26, 0x1C, 0x91, 0x69, 0x4B,  // ..Q&..iK
+                /* 0080 */  0xB9, 0x4E, 0xD0, 0xDE, 0xD5, 0x96, 0x3B, 0xD7,  // .N....;.
+                /* 0088 */  0x41, 0x36, 0x01, 0x06, 0x1A, 0x65, 0x64, 0x73,  // A6...eds
+                /* 0090 */  0x2F, 0x13, 0xE7, 0x4F, 0xAD, 0xAA, 0x40, 0xC6,  // /..O..@.
+                /* 0098 */  0xC7, 0xEE, 0x2E, 0x3B, 0x41, 0x37, 0x01, 0x06,  // ...;A7..
+                /* 00A0 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  // !...f...
+                /* 00A8 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  // ......).
+                /* 00B0 */  0x42, 0x41, 0x01, 0x00                           // BA..
             })
             Name (RETN, Package (0x05)
             {
@@ -30113,10 +29806,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 "mhdp3"
             })
             Mutex (MWMI, 0x00)
-            Name (PCFG, Buffer (0x18) {})
-            Name (IBUF, Buffer (0x0100) {})
+            Name (PCFG, Buffer (0x18){})
+            Name (IBUF, Buffer (0x0100){})
             Name (ILEN, 0x00)
-            Name (PSTR, Buffer (0x81) {})
+            Name (PSTR, Buffer (0x81){})
             Method (WQA0, 1, NotSerialized)
             {
                 Acquire (MWMI, 0xFFFF)
@@ -30457,7 +30150,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
 
                 Local0++
-                Name (STR1, Buffer (Local0) {})
+                Name (STR1, Buffer (Local0){})
                 STR1 = Arg0
                 Local0--
                 Local1 = 0x00
@@ -30930,282 +30623,282 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Name (WQBA, Buffer (0x089D)
             {
-                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  /* FOMB.... */
-                /* 0008 */  0x8D, 0x08, 0x00, 0x00, 0xF2, 0x36, 0x00, 0x00,  /* .....6.. */
-                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  /* DS...}.T */
-                /* 0018 */  0xA8, 0xC9, 0x9A, 0x00, 0x01, 0x06, 0x18, 0x42,  /* .......B */
-                /* 0020 */  0x10, 0x13, 0x10, 0x0A, 0x0D, 0x21, 0x02, 0x0B,  /* .....!.. */
-                /* 0028 */  0x83, 0x50, 0x4C, 0x18, 0x14, 0xA0, 0x45, 0x41,  /* .PL...EA */
-                /* 0030 */  0xC8, 0x05, 0x14, 0x95, 0x02, 0x21, 0xC3, 0x02,  /* .....!.. */
-                /* 0038 */  0x14, 0x0B, 0x70, 0x2E, 0x40, 0xBA, 0x00, 0xE5,  /* ..p.@... */
-                /* 0040 */  0x28, 0x72, 0x0C, 0x22, 0x02, 0xF7, 0xEF, 0x0F,  /* (r.".... */
-                /* 0048 */  0x31, 0x0E, 0x88, 0x14, 0x40, 0x48, 0x26, 0x84,  /* 1...@H&. */
-                /* 0050 */  0x44, 0x00, 0x53, 0x21, 0x70, 0x84, 0xA0, 0x5F,  /* D.S!p.._ */
-                /* 0058 */  0x01, 0x08, 0x1D, 0xA2, 0xC9, 0xA0, 0x00, 0xA7,  /* ........ */
-                /* 0060 */  0x08, 0x82, 0xB4, 0x65, 0x01, 0xBA, 0x05, 0xF8,  /* ...e.... */
-                /* 0068 */  0x16, 0xA0, 0x1D, 0x42, 0x68, 0x15, 0x0A, 0x30,  /* ...Bh..0 */
-                /* 0070 */  0x29, 0xC0, 0x27, 0x98, 0x2C, 0x0A, 0x90, 0x0D,  /* ).'.,... */
-                /* 0078 */  0x26, 0xDB, 0x70, 0x64, 0x18, 0x4C, 0xE4, 0x18,  /* &.pd.L.. */
-                /* 0080 */  0x50, 0x62, 0xC6, 0x80, 0xD2, 0x39, 0x05, 0xD9,  /* Pb...9.. */
-                /* 0088 */  0x04, 0x16, 0x74, 0xA1, 0x28, 0x9A, 0x46, 0x94,  /* ..t.(.F. */
-                /* 0090 */  0x04, 0x07, 0x75, 0x0C, 0x11, 0x82, 0x97, 0x2B,  /* ..u....+ */
-                /* 0098 */  0x40, 0xF2, 0x04, 0xA4, 0x79, 0x5E, 0xB2, 0x3E,  /* @...y^.> */
-                /* 00A0 */  0x08, 0x0D, 0x81, 0x8D, 0x80, 0x47, 0x91, 0x00,  /* .....G.. */
-                /* 00A8 */  0xC2, 0x62, 0x2C, 0x53, 0xE2, 0x61, 0x50, 0x1E,  /* .b,S.aP. */
-                /* 00B0 */  0x40, 0x24, 0x67, 0xA8, 0x28, 0x60, 0x7B, 0x9D,  /* @$g.(`{. */
-                /* 00B8 */  0x88, 0x86, 0x75, 0x9C, 0x4C, 0x12, 0x1C, 0x6A,  /* ..u.L..j */
-                /* 00C0 */  0x94, 0x96, 0x28, 0xC0, 0xFC, 0xC8, 0x34, 0x91,  /* ..(...4. */
-                /* 00C8 */  0x63, 0x6B, 0x7A, 0xC4, 0x82, 0x64, 0xD2, 0x86,  /* ckz..d.. */
-                /* 00D0 */  0x82, 0x1A, 0xBA, 0xA7, 0x75, 0x52, 0x9E, 0x68,  /* ....uR.h */
-                /* 00D8 */  0xC4, 0x83, 0x32, 0x4C, 0x02, 0x8F, 0x82, 0xA1,  /* ..2L.... */
-                /* 00E0 */  0x71, 0x82, 0xB2, 0x20, 0xE4, 0x60, 0xA0, 0x28,  /* q.. .`.( */
-                /* 00E8 */  0xC0, 0x93, 0xF0, 0x1C, 0x8B, 0x17, 0x20, 0x7C,  /* ...... | */
-                /* 00F0 */  0xC6, 0xE4, 0x28, 0x10, 0x23, 0x81, 0x8F, 0x04,  /* ..(.#... */
-                /* 00F8 */  0x1E, 0xCD, 0x31, 0x63, 0x81, 0xC2, 0x05, 0x3C,  /* ..1c...< */
-                /* 0100 */  0x9F, 0x63, 0x88, 0x1C, 0xF7, 0x50, 0x63, 0x1C,  /* .c...Pc. */
-                /* 0108 */  0x45, 0xE4, 0x04, 0xEF, 0x00, 0x51, 0x8C, 0x56,  /* E....Q.V */
-                /* 0110 */  0xD0, 0xBC, 0x85, 0x18, 0x2C, 0x9A, 0xC1, 0x7A,  /* ....,..z */
-                /* 0118 */  0x06, 0x27, 0x83, 0x4E, 0xF0, 0xFF, 0x3F, 0x02,  /* .'.N..?. */
-                /* 0120 */  0x2E, 0x03, 0x42, 0x1E, 0x05, 0x58, 0x1D, 0x94,  /* ..B..X.. */
-                /* 0128 */  0xA6, 0x61, 0x82, 0xEE, 0x05, 0xBC, 0x1A, 0x1A,  /* .a...... */
-                /* 0130 */  0x13, 0xA0, 0x11, 0x43, 0xCA, 0x04, 0x38, 0xBB,  /* ...C..8. */
-                /* 0138 */  0x2F, 0x68, 0x46, 0x6D, 0x09, 0x30, 0x27, 0x40,  /* /hFm.0'@ */
-                /* 0140 */  0x9B, 0x00, 0x6F, 0x08, 0x42, 0x39, 0xCF, 0x28,  /* ..o.B9.( */
-                /* 0148 */  0xC7, 0x72, 0x8A, 0x51, 0x1E, 0x06, 0x62, 0xBE,  /* .r.Q..b. */
-                /* 0150 */  0x0C, 0x04, 0x8D, 0x12, 0x23, 0xE6, 0xB9, 0xC4,  /* ....#... */
-                /* 0158 */  0x35, 0x6C, 0x84, 0x18, 0x21, 0x4F, 0x21, 0x50,  /* 5l..!O!P */
-                /* 0160 */  0xDC, 0xF6, 0x07, 0x41, 0x06, 0x8D, 0x1B, 0xBD,  /* ...A.... */
-                /* 0168 */  0x4F, 0x0B, 0x67, 0x75, 0x02, 0x47, 0xFF, 0xA4,  /* O.gu.G.. */
-                /* 0170 */  0x60, 0x02, 0x4F, 0xF9, 0xC0, 0x9E, 0x0D, 0x4E,  /* `.O....N */
-                /* 0178 */  0xE0, 0x58, 0xA3, 0xC6, 0x38, 0x95, 0x04, 0x8E,  /* .X..8... */
-                /* 0180 */  0xFD, 0x80, 0x90, 0x06, 0x10, 0x45, 0x82, 0x47,  /* .....E.G */
-                /* 0188 */  0x9D, 0x16, 0x7C, 0x2E, 0xF0, 0xD0, 0x0E, 0xDA,  /* ..|..... */
-                /* 0190 */  0x73, 0x3C, 0x81, 0x20, 0x87, 0x70, 0x04, 0x4F,  /* s<. .p.O */
-                /* 0198 */  0x0C, 0x0F, 0x04, 0x1E, 0x03, 0xBB, 0x29, 0xF8,  /* ......). */
-                /* 01A0 */  0x08, 0xE0, 0x13, 0x02, 0xDE, 0x35, 0xA0, 0xAE,  /* .....5.. */
-                /* 01A8 */  0x06, 0x0F, 0x06, 0x6C, 0xD0, 0xE1, 0x30, 0xE3,  /* ...l..0. */
-                /* 01B0 */  0xF5, 0xF0, 0xC3, 0x9D, 0xC0, 0x49, 0x3E, 0x60,  /* .....I>` */
-                /* 01B8 */  0xF0, 0xC3, 0x86, 0x07, 0x87, 0x9B, 0xE7, 0xC9,  /* ........ */
-                /* 01C0 */  0x1C, 0x59, 0xA9, 0x02, 0xCC, 0x1E, 0x0E, 0x74,  /* .Y.....t */
-                /* 01C8 */  0x90, 0xF0, 0x69, 0x83, 0x9D, 0x01, 0x30, 0xF2,  /* ..i...0. */
-                /* 01D0 */  0x07, 0x81, 0x1A, 0x99, 0xA1, 0x3D, 0xEE, 0x97,  /* .....=.. */
-                /* 01D8 */  0x0E, 0x43, 0x3E, 0x27, 0x1C, 0x16, 0x13, 0x7B,  /* .C>'...{ */
-                /* 01E0 */  0xEA, 0xA0, 0xE3, 0x01, 0xFF, 0x65, 0xE4, 0x39,  /* .....e.9 */
-                /* 01E8 */  0xC3, 0xD3, 0xF7, 0x7C, 0x4D, 0x30, 0xEC, 0xC0,  /* ...|M0.. */
-                /* 01F0 */  0xD1, 0x03, 0x31, 0xF4, 0xC3, 0xC6, 0x61, 0x9C,  /* ..1...a. */
-                /* 01F8 */  0x86, 0xEF, 0x1F, 0x3E, 0x2F, 0xC0, 0x38, 0x05,  /* ...>/.8. */
-                /* 0200 */  0x78, 0xE4, 0xFE, 0xFF, 0x1F, 0x52, 0x7C, 0x9A,  /* x....R|. */
-                /* 0208 */  0xE0, 0x47, 0x0B, 0x9F, 0x26, 0xD8, 0xF5, 0xE0,  /* .G..&... */
-                /* 0210 */  0x34, 0x9E, 0x03, 0x3C, 0x9C, 0xB3, 0xF2, 0x61,  /* 4..<...a */
-                /* 0218 */  0x02, 0x6C, 0xF7, 0x13, 0x36, 0xA2, 0x77, 0x0B,  /* .l..6.w. */
-                /* 0220 */  0x8F, 0x06, 0x7B, 0x0A, 0x00, 0xDF, 0xF9, 0x05,  /* ..{..... */
-                /* 0228 */  0x9C, 0x77, 0x0D, 0x36, 0x58, 0x18, 0xE7, 0x17,  /* .w.6X... */
-                /* 0230 */  0xE0, 0x71, 0x42, 0xF0, 0x10, 0xF8, 0x41, 0xC2,  /* .qB...A. */
-                /* 0238 */  0x43, 0xE0, 0x03, 0x78, 0xFE, 0x38, 0x43, 0x2B,  /* C..x.8C+ */
-                /* 0240 */  0x9D, 0x17, 0x72, 0x60, 0xF0, 0xCE, 0x39, 0x30,  /* ..r`..90 */
-                /* 0248 */  0x46, 0xC1, 0xF3, 0x3C, 0x36, 0x4C, 0xA0, 0x20,  /* F..<6L.  */
-                /* 0250 */  0xAF, 0x01, 0x85, 0x7A, 0x16, 0x50, 0x18, 0x9F,  /* ...z.P.. */
-                /* 0258 */  0x6A, 0x80, 0xD7, 0xFF, 0xFF, 0x54, 0x03, 0x5C,  /* j....T.\ */
-                /* 0260 */  0x0E, 0x07, 0xB8, 0x93, 0x03, 0xDC, 0x7B, 0x01,  /* ......{. */
-                /* 0268 */  0xBB, 0x38, 0x3C, 0xD7, 0xC0, 0x15, 0x7D, 0xAE,  /* .8<...}. */
-                /* 0270 */  0x81, 0x7A, 0x6F, 0x29, 0x6E, 0x8C, 0xBA, 0xC6,  /* .zo)n... */
-                /* 0278 */  0x04, 0x79, 0x14, 0x78, 0xA4, 0x89, 0xF2, 0x3C,  /* .y.x...< */
-                /* 0280 */  0xF3, 0x2E, 0x13, 0xE1, 0xD9, 0xC6, 0xD7, 0x1A,  /* ........ */
-                /* 0288 */  0x4F, 0x21, 0x8E, 0xAF, 0x35, 0x46, 0x7C, 0x99,  /* O!..5F|. */
-                /* 0290 */  0x78, 0xB7, 0x31, 0xEE, 0xC1, 0x3D, 0xD6, 0x3C,  /* x.1..=.< */
-                /* 0298 */  0xE4, 0x18, 0xE4, 0x68, 0x22, 0xBC, 0x18, 0x04,  /* ...h"... */
-                /* 02A0 */  0x7C, 0xBC, 0xF1, 0xB1, 0x06, 0xBC, 0x62, 0x5E,  /* |.....b^ */
-                /* 02A8 */  0x28, 0xB2, 0x70, 0xAC, 0x01, 0x34, 0xFE, 0xFF,  /* (.p..4.. */
-                /* 02B0 */  0x8F, 0x35, 0xC0, 0x0D, 0xEB, 0x01, 0x05, 0x7C,  /* .5.....| */
-                /* 02B8 */  0x47, 0x06, 0x76, 0x43, 0x81, 0x77, 0x42, 0x01,  /* G.vC.wB. */
-                /* 02C0 */  0xFC, 0x24, 0x7E, 0x01, 0xE8, 0xC8, 0xE1, 0xB4,  /* .$~..... */
-                /* 02C8 */  0x20, 0xB2, 0xF1, 0x06, 0xF0, 0x29, 0x80, 0xAA,  /*  ....).. */
-                /* 02D0 */  0x01, 0xD2, 0x34, 0x61, 0x13, 0x4C, 0x4F, 0x2E,  /* ..4a.LO. */
-                /* 02D8 */  0x78, 0x1F, 0x09, 0x9C, 0x9B, 0x44, 0xC9, 0x87,  /* x....D.. */
-                /* 02E0 */  0x45, 0xE1, 0x9C, 0xF5, 0x20, 0x42, 0x41, 0x0C,  /* E... BA. */
-                /* 02E8 */  0xE8, 0x20, 0xC7, 0x09, 0xF4, 0x19, 0xC5, 0x07,  /* . ...... */
-                /* 02F0 */  0x91, 0x13, 0x7D, 0x22, 0xF4, 0xA0, 0x3C, 0x8C,  /* ..}"..<. */
-                /* 02F8 */  0x77, 0x14, 0x76, 0x02, 0xF1, 0x61, 0xC2, 0x63,  /* w.v..a.c */
-                /* 0300 */  0xF7, 0x31, 0x81, 0xFF, 0x63, 0x3C, 0x1B, 0xA3,  /* .1..c<.. */
-                /* 0308 */  0x5B, 0x0D, 0x86, 0xFE, 0xFF, 0xE7, 0x14, 0x0E,  /* [....... */
-                /* 0310 */  0xE6, 0x83, 0x08, 0x27, 0xA8, 0xEB, 0x26, 0x01,  /* ...'..&. */
-                /* 0318 */  0x32, 0x7D, 0x47, 0x05, 0x50, 0x00, 0xF9, 0x5E,  /* 2}G.P..^ */
-                /* 0320 */  0xE0, 0x73, 0xC0, 0xB3, 0x01, 0x1B, 0xC3, 0xA3,  /* .s...... */
-                /* 0328 */  0x80, 0xD1, 0x8C, 0xCE, 0xC3, 0x4F, 0x16, 0x15,  /* .....O.. */
-                /* 0330 */  0x77, 0xB2, 0x14, 0xC4, 0x93, 0x75, 0x94, 0xC9,  /* w....u.. */
-                /* 0338 */  0xA2, 0x67, 0xE2, 0x7B, 0x85, 0x67, 0xF4, 0xA6,  /* .g.{.g.. */
-                /* 0340 */  0xE5, 0x39, 0x7A, 0xC2, 0xBE, 0x87, 0xC0, 0x3A,  /* .9z....: */
-                /* 0348 */  0x0C, 0x84, 0x7C, 0x30, 0xF0, 0x34, 0x0C, 0xE7,  /* ..|0.4.. */
-                /* 0350 */  0xC9, 0x72, 0x38, 0x4F, 0x96, 0x8F, 0xC5, 0xD7,  /* .r8O.... */
-                /* 0358 */  0x10, 0xF0, 0x09, 0x9C, 0x2D, 0xC8, 0xE1, 0x31,  /* ....-..1 */
-                /* 0360 */  0xB1, 0x46, 0x45, 0xAF, 0x42, 0x1E, 0x1E, 0xBF,  /* .FE.B... */
-                /* 0368 */  0x1C, 0x78, 0x3E, 0xCF, 0x08, 0x47, 0xF9, 0x24,  /* .x>..G.$ */
-                /* 0370 */  0x81, 0xC3, 0x78, 0x26, 0xF1, 0x10, 0x7D, 0x2B,  /* ..x&..}+ */
-                /* 0378 */  0x82, 0x35, 0x91, 0x93, 0xF6, 0x6D, 0xE1, 0x64,  /* .5...m.d */
-                /* 0380 */  0x83, 0xBE, 0x9E, 0x61, 0x6E, 0x45, 0xB0, 0xFF,  /* ...anE.. */
-                /* 0388 */  0xFF, 0xB7, 0x22, 0x38, 0x17, 0x34, 0x98, 0x99,  /* .."8.4.. */
-                /* 0390 */  0xEE, 0x55, 0xA8, 0x58, 0xF7, 0x2A, 0x40, 0xEC,  /* .U.X.*@. */
-                /* 0398 */  0xB0, 0x5E, 0x7B, 0x7C, 0xB0, 0x82, 0x7B, 0xAF,  /* .^{|..{. */
-                /* 03A0 */  0x82, 0x7B, 0xA9, 0x7A, 0x56, 0x38, 0xC6, 0xF0,  /* .{.zV8.. */
-                /* 03A8 */  0x0F, 0x53, 0x31, 0x4E, 0xE9, 0xB5, 0xD3, 0x40,  /* .S1N...@ */
-                /* 03B0 */  0x61, 0xA2, 0xC4, 0x7B, 0xAF, 0xF2, 0x18, 0xDF,  /* a..{.... */
-                /* 03B8 */  0xAB, 0xD8, 0x15, 0x2A, 0x4C, 0xAC, 0x97, 0x2B,  /* ...*L..+ */
-                /* 03C0 */  0xA3, 0xBE, 0x4E, 0x84, 0x0B, 0x14, 0x24, 0xD2,  /* ..N...$. */
-                /* 03C8 */  0xAB, 0x55, 0x94, 0xC8, 0xF1, 0x0D, 0xF9, 0x5E,  /* .U.....^ */
-                /* 03D0 */  0x05, 0x5E, 0x39, 0xF7, 0x2A, 0x90, 0xFD, 0xFF,  /* .^9.*... */
-                /* 03D8 */  0xEF, 0x55, 0x80, 0x79, 0xB4, 0xF7, 0x2A, 0x30,  /* .U.y..*0 */
-                /* 03E0 */  0x5E, 0x1B, 0xD8, 0x0D, 0x09, 0x16, 0xD0, 0x8B,  /* ^....... */
-                /* 03E8 */  0x15, 0x60, 0x28, 0xF3, 0xC5, 0x8A, 0xE6, 0xBD,  /* .`(..... */
-                /* 03F0 */  0x58, 0x21, 0xFE, 0xFF, 0xE7, 0x12, 0xA6, 0xE7,  /* X!...... */
-                /* 03F8 */  0x62, 0x45, 0xE6, 0x09, 0xFF, 0x66, 0x05, 0x70,  /* bE...f.p */
-                /* 0400 */  0xFA, 0xFF, 0x7F, 0xB3, 0x02, 0x8C, 0xDD, 0x8B,  /* ........ */
-                /* 0408 */  0x30, 0x47, 0x2B, 0x78, 0x29, 0x6F, 0x56, 0x34,  /* 0G+x)oV4 */
-                /* 0410 */  0xCE, 0x32, 0x14, 0x70, 0x41, 0x14, 0xC6, 0x37,  /* .2.pA..7 */
-                /* 0418 */  0x2B, 0xC0, 0xD1, 0x75, 0x05, 0x37, 0x64, 0xB8,  /* +..u.7d. */
-                /* 0420 */  0x60, 0x51, 0x82, 0xF9, 0x10, 0xE2, 0xE9, 0x1C,  /* `Q...... */
-                /* 0428 */  0xF1, 0x43, 0xC2, 0x4B, 0xC0, 0x63, 0x8E, 0x07,  /* .C.K.c.. */
-                /* 0430 */  0xFC, 0x40, 0xE0, 0xCB, 0x15, 0x98, 0xFE, 0xFF,  /* .@...... */
-                /* 0438 */  0x04, 0x3E, 0xF9, 0x9E, 0xE5, 0xDB, 0xD4, 0x7B,  /* .>.....{ */
-                /* 0440 */  0x2F, 0x3F, 0x60, 0xBD, 0x57, 0xF9, 0xF0, 0x1B,  /* /?`.W... */
-                /* 0448 */  0xEB, 0x9D, 0xE1, 0xE5, 0xCA, 0x23, 0x89, 0x72,  /* .....#.r */
-                /* 0450 */  0x12, 0xA1, 0x7C, 0xB7, 0x7A, 0xAF, 0x32, 0x4A,  /* ..|.z.2J */
-                /* 0458 */  0xC4, 0x17, 0x62, 0x9F, 0x82, 0x0D, 0x6D, 0x94,  /* ..b...m. */
-                /* 0460 */  0xA7, 0x8A, 0xE8, 0xC6, 0x7B, 0xB9, 0x02, 0xAF,  /* ....{... */
-                /* 0468 */  0xA4, 0xCB, 0x15, 0x40, 0x93, 0xE1, 0xBF, 0x5C,  /* ...@...\ */
-                /* 0470 */  0x81, 0xEF, 0xE6, 0x80, 0xBD, 0x26, 0xC1, 0xF9,  /* .....&.. */
-                /* 0478 */  0xFF, 0x5F, 0x93, 0xF8, 0xF5, 0x0A, 0xF0, 0x93,  /* ._...... */
-                /* 0480 */  0xFD, 0x7A, 0x45, 0x73, 0x5F, 0xAF, 0x50, 0xA2,  /* .zEs_.P. */
-                /* 0488 */  0x20, 0xA4, 0x08, 0x48, 0x33, 0x05, 0xCF, 0xFD,  /*  ..H3... */
-                /* 0490 */  0x0A, 0xE0, 0xC4, 0xFF, 0xFF, 0x7E, 0x05, 0x58,  /* .....~.X */
-                /* 0498 */  0x0E, 0x77, 0xBF, 0x02, 0x7A, 0xB7, 0x23, 0xF0,  /* .w..z.#. */
-                /* 04A0 */  0xA2, 0xBC, 0x1D, 0x61, 0xAF, 0x58, 0xF8, 0x8C,  /* ...a.X.. */
-                /* 04A8 */  0x57, 0x2C, 0x1A, 0x66, 0x25, 0x8A, 0xB7, 0x26,  /* W,.f%..& */
-                /* 04B0 */  0x0A, 0xE3, 0x2B, 0x16, 0x30, 0xF9, 0xFF, 0x5F,  /* ..+.0.._ */
-                /* 04B8 */  0xB1, 0x80, 0xD9, 0x41, 0x14, 0x37, 0x6A, 0xB8,  /* ...A.7j. */
-                /* 04C0 */  0x17, 0x27, 0xDF, 0x7A, 0x3C, 0xDF, 0x88, 0xBE,  /* .'.z<... */
-                /* 04C8 */  0xC3, 0x60, 0x4E, 0x58, 0x30, 0x6E, 0x58, 0xF0,  /* .`NX0nX. */
-                /* 04D0 */  0x87, 0xF4, 0x30, 0xEC, 0x93, 0xC4, 0x3B, 0x96,  /* ..0...;. */
-                /* 04D8 */  0x8F, 0x56, 0x06, 0x79, 0x03, 0x7E, 0xB2, 0x7A,  /* .V.y.~.z */
-                /* 04E0 */  0xB0, 0x8A, 0x62, 0x84, 0x80, 0xC7, 0xF3, 0x2E,  /* ..b..... */
-                /* 04E8 */  0xEC, 0xA3, 0xD5, 0x9B, 0x96, 0x51, 0x62, 0xC7,  /* .....Qb. */
-                /* 04F0 */  0xF2, 0x85, 0xEA, 0x59, 0xCB, 0xD7, 0x2C, 0x43,  /* ...Y..,C */
-                /* 04F8 */  0xC4, 0x7D, 0x20, 0xF6, 0x0D, 0x0B, 0xB0, 0xFD,  /* .} ..... */
-                /* 0500 */  0xFF, 0xBF, 0x61, 0x01, 0x8E, 0x2E, 0x0E, 0xFC,  /* ..a..... */
-                /* 0508 */  0xE0, 0x80, 0xBD, 0x61, 0x01, 0x3E, 0x67, 0x0A,  /* ...a.>g. */
-                /* 0510 */  0x9E, 0x1B, 0x16, 0xB0, 0xF9, 0xFF, 0xDF, 0xB0,  /* ........ */
-                /* 0518 */  0x00, 0xFE, 0xFF, 0xFF, 0x6F, 0x58, 0xC0, 0xE1,  /* ....oX.. */
-                /* 0520 */  0x76, 0x85, 0xBD, 0x65, 0x61, 0x6F, 0x2F, 0x64,  /* v..eao/d */
-                /* 0528 */  0x15, 0x34, 0xD4, 0x4A, 0x14, 0xFC, 0x7B, 0x65,  /* .4.J..{e */
-                /* 0530 */  0x18, 0x7A, 0xC3, 0x02, 0x1C, 0x8D, 0xDB, 0xA3,  /* .z...... */
-                /* 0538 */  0x06, 0xC7, 0xD9, 0xE0, 0x49, 0x02, 0x73, 0xAE,  /* ....I.s. */
-                /* 0540 */  0xC6, 0xCD, 0xE6, 0xE0, 0x02, 0x47, 0xE8, 0x1D,  /* .....G.. */
-                /* 0548 */  0x54, 0x73, 0x67, 0x97, 0x14, 0x18, 0xB7, 0x2C,  /* Tsg...., */
-                /* 0550 */  0xB8, 0x97, 0xAA, 0x87, 0x86, 0x28, 0x07, 0xF1,  /* .....(.. */
-                /* 0558 */  0x2A, 0xFC, 0x60, 0xF5, 0x28, 0x75, 0x64, 0x8F,  /* *.`.(ud. */
-                /* 0560 */  0x57, 0x4F, 0xC3, 0x3E, 0x66, 0xF9, 0x96, 0x65,  /* WO.>f..e */
-                /* 0568 */  0xA8, 0x08, 0x6F, 0x59, 0xEC, 0x0C, 0x11, 0x2F,  /* ..oY.../ */
-                /* 0570 */  0x56, 0x94, 0x10, 0xEF, 0x15, 0xA1, 0x7D, 0xE7,  /* V.....}. */
-                /* 0578 */  0x32, 0xF8, 0xA3, 0xB1, 0x51, 0x83, 0xBE, 0x1C,  /* 2...Q... */
-                /* 0580 */  0xBF, 0x65, 0xC1, 0xFB, 0xFF, 0xDF, 0xB2, 0xE0,  /* .e...... */
-                /* 0588 */  0x8B, 0xFC, 0xAB, 0xE8, 0x44, 0xE0, 0x5B, 0x16,  /* ....D.[. */
-                /* 0590 */  0xC0, 0x8F, 0x60, 0x10, 0x72, 0x32, 0x70, 0xF4,  /* ..`.r2p. */
-                /* 0598 */  0x79, 0x01, 0x3F, 0x80, 0x87, 0x11, 0x0F, 0x89,  /* y.?..... */
-                /* 05A0 */  0x05, 0x18, 0x38, 0xBD, 0x2F, 0xF9, 0x4C, 0xC1,  /* ..8./.L. */
-                /* 05A8 */  0x0F, 0x18, 0x3E, 0x53, 0xB0, 0xEB, 0x41, 0xF4,  /* ..>S..A. */
-                /* 05B0 */  0xC7, 0x00, 0x9F, 0x4B, 0x30, 0x83, 0x03, 0xFF,  /* ...K0... */
-                /* 05B8 */  0xB5, 0xE2, 0xD0, 0x3D, 0x8A, 0xD7, 0x07, 0x13,  /* ...=.... */
-                /* 05C0 */  0x78, 0x70, 0xFC, 0xFF, 0x3F, 0x38, 0xB8, 0x77,  /* xp..?8.w */
-                /* 05C8 */  0x86, 0x23, 0xF2, 0x1D, 0xC6, 0x83, 0x03, 0xDB,  /* .#...... */
-                /* 05D0 */  0x41, 0x00, 0x38, 0x0C, 0x0E, 0x1F, 0x6A, 0x70,  /* A.8...jp */
-                /* 05D8 */  0xE8, 0xF1, 0x18, 0x38, 0xA4, 0xCF, 0x63, 0xEC,  /* ...8..c. */
-                /* 05E0 */  0xC2, 0xF0, 0x90, 0xE3, 0xA1, 0x81, 0x0D, 0xD0,  /* ........ */
-                /* 05E8 */  0x43, 0x03, 0x96, 0x93, 0x78, 0x0A, 0x39, 0x34,  /* C...x.94 */
-                /* 05F0 */  0x30, 0x4B, 0x18, 0x1A, 0x50, 0x8A, 0x37, 0x34,  /* 0K..P.74 */
-                /* 05F8 */  0xFA, 0xFF, 0x1F, 0x1A, 0x1F, 0x92, 0x0F, 0x0B,  /* ........ */
-                /* 0600 */  0x31, 0x9F, 0x72, 0x22, 0xBC, 0x2F, 0xF8, 0x04,  /* 1.r"./.. */
-                /* 0608 */  0xC5, 0xD0, 0x5F, 0x53, 0x7C, 0xBB, 0xF0, 0x4D,  /* .._S|..M */
-                /* 0610 */  0x10, 0x37, 0x3E, 0x70, 0x5D, 0x3A, 0x3D, 0x3E,  /* .7>p]:=> */
-                /* 0618 */  0xE0, 0x73, 0xE4, 0xF2, 0xF8, 0x70, 0x47, 0x27,  /* .s...pG' */
-                /* 0620 */  0x8F, 0x0F, 0x86, 0xCB, 0xAB, 0x0C, 0x39, 0x9A,  /* ......9. */
-                /* 0628 */  0xF8, 0x68, 0xC5, 0x86, 0x07, 0xB6, 0x9B, 0x9E,  /* .h...... */
-                /* 0630 */  0x87, 0x07, 0x7C, 0xAE, 0x9B, 0x60, 0xBC, 0x42,  /* ..|..`.B */
-                /* 0638 */  0xF2, 0x6B, 0x09, 0x8C, 0x13, 0x14, 0xFE, 0xBA,  /* .k...... */
-                /* 0640 */  0x09, 0xDE, 0xFF, 0xFF, 0x75, 0x13, 0x78, 0x8E,  /* ....u.x. */
-                /* 0648 */  0x82, 0x6B, 0xBD, 0x64, 0xD3, 0x20, 0xAF, 0x1C,  /* .k.d. .. */
-                /* 0650 */  0xC5, 0x7A, 0x11, 0x50, 0x18, 0x9F, 0xD9, 0x00,  /* .z.P.... */
-                /* 0658 */  0x47, 0x63, 0x7D, 0x66, 0x03, 0xCB, 0xBD, 0x80,  /* Gc}f.... */
-                /* 0660 */  0xDD, 0xD8, 0xE0, 0x9E, 0xD6, 0x60, 0xDF, 0x1D,  /* .....`.. */
-                /* 0668 */  0x1E, 0xCE, 0x1E, 0xD3, 0x1E, 0xD5, 0x1E, 0xD0,  /* ........ */
-                /* 0670 */  0x7C, 0xC4, 0x8E, 0xF1, 0x96, 0x16, 0x24, 0x4E,  /* |.....$N */
-                /* 0678 */  0x84, 0xD7, 0x81, 0xA7, 0x35, 0x5F, 0x32, 0xE2,  /* ....5_2. */
-                /* 0680 */  0x05, 0x7A, 0x5A, 0x33, 0x46, 0x9C, 0x97, 0x36,  /* .zZ3F..6 */
-                /* 0688 */  0x23, 0xBE, 0x52, 0x84, 0x78, 0x58, 0xF3, 0xC9,  /* #.R.xX.. */
-                /* 0690 */  0xCD, 0x78, 0x0F, 0x13, 0xE1, 0xC2, 0xBC, 0xB0,  /* .x...... */
-                /* 0698 */  0x3D, 0xAD, 0x81, 0xE3, 0xFF, 0x7F, 0x5A, 0x83,  /* =.....Z. */
-                /* 06A0 */  0x23, 0xE7, 0x8A, 0x0D, 0xD0, 0xE4, 0xA2, 0x8F,  /* #....... */
-                /* 06A8 */  0x3B, 0xA4, 0x80, 0xE5, 0xDA, 0xC0, 0x6E, 0x29,  /* ;.....n) */
-                /* 06B0 */  0xF0, 0x2E, 0xD8, 0xC0, 0xF9, 0xFF, 0x7F, 0x44,  /* .......D */
-                /* 06B8 */  0x01, 0x5F, 0x96, 0x0B, 0x36, 0xCD, 0x71, 0xC1,  /* ._..6.q. */
-                /* 06C0 */  0x46, 0x71, 0x58, 0x0D, 0x90, 0xE6, 0x09, 0xFF,  /* FqX..... */
-                /* 06C8 */  0x7A, 0x0D, 0xFE, 0x49, 0xF8, 0x7A, 0x0D, 0xD8,  /* z..I.z.. */
-                /* 06D0 */  0xBE, 0xC5, 0xE2, 0xAE, 0xD7, 0xC0, 0xEA, 0xFF,  /* ........ */
-                /* 06D8 */  0x7F, 0xBD, 0x06, 0x96, 0x82, 0x47, 0x4A, 0xEF,  /* .....GJ. */
-                /* 06E0 */  0xD4, 0xE0, 0xBA, 0x69, 0xE3, 0x41, 0xDF, 0xB4,  /* ...i.A.. */
-                /* 06E8 */  0x61, 0x0A, 0xBE, 0x45, 0xD1, 0x28, 0xE4, 0x8A,  /* a..E.(.. */
-                /* 06F0 */  0xB6, 0x10, 0x0A, 0xE3, 0x5B, 0x14, 0xE0, 0x08,  /* ....[... */
-                /* 06F8 */  0xFB, 0x2D, 0x0A, 0x2C, 0x17, 0xA7, 0xB7, 0x28,  /* .-.,...( */
-                /* 0700 */  0xFC, 0x0C, 0x3C, 0x68, 0xDF, 0x75, 0x18, 0xA6,  /* ..<h.u.. */
-                /* 0708 */  0xEF, 0xD0, 0xF0, 0x4F, 0x4D, 0xCF, 0x4D, 0x0F,  /* ...OM.M. */
-                /* 0710 */  0x4E, 0x0F, 0xCD, 0x3E, 0x48, 0xF9, 0x70, 0xF0,  /* N..>H.p. */
-                /* 0718 */  0xFC, 0xF4, 0xFF, 0x8F, 0xF1, 0x5E, 0xE7, 0x9B,  /* .....^.. */
-                /* 0720 */  0xD4, 0x6B, 0x94, 0x2F, 0x30, 0xC7, 0x10, 0x31,  /* .k./0..1 */
-                /* 0728 */  0xCA, 0xCB, 0xB4, 0x21, 0xE2, 0xF9, 0xD4, 0xE4,  /* ...!.... */
-                /* 0730 */  0xB3, 0x42, 0xDC, 0x10, 0x0F, 0xD1, 0x46, 0x88,  /* .B....F. */
-                /* 0738 */  0xFA, 0x3C, 0xED, 0x09, 0xBD, 0x46, 0x81, 0x57,  /* .<...F.W */
-                /* 0740 */  0xD0, 0x35, 0x0A, 0xA0, 0xC9, 0xFD, 0x08, 0x77,  /* .5.....w */
-                /* 0748 */  0x8D, 0x02, 0xCB, 0xBD, 0x81, 0x9D, 0x87, 0xF8,  /* ........ */
-                /* 0750 */  0x95, 0xC8, 0xD7, 0x06, 0x18, 0xF7, 0x28, 0x38,  /* ......(8 */
-                /* 0758 */  0xFF, 0xFF, 0x7B, 0x14, 0x60, 0x23, 0xCC, 0x3D,  /* ..{.`#.= */
-                /* 0760 */  0x8A, 0x06, 0xB9, 0x47, 0xA1, 0x4E, 0x26, 0xBE,  /* ...G.N&. */
-                /* 0768 */  0xD4, 0x79, 0xA2, 0xE0, 0x08, 0x7F, 0x91, 0x42,  /* .y.....B */
-                /* 0770 */  0xC5, 0x26, 0x51, 0xE8, 0xC3, 0x10, 0x2A, 0xE6,  /* .&Q...*. */
-                /* 0778 */  0x61, 0x84, 0x82, 0x18, 0xD0, 0x19, 0x4E, 0x14,  /* a.....N. */
-                /* 0780 */  0x68, 0x15, 0x27, 0x0A, 0x72, 0x8B, 0xF1, 0xA4,  /* h.'.r... */
-                /* 0788 */  0x1E, 0xA3, 0x00, 0x5F, 0xCB, 0xF4, 0x50, 0x79,  /* ..._..Py */
-                /* 0790 */  0xE4, 0xA1, 0x52, 0x10, 0x0F, 0xD5, 0x71, 0x86,  /* ..R...q. */
-                /* 0798 */  0x8A, 0x9E, 0xA4, 0xE7, 0x8F, 0xF9, 0xFF, 0x1F,  /* ........ */
-                /* 07A0 */  0x1C, 0xB0, 0x07, 0x29, 0x80, 0x17, 0x0A, 0x6D,  /* ...)...m */
-                /* 07A8 */  0xFA, 0xD4, 0x68, 0xD4, 0xAA, 0x41, 0x99, 0x1A,  /* ..h..A.. */
-                /* 07B0 */  0x65, 0x1A, 0xD4, 0xEA, 0x53, 0xA9, 0x31, 0x63,  /* e...S.1c */
-                /* 07B8 */  0xE7, 0x50, 0x4B, 0x3B, 0x4B, 0x50, 0x31, 0x8B,  /* .PK;KP1. */
-                /* 07C0 */  0xD1, 0x68, 0x1C, 0x05, 0x84, 0xCA, 0xFE, 0x9B,  /* .h...... */
-                /* 07C8 */  0x0B, 0xC4, 0x21, 0x9F, 0x3A, 0x02, 0x74, 0xB0,  /* ..!.:.t. */
-                /* 07D0 */  0x17, 0x95, 0x80, 0x2C, 0x6B, 0x6D, 0x02, 0x71,  /* ...,km.q */
-                /* 07D8 */  0x7C, 0x13, 0x10, 0x8D, 0x80, 0x48, 0xCB, 0x63,  /* |....H.c */
-                /* 07E0 */  0x42, 0x40, 0xCE, 0x0D, 0x22, 0x20, 0xAB, 0x58,  /* B@.." .X */
-                /* 07E8 */  0x93, 0x80, 0xAC, 0xF9, 0x01, 0x23, 0x70, 0xEB,  /* .....#p. */
-                /* 07F0 */  0xD4, 0x01, 0xC4, 0x52, 0x82, 0xD0, 0x44, 0x0B,  /* ...R..D. */
-                /* 07F8 */  0x17, 0xA8, 0xE3, 0x81, 0x68, 0x30, 0x84, 0x46,  /* ....h0.F */
-                /* 0800 */  0x40, 0x0E, 0x46, 0x21, 0x20, 0xCB, 0xF8, 0x74,  /* @.F! ..t */
-                /* 0808 */  0x0B, 0xDC, 0x02, 0xAC, 0x00, 0x31, 0xF9, 0x20,  /* .....1.  */
-                /* 0810 */  0x54, 0xB0, 0x17, 0x50, 0xA6, 0x1E, 0x44, 0x40,  /* T..P..D@ */
-                /* 0818 */  0x56, 0xBA, 0x56, 0x01, 0x59, 0x37, 0x88, 0x80,  /* V.V.Y7.. */
-                /* 0820 */  0xFE, 0xFF, 0x2F, 0x83, 0x32, 0x03, 0xCE, 0x32,  /* ../.2..2 */
-                /* 0828 */  0xBA, 0x01, 0x62, 0x0A, 0x1F, 0x0A, 0x02, 0xB1,  /* ..b..... */
-                /* 0830 */  0x26, 0x3D, 0xA0, 0x4C, 0x20, 0x88, 0xAE, 0x1C,  /* &=.L ... */
-                /* 0838 */  0xC4, 0x0F, 0x10, 0x93, 0x06, 0x22, 0x20, 0xC7,  /* ....." . */
-                /* 0840 */  0x39, 0x98, 0x08, 0xDC, 0x71, 0x14, 0x01, 0x52,  /* 9...q..R */
-                /* 0848 */  0x47, 0xC3, 0xA5, 0x20, 0x54, 0xFC, 0xF3, 0x44,  /* G.. T..D */
-                /* 0850 */  0x20, 0x16, 0x64, 0x09, 0x8C, 0x82, 0xD0, 0x08,  /*  .d..... */
-                /* 0858 */  0x9A, 0x40, 0x98, 0x3C, 0x4F, 0x20, 0x2C, 0xD4,  /* .@.<O ,. */
-                /* 0860 */  0x9F, 0x5C, 0xA7, 0x15, 0xA2, 0x6A, 0x88, 0xD4,  /* .\...j.. */
-                /* 0868 */  0x15, 0x08, 0x0B, 0xFC, 0x30, 0xD0, 0x60, 0x9C,  /* ....0.`. */
-                /* 0870 */  0x1E, 0x44, 0x40, 0x4E, 0xFA, 0xA7, 0x0A, 0x44,  /* .D@N...D */
-                /* 0878 */  0x72, 0x83, 0x08, 0xC8, 0xF9, 0x9F, 0x22, 0x02,  /* r.....". */
-                /* 0880 */  0x77, 0xEA, 0xD7, 0x84, 0x86, 0x4F, 0xBE, 0x58,  /* w....O.X */
-                /* 0888 */  0x41, 0x88, 0xB8, 0x87, 0x55, 0x50, 0xA2, 0x14,  /* A...UP.. */
-                /* 0890 */  0x44, 0x40, 0x56, 0xF6, 0xB4, 0x12, 0x90, 0x75,  /* D@V....u */
-                /* 0898 */  0x82, 0x08, 0xC8, 0xFF, 0x7F                     /* ..... */
+                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  // FOMB....
+                /* 0008 */  0x8D, 0x08, 0x00, 0x00, 0xF2, 0x36, 0x00, 0x00,  // .....6..
+                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  // DS...}.T
+                /* 0018 */  0xA8, 0xC9, 0x9A, 0x00, 0x01, 0x06, 0x18, 0x42,  // .......B
+                /* 0020 */  0x10, 0x13, 0x10, 0x0A, 0x0D, 0x21, 0x02, 0x0B,  // .....!..
+                /* 0028 */  0x83, 0x50, 0x4C, 0x18, 0x14, 0xA0, 0x45, 0x41,  // .PL...EA
+                /* 0030 */  0xC8, 0x05, 0x14, 0x95, 0x02, 0x21, 0xC3, 0x02,  // .....!..
+                /* 0038 */  0x14, 0x0B, 0x70, 0x2E, 0x40, 0xBA, 0x00, 0xE5,  // ..p.@...
+                /* 0040 */  0x28, 0x72, 0x0C, 0x22, 0x02, 0xF7, 0xEF, 0x0F,  // (r."....
+                /* 0048 */  0x31, 0x0E, 0x88, 0x14, 0x40, 0x48, 0x26, 0x84,  // 1...@H&.
+                /* 0050 */  0x44, 0x00, 0x53, 0x21, 0x70, 0x84, 0xA0, 0x5F,  // D.S!p.._
+                /* 0058 */  0x01, 0x08, 0x1D, 0xA2, 0xC9, 0xA0, 0x00, 0xA7,  // ........
+                /* 0060 */  0x08, 0x82, 0xB4, 0x65, 0x01, 0xBA, 0x05, 0xF8,  // ...e....
+                /* 0068 */  0x16, 0xA0, 0x1D, 0x42, 0x68, 0x15, 0x0A, 0x30,  // ...Bh..0
+                /* 0070 */  0x29, 0xC0, 0x27, 0x98, 0x2C, 0x0A, 0x90, 0x0D,  // ).'.,...
+                /* 0078 */  0x26, 0xDB, 0x70, 0x64, 0x18, 0x4C, 0xE4, 0x18,  // &.pd.L..
+                /* 0080 */  0x50, 0x62, 0xC6, 0x80, 0xD2, 0x39, 0x05, 0xD9,  // Pb...9..
+                /* 0088 */  0x04, 0x16, 0x74, 0xA1, 0x28, 0x9A, 0x46, 0x94,  // ..t.(.F.
+                /* 0090 */  0x04, 0x07, 0x75, 0x0C, 0x11, 0x82, 0x97, 0x2B,  // ..u....+
+                /* 0098 */  0x40, 0xF2, 0x04, 0xA4, 0x79, 0x5E, 0xB2, 0x3E,  // @...y^.>
+                /* 00A0 */  0x08, 0x0D, 0x81, 0x8D, 0x80, 0x47, 0x91, 0x00,  // .....G..
+                /* 00A8 */  0xC2, 0x62, 0x2C, 0x53, 0xE2, 0x61, 0x50, 0x1E,  // .b,S.aP.
+                /* 00B0 */  0x40, 0x24, 0x67, 0xA8, 0x28, 0x60, 0x7B, 0x9D,  // @$g.(`{.
+                /* 00B8 */  0x88, 0x86, 0x75, 0x9C, 0x4C, 0x12, 0x1C, 0x6A,  // ..u.L..j
+                /* 00C0 */  0x94, 0x96, 0x28, 0xC0, 0xFC, 0xC8, 0x34, 0x91,  // ..(...4.
+                /* 00C8 */  0x63, 0x6B, 0x7A, 0xC4, 0x82, 0x64, 0xD2, 0x86,  // ckz..d..
+                /* 00D0 */  0x82, 0x1A, 0xBA, 0xA7, 0x75, 0x52, 0x9E, 0x68,  // ....uR.h
+                /* 00D8 */  0xC4, 0x83, 0x32, 0x4C, 0x02, 0x8F, 0x82, 0xA1,  // ..2L....
+                /* 00E0 */  0x71, 0x82, 0xB2, 0x20, 0xE4, 0x60, 0xA0, 0x28,  // q.. .`.(
+                /* 00E8 */  0xC0, 0x93, 0xF0, 0x1C, 0x8B, 0x17, 0x20, 0x7C,  // ...... |
+                /* 00F0 */  0xC6, 0xE4, 0x28, 0x10, 0x23, 0x81, 0x8F, 0x04,  // ..(.#...
+                /* 00F8 */  0x1E, 0xCD, 0x31, 0x63, 0x81, 0xC2, 0x05, 0x3C,  // ..1c...<
+                /* 0100 */  0x9F, 0x63, 0x88, 0x1C, 0xF7, 0x50, 0x63, 0x1C,  // .c...Pc.
+                /* 0108 */  0x45, 0xE4, 0x04, 0xEF, 0x00, 0x51, 0x8C, 0x56,  // E....Q.V
+                /* 0110 */  0xD0, 0xBC, 0x85, 0x18, 0x2C, 0x9A, 0xC1, 0x7A,  // ....,..z
+                /* 0118 */  0x06, 0x27, 0x83, 0x4E, 0xF0, 0xFF, 0x3F, 0x02,  // .'.N..?.
+                /* 0120 */  0x2E, 0x03, 0x42, 0x1E, 0x05, 0x58, 0x1D, 0x94,  // ..B..X..
+                /* 0128 */  0xA6, 0x61, 0x82, 0xEE, 0x05, 0xBC, 0x1A, 0x1A,  // .a......
+                /* 0130 */  0x13, 0xA0, 0x11, 0x43, 0xCA, 0x04, 0x38, 0xBB,  // ...C..8.
+                /* 0138 */  0x2F, 0x68, 0x46, 0x6D, 0x09, 0x30, 0x27, 0x40,  // /hFm.0'@
+                /* 0140 */  0x9B, 0x00, 0x6F, 0x08, 0x42, 0x39, 0xCF, 0x28,  // ..o.B9.(
+                /* 0148 */  0xC7, 0x72, 0x8A, 0x51, 0x1E, 0x06, 0x62, 0xBE,  // .r.Q..b.
+                /* 0150 */  0x0C, 0x04, 0x8D, 0x12, 0x23, 0xE6, 0xB9, 0xC4,  // ....#...
+                /* 0158 */  0x35, 0x6C, 0x84, 0x18, 0x21, 0x4F, 0x21, 0x50,  // 5l..!O!P
+                /* 0160 */  0xDC, 0xF6, 0x07, 0x41, 0x06, 0x8D, 0x1B, 0xBD,  // ...A....
+                /* 0168 */  0x4F, 0x0B, 0x67, 0x75, 0x02, 0x47, 0xFF, 0xA4,  // O.gu.G..
+                /* 0170 */  0x60, 0x02, 0x4F, 0xF9, 0xC0, 0x9E, 0x0D, 0x4E,  // `.O....N
+                /* 0178 */  0xE0, 0x58, 0xA3, 0xC6, 0x38, 0x95, 0x04, 0x8E,  // .X..8...
+                /* 0180 */  0xFD, 0x80, 0x90, 0x06, 0x10, 0x45, 0x82, 0x47,  // .....E.G
+                /* 0188 */  0x9D, 0x16, 0x7C, 0x2E, 0xF0, 0xD0, 0x0E, 0xDA,  // ..|.....
+                /* 0190 */  0x73, 0x3C, 0x81, 0x20, 0x87, 0x70, 0x04, 0x4F,  // s<. .p.O
+                /* 0198 */  0x0C, 0x0F, 0x04, 0x1E, 0x03, 0xBB, 0x29, 0xF8,  // ......).
+                /* 01A0 */  0x08, 0xE0, 0x13, 0x02, 0xDE, 0x35, 0xA0, 0xAE,  // .....5..
+                /* 01A8 */  0x06, 0x0F, 0x06, 0x6C, 0xD0, 0xE1, 0x30, 0xE3,  // ...l..0.
+                /* 01B0 */  0xF5, 0xF0, 0xC3, 0x9D, 0xC0, 0x49, 0x3E, 0x60,  // .....I>`
+                /* 01B8 */  0xF0, 0xC3, 0x86, 0x07, 0x87, 0x9B, 0xE7, 0xC9,  // ........
+                /* 01C0 */  0x1C, 0x59, 0xA9, 0x02, 0xCC, 0x1E, 0x0E, 0x74,  // .Y.....t
+                /* 01C8 */  0x90, 0xF0, 0x69, 0x83, 0x9D, 0x01, 0x30, 0xF2,  // ..i...0.
+                /* 01D0 */  0x07, 0x81, 0x1A, 0x99, 0xA1, 0x3D, 0xEE, 0x97,  // .....=..
+                /* 01D8 */  0x0E, 0x43, 0x3E, 0x27, 0x1C, 0x16, 0x13, 0x7B,  // .C>'...{
+                /* 01E0 */  0xEA, 0xA0, 0xE3, 0x01, 0xFF, 0x65, 0xE4, 0x39,  // .....e.9
+                /* 01E8 */  0xC3, 0xD3, 0xF7, 0x7C, 0x4D, 0x30, 0xEC, 0xC0,  // ...|M0..
+                /* 01F0 */  0xD1, 0x03, 0x31, 0xF4, 0xC3, 0xC6, 0x61, 0x9C,  // ..1...a.
+                /* 01F8 */  0x86, 0xEF, 0x1F, 0x3E, 0x2F, 0xC0, 0x38, 0x05,  // ...>/.8.
+                /* 0200 */  0x78, 0xE4, 0xFE, 0xFF, 0x1F, 0x52, 0x7C, 0x9A,  // x....R|.
+                /* 0208 */  0xE0, 0x47, 0x0B, 0x9F, 0x26, 0xD8, 0xF5, 0xE0,  // .G..&...
+                /* 0210 */  0x34, 0x9E, 0x03, 0x3C, 0x9C, 0xB3, 0xF2, 0x61,  // 4..<...a
+                /* 0218 */  0x02, 0x6C, 0xF7, 0x13, 0x36, 0xA2, 0x77, 0x0B,  // .l..6.w.
+                /* 0220 */  0x8F, 0x06, 0x7B, 0x0A, 0x00, 0xDF, 0xF9, 0x05,  // ..{.....
+                /* 0228 */  0x9C, 0x77, 0x0D, 0x36, 0x58, 0x18, 0xE7, 0x17,  // .w.6X...
+                /* 0230 */  0xE0, 0x71, 0x42, 0xF0, 0x10, 0xF8, 0x41, 0xC2,  // .qB...A.
+                /* 0238 */  0x43, 0xE0, 0x03, 0x78, 0xFE, 0x38, 0x43, 0x2B,  // C..x.8C+
+                /* 0240 */  0x9D, 0x17, 0x72, 0x60, 0xF0, 0xCE, 0x39, 0x30,  // ..r`..90
+                /* 0248 */  0x46, 0xC1, 0xF3, 0x3C, 0x36, 0x4C, 0xA0, 0x20,  // F..<6L. 
+                /* 0250 */  0xAF, 0x01, 0x85, 0x7A, 0x16, 0x50, 0x18, 0x9F,  // ...z.P..
+                /* 0258 */  0x6A, 0x80, 0xD7, 0xFF, 0xFF, 0x54, 0x03, 0x5C,  // j....T.\
+                /* 0260 */  0x0E, 0x07, 0xB8, 0x93, 0x03, 0xDC, 0x7B, 0x01,  // ......{.
+                /* 0268 */  0xBB, 0x38, 0x3C, 0xD7, 0xC0, 0x15, 0x7D, 0xAE,  // .8<...}.
+                /* 0270 */  0x81, 0x7A, 0x6F, 0x29, 0x6E, 0x8C, 0xBA, 0xC6,  // .zo)n...
+                /* 0278 */  0x04, 0x79, 0x14, 0x78, 0xA4, 0x89, 0xF2, 0x3C,  // .y.x...<
+                /* 0280 */  0xF3, 0x2E, 0x13, 0xE1, 0xD9, 0xC6, 0xD7, 0x1A,  // ........
+                /* 0288 */  0x4F, 0x21, 0x8E, 0xAF, 0x35, 0x46, 0x7C, 0x99,  // O!..5F|.
+                /* 0290 */  0x78, 0xB7, 0x31, 0xEE, 0xC1, 0x3D, 0xD6, 0x3C,  // x.1..=.<
+                /* 0298 */  0xE4, 0x18, 0xE4, 0x68, 0x22, 0xBC, 0x18, 0x04,  // ...h"...
+                /* 02A0 */  0x7C, 0xBC, 0xF1, 0xB1, 0x06, 0xBC, 0x62, 0x5E,  // |.....b^
+                /* 02A8 */  0x28, 0xB2, 0x70, 0xAC, 0x01, 0x34, 0xFE, 0xFF,  // (.p..4..
+                /* 02B0 */  0x8F, 0x35, 0xC0, 0x0D, 0xEB, 0x01, 0x05, 0x7C,  // .5.....|
+                /* 02B8 */  0x47, 0x06, 0x76, 0x43, 0x81, 0x77, 0x42, 0x01,  // G.vC.wB.
+                /* 02C0 */  0xFC, 0x24, 0x7E, 0x01, 0xE8, 0xC8, 0xE1, 0xB4,  // .$~.....
+                /* 02C8 */  0x20, 0xB2, 0xF1, 0x06, 0xF0, 0x29, 0x80, 0xAA,  //  ....)..
+                /* 02D0 */  0x01, 0xD2, 0x34, 0x61, 0x13, 0x4C, 0x4F, 0x2E,  // ..4a.LO.
+                /* 02D8 */  0x78, 0x1F, 0x09, 0x9C, 0x9B, 0x44, 0xC9, 0x87,  // x....D..
+                /* 02E0 */  0x45, 0xE1, 0x9C, 0xF5, 0x20, 0x42, 0x41, 0x0C,  // E... BA.
+                /* 02E8 */  0xE8, 0x20, 0xC7, 0x09, 0xF4, 0x19, 0xC5, 0x07,  // . ......
+                /* 02F0 */  0x91, 0x13, 0x7D, 0x22, 0xF4, 0xA0, 0x3C, 0x8C,  // ..}"..<.
+                /* 02F8 */  0x77, 0x14, 0x76, 0x02, 0xF1, 0x61, 0xC2, 0x63,  // w.v..a.c
+                /* 0300 */  0xF7, 0x31, 0x81, 0xFF, 0x63, 0x3C, 0x1B, 0xA3,  // .1..c<..
+                /* 0308 */  0x5B, 0x0D, 0x86, 0xFE, 0xFF, 0xE7, 0x14, 0x0E,  // [.......
+                /* 0310 */  0xE6, 0x83, 0x08, 0x27, 0xA8, 0xEB, 0x26, 0x01,  // ...'..&.
+                /* 0318 */  0x32, 0x7D, 0x47, 0x05, 0x50, 0x00, 0xF9, 0x5E,  // 2}G.P..^
+                /* 0320 */  0xE0, 0x73, 0xC0, 0xB3, 0x01, 0x1B, 0xC3, 0xA3,  // .s......
+                /* 0328 */  0x80, 0xD1, 0x8C, 0xCE, 0xC3, 0x4F, 0x16, 0x15,  // .....O..
+                /* 0330 */  0x77, 0xB2, 0x14, 0xC4, 0x93, 0x75, 0x94, 0xC9,  // w....u..
+                /* 0338 */  0xA2, 0x67, 0xE2, 0x7B, 0x85, 0x67, 0xF4, 0xA6,  // .g.{.g..
+                /* 0340 */  0xE5, 0x39, 0x7A, 0xC2, 0xBE, 0x87, 0xC0, 0x3A,  // .9z....:
+                /* 0348 */  0x0C, 0x84, 0x7C, 0x30, 0xF0, 0x34, 0x0C, 0xE7,  // ..|0.4..
+                /* 0350 */  0xC9, 0x72, 0x38, 0x4F, 0x96, 0x8F, 0xC5, 0xD7,  // .r8O....
+                /* 0358 */  0x10, 0xF0, 0x09, 0x9C, 0x2D, 0xC8, 0xE1, 0x31,  // ....-..1
+                /* 0360 */  0xB1, 0x46, 0x45, 0xAF, 0x42, 0x1E, 0x1E, 0xBF,  // .FE.B...
+                /* 0368 */  0x1C, 0x78, 0x3E, 0xCF, 0x08, 0x47, 0xF9, 0x24,  // .x>..G.$
+                /* 0370 */  0x81, 0xC3, 0x78, 0x26, 0xF1, 0x10, 0x7D, 0x2B,  // ..x&..}+
+                /* 0378 */  0x82, 0x35, 0x91, 0x93, 0xF6, 0x6D, 0xE1, 0x64,  // .5...m.d
+                /* 0380 */  0x83, 0xBE, 0x9E, 0x61, 0x6E, 0x45, 0xB0, 0xFF,  // ...anE..
+                /* 0388 */  0xFF, 0xB7, 0x22, 0x38, 0x17, 0x34, 0x98, 0x99,  // .."8.4..
+                /* 0390 */  0xEE, 0x55, 0xA8, 0x58, 0xF7, 0x2A, 0x40, 0xEC,  // .U.X.*@.
+                /* 0398 */  0xB0, 0x5E, 0x7B, 0x7C, 0xB0, 0x82, 0x7B, 0xAF,  // .^{|..{.
+                /* 03A0 */  0x82, 0x7B, 0xA9, 0x7A, 0x56, 0x38, 0xC6, 0xF0,  // .{.zV8..
+                /* 03A8 */  0x0F, 0x53, 0x31, 0x4E, 0xE9, 0xB5, 0xD3, 0x40,  // .S1N...@
+                /* 03B0 */  0x61, 0xA2, 0xC4, 0x7B, 0xAF, 0xF2, 0x18, 0xDF,  // a..{....
+                /* 03B8 */  0xAB, 0xD8, 0x15, 0x2A, 0x4C, 0xAC, 0x97, 0x2B,  // ...*L..+
+                /* 03C0 */  0xA3, 0xBE, 0x4E, 0x84, 0x0B, 0x14, 0x24, 0xD2,  // ..N...$.
+                /* 03C8 */  0xAB, 0x55, 0x94, 0xC8, 0xF1, 0x0D, 0xF9, 0x5E,  // .U.....^
+                /* 03D0 */  0x05, 0x5E, 0x39, 0xF7, 0x2A, 0x90, 0xFD, 0xFF,  // .^9.*...
+                /* 03D8 */  0xEF, 0x55, 0x80, 0x79, 0xB4, 0xF7, 0x2A, 0x30,  // .U.y..*0
+                /* 03E0 */  0x5E, 0x1B, 0xD8, 0x0D, 0x09, 0x16, 0xD0, 0x8B,  // ^.......
+                /* 03E8 */  0x15, 0x60, 0x28, 0xF3, 0xC5, 0x8A, 0xE6, 0xBD,  // .`(.....
+                /* 03F0 */  0x58, 0x21, 0xFE, 0xFF, 0xE7, 0x12, 0xA6, 0xE7,  // X!......
+                /* 03F8 */  0x62, 0x45, 0xE6, 0x09, 0xFF, 0x66, 0x05, 0x70,  // bE...f.p
+                /* 0400 */  0xFA, 0xFF, 0x7F, 0xB3, 0x02, 0x8C, 0xDD, 0x8B,  // ........
+                /* 0408 */  0x30, 0x47, 0x2B, 0x78, 0x29, 0x6F, 0x56, 0x34,  // 0G+x)oV4
+                /* 0410 */  0xCE, 0x32, 0x14, 0x70, 0x41, 0x14, 0xC6, 0x37,  // .2.pA..7
+                /* 0418 */  0x2B, 0xC0, 0xD1, 0x75, 0x05, 0x37, 0x64, 0xB8,  // +..u.7d.
+                /* 0420 */  0x60, 0x51, 0x82, 0xF9, 0x10, 0xE2, 0xE9, 0x1C,  // `Q......
+                /* 0428 */  0xF1, 0x43, 0xC2, 0x4B, 0xC0, 0x63, 0x8E, 0x07,  // .C.K.c..
+                /* 0430 */  0xFC, 0x40, 0xE0, 0xCB, 0x15, 0x98, 0xFE, 0xFF,  // .@......
+                /* 0438 */  0x04, 0x3E, 0xF9, 0x9E, 0xE5, 0xDB, 0xD4, 0x7B,  // .>.....{
+                /* 0440 */  0x2F, 0x3F, 0x60, 0xBD, 0x57, 0xF9, 0xF0, 0x1B,  // /?`.W...
+                /* 0448 */  0xEB, 0x9D, 0xE1, 0xE5, 0xCA, 0x23, 0x89, 0x72,  // .....#.r
+                /* 0450 */  0x12, 0xA1, 0x7C, 0xB7, 0x7A, 0xAF, 0x32, 0x4A,  // ..|.z.2J
+                /* 0458 */  0xC4, 0x17, 0x62, 0x9F, 0x82, 0x0D, 0x6D, 0x94,  // ..b...m.
+                /* 0460 */  0xA7, 0x8A, 0xE8, 0xC6, 0x7B, 0xB9, 0x02, 0xAF,  // ....{...
+                /* 0468 */  0xA4, 0xCB, 0x15, 0x40, 0x93, 0xE1, 0xBF, 0x5C,  // ...@...\
+                /* 0470 */  0x81, 0xEF, 0xE6, 0x80, 0xBD, 0x26, 0xC1, 0xF9,  // .....&..
+                /* 0478 */  0xFF, 0x5F, 0x93, 0xF8, 0xF5, 0x0A, 0xF0, 0x93,  // ._......
+                /* 0480 */  0xFD, 0x7A, 0x45, 0x73, 0x5F, 0xAF, 0x50, 0xA2,  // .zEs_.P.
+                /* 0488 */  0x20, 0xA4, 0x08, 0x48, 0x33, 0x05, 0xCF, 0xFD,  //  ..H3...
+                /* 0490 */  0x0A, 0xE0, 0xC4, 0xFF, 0xFF, 0x7E, 0x05, 0x58,  // .....~.X
+                /* 0498 */  0x0E, 0x77, 0xBF, 0x02, 0x7A, 0xB7, 0x23, 0xF0,  // .w..z.#.
+                /* 04A0 */  0xA2, 0xBC, 0x1D, 0x61, 0xAF, 0x58, 0xF8, 0x8C,  // ...a.X..
+                /* 04A8 */  0x57, 0x2C, 0x1A, 0x66, 0x25, 0x8A, 0xB7, 0x26,  // W,.f%..&
+                /* 04B0 */  0x0A, 0xE3, 0x2B, 0x16, 0x30, 0xF9, 0xFF, 0x5F,  // ..+.0.._
+                /* 04B8 */  0xB1, 0x80, 0xD9, 0x41, 0x14, 0x37, 0x6A, 0xB8,  // ...A.7j.
+                /* 04C0 */  0x17, 0x27, 0xDF, 0x7A, 0x3C, 0xDF, 0x88, 0xBE,  // .'.z<...
+                /* 04C8 */  0xC3, 0x60, 0x4E, 0x58, 0x30, 0x6E, 0x58, 0xF0,  // .`NX0nX.
+                /* 04D0 */  0x87, 0xF4, 0x30, 0xEC, 0x93, 0xC4, 0x3B, 0x96,  // ..0...;.
+                /* 04D8 */  0x8F, 0x56, 0x06, 0x79, 0x03, 0x7E, 0xB2, 0x7A,  // .V.y.~.z
+                /* 04E0 */  0xB0, 0x8A, 0x62, 0x84, 0x80, 0xC7, 0xF3, 0x2E,  // ..b.....
+                /* 04E8 */  0xEC, 0xA3, 0xD5, 0x9B, 0x96, 0x51, 0x62, 0xC7,  // .....Qb.
+                /* 04F0 */  0xF2, 0x85, 0xEA, 0x59, 0xCB, 0xD7, 0x2C, 0x43,  // ...Y..,C
+                /* 04F8 */  0xC4, 0x7D, 0x20, 0xF6, 0x0D, 0x0B, 0xB0, 0xFD,  // .} .....
+                /* 0500 */  0xFF, 0xBF, 0x61, 0x01, 0x8E, 0x2E, 0x0E, 0xFC,  // ..a.....
+                /* 0508 */  0xE0, 0x80, 0xBD, 0x61, 0x01, 0x3E, 0x67, 0x0A,  // ...a.>g.
+                /* 0510 */  0x9E, 0x1B, 0x16, 0xB0, 0xF9, 0xFF, 0xDF, 0xB0,  // ........
+                /* 0518 */  0x00, 0xFE, 0xFF, 0xFF, 0x6F, 0x58, 0xC0, 0xE1,  // ....oX..
+                /* 0520 */  0x76, 0x85, 0xBD, 0x65, 0x61, 0x6F, 0x2F, 0x64,  // v..eao/d
+                /* 0528 */  0x15, 0x34, 0xD4, 0x4A, 0x14, 0xFC, 0x7B, 0x65,  // .4.J..{e
+                /* 0530 */  0x18, 0x7A, 0xC3, 0x02, 0x1C, 0x8D, 0xDB, 0xA3,  // .z......
+                /* 0538 */  0x06, 0xC7, 0xD9, 0xE0, 0x49, 0x02, 0x73, 0xAE,  // ....I.s.
+                /* 0540 */  0xC6, 0xCD, 0xE6, 0xE0, 0x02, 0x47, 0xE8, 0x1D,  // .....G..
+                /* 0548 */  0x54, 0x73, 0x67, 0x97, 0x14, 0x18, 0xB7, 0x2C,  // Tsg....,
+                /* 0550 */  0xB8, 0x97, 0xAA, 0x87, 0x86, 0x28, 0x07, 0xF1,  // .....(..
+                /* 0558 */  0x2A, 0xFC, 0x60, 0xF5, 0x28, 0x75, 0x64, 0x8F,  // *.`.(ud.
+                /* 0560 */  0x57, 0x4F, 0xC3, 0x3E, 0x66, 0xF9, 0x96, 0x65,  // WO.>f..e
+                /* 0568 */  0xA8, 0x08, 0x6F, 0x59, 0xEC, 0x0C, 0x11, 0x2F,  // ..oY.../
+                /* 0570 */  0x56, 0x94, 0x10, 0xEF, 0x15, 0xA1, 0x7D, 0xE7,  // V.....}.
+                /* 0578 */  0x32, 0xF8, 0xA3, 0xB1, 0x51, 0x83, 0xBE, 0x1C,  // 2...Q...
+                /* 0580 */  0xBF, 0x65, 0xC1, 0xFB, 0xFF, 0xDF, 0xB2, 0xE0,  // .e......
+                /* 0588 */  0x8B, 0xFC, 0xAB, 0xE8, 0x44, 0xE0, 0x5B, 0x16,  // ....D.[.
+                /* 0590 */  0xC0, 0x8F, 0x60, 0x10, 0x72, 0x32, 0x70, 0xF4,  // ..`.r2p.
+                /* 0598 */  0x79, 0x01, 0x3F, 0x80, 0x87, 0x11, 0x0F, 0x89,  // y.?.....
+                /* 05A0 */  0x05, 0x18, 0x38, 0xBD, 0x2F, 0xF9, 0x4C, 0xC1,  // ..8./.L.
+                /* 05A8 */  0x0F, 0x18, 0x3E, 0x53, 0xB0, 0xEB, 0x41, 0xF4,  // ..>S..A.
+                /* 05B0 */  0xC7, 0x00, 0x9F, 0x4B, 0x30, 0x83, 0x03, 0xFF,  // ...K0...
+                /* 05B8 */  0xB5, 0xE2, 0xD0, 0x3D, 0x8A, 0xD7, 0x07, 0x13,  // ...=....
+                /* 05C0 */  0x78, 0x70, 0xFC, 0xFF, 0x3F, 0x38, 0xB8, 0x77,  // xp..?8.w
+                /* 05C8 */  0x86, 0x23, 0xF2, 0x1D, 0xC6, 0x83, 0x03, 0xDB,  // .#......
+                /* 05D0 */  0x41, 0x00, 0x38, 0x0C, 0x0E, 0x1F, 0x6A, 0x70,  // A.8...jp
+                /* 05D8 */  0xE8, 0xF1, 0x18, 0x38, 0xA4, 0xCF, 0x63, 0xEC,  // ...8..c.
+                /* 05E0 */  0xC2, 0xF0, 0x90, 0xE3, 0xA1, 0x81, 0x0D, 0xD0,  // ........
+                /* 05E8 */  0x43, 0x03, 0x96, 0x93, 0x78, 0x0A, 0x39, 0x34,  // C...x.94
+                /* 05F0 */  0x30, 0x4B, 0x18, 0x1A, 0x50, 0x8A, 0x37, 0x34,  // 0K..P.74
+                /* 05F8 */  0xFA, 0xFF, 0x1F, 0x1A, 0x1F, 0x92, 0x0F, 0x0B,  // ........
+                /* 0600 */  0x31, 0x9F, 0x72, 0x22, 0xBC, 0x2F, 0xF8, 0x04,  // 1.r"./..
+                /* 0608 */  0xC5, 0xD0, 0x5F, 0x53, 0x7C, 0xBB, 0xF0, 0x4D,  // .._S|..M
+                /* 0610 */  0x10, 0x37, 0x3E, 0x70, 0x5D, 0x3A, 0x3D, 0x3E,  // .7>p]:=>
+                /* 0618 */  0xE0, 0x73, 0xE4, 0xF2, 0xF8, 0x70, 0x47, 0x27,  // .s...pG'
+                /* 0620 */  0x8F, 0x0F, 0x86, 0xCB, 0xAB, 0x0C, 0x39, 0x9A,  // ......9.
+                /* 0628 */  0xF8, 0x68, 0xC5, 0x86, 0x07, 0xB6, 0x9B, 0x9E,  // .h......
+                /* 0630 */  0x87, 0x07, 0x7C, 0xAE, 0x9B, 0x60, 0xBC, 0x42,  // ..|..`.B
+                /* 0638 */  0xF2, 0x6B, 0x09, 0x8C, 0x13, 0x14, 0xFE, 0xBA,  // .k......
+                /* 0640 */  0x09, 0xDE, 0xFF, 0xFF, 0x75, 0x13, 0x78, 0x8E,  // ....u.x.
+                /* 0648 */  0x82, 0x6B, 0xBD, 0x64, 0xD3, 0x20, 0xAF, 0x1C,  // .k.d. ..
+                /* 0650 */  0xC5, 0x7A, 0x11, 0x50, 0x18, 0x9F, 0xD9, 0x00,  // .z.P....
+                /* 0658 */  0x47, 0x63, 0x7D, 0x66, 0x03, 0xCB, 0xBD, 0x80,  // Gc}f....
+                /* 0660 */  0xDD, 0xD8, 0xE0, 0x9E, 0xD6, 0x60, 0xDF, 0x1D,  // .....`..
+                /* 0668 */  0x1E, 0xCE, 0x1E, 0xD3, 0x1E, 0xD5, 0x1E, 0xD0,  // ........
+                /* 0670 */  0x7C, 0xC4, 0x8E, 0xF1, 0x96, 0x16, 0x24, 0x4E,  // |.....$N
+                /* 0678 */  0x84, 0xD7, 0x81, 0xA7, 0x35, 0x5F, 0x32, 0xE2,  // ....5_2.
+                /* 0680 */  0x05, 0x7A, 0x5A, 0x33, 0x46, 0x9C, 0x97, 0x36,  // .zZ3F..6
+                /* 0688 */  0x23, 0xBE, 0x52, 0x84, 0x78, 0x58, 0xF3, 0xC9,  // #.R.xX..
+                /* 0690 */  0xCD, 0x78, 0x0F, 0x13, 0xE1, 0xC2, 0xBC, 0xB0,  // .x......
+                /* 0698 */  0x3D, 0xAD, 0x81, 0xE3, 0xFF, 0x7F, 0x5A, 0x83,  // =.....Z.
+                /* 06A0 */  0x23, 0xE7, 0x8A, 0x0D, 0xD0, 0xE4, 0xA2, 0x8F,  // #.......
+                /* 06A8 */  0x3B, 0xA4, 0x80, 0xE5, 0xDA, 0xC0, 0x6E, 0x29,  // ;.....n)
+                /* 06B0 */  0xF0, 0x2E, 0xD8, 0xC0, 0xF9, 0xFF, 0x7F, 0x44,  // .......D
+                /* 06B8 */  0x01, 0x5F, 0x96, 0x0B, 0x36, 0xCD, 0x71, 0xC1,  // ._..6.q.
+                /* 06C0 */  0x46, 0x71, 0x58, 0x0D, 0x90, 0xE6, 0x09, 0xFF,  // FqX.....
+                /* 06C8 */  0x7A, 0x0D, 0xFE, 0x49, 0xF8, 0x7A, 0x0D, 0xD8,  // z..I.z..
+                /* 06D0 */  0xBE, 0xC5, 0xE2, 0xAE, 0xD7, 0xC0, 0xEA, 0xFF,  // ........
+                /* 06D8 */  0x7F, 0xBD, 0x06, 0x96, 0x82, 0x47, 0x4A, 0xEF,  // .....GJ.
+                /* 06E0 */  0xD4, 0xE0, 0xBA, 0x69, 0xE3, 0x41, 0xDF, 0xB4,  // ...i.A..
+                /* 06E8 */  0x61, 0x0A, 0xBE, 0x45, 0xD1, 0x28, 0xE4, 0x8A,  // a..E.(..
+                /* 06F0 */  0xB6, 0x10, 0x0A, 0xE3, 0x5B, 0x14, 0xE0, 0x08,  // ....[...
+                /* 06F8 */  0xFB, 0x2D, 0x0A, 0x2C, 0x17, 0xA7, 0xB7, 0x28,  // .-.,...(
+                /* 0700 */  0xFC, 0x0C, 0x3C, 0x68, 0xDF, 0x75, 0x18, 0xA6,  // ..<h.u..
+                /* 0708 */  0xEF, 0xD0, 0xF0, 0x4F, 0x4D, 0xCF, 0x4D, 0x0F,  // ...OM.M.
+                /* 0710 */  0x4E, 0x0F, 0xCD, 0x3E, 0x48, 0xF9, 0x70, 0xF0,  // N..>H.p.
+                /* 0718 */  0xFC, 0xF4, 0xFF, 0x8F, 0xF1, 0x5E, 0xE7, 0x9B,  // .....^..
+                /* 0720 */  0xD4, 0x6B, 0x94, 0x2F, 0x30, 0xC7, 0x10, 0x31,  // .k./0..1
+                /* 0728 */  0xCA, 0xCB, 0xB4, 0x21, 0xE2, 0xF9, 0xD4, 0xE4,  // ...!....
+                /* 0730 */  0xB3, 0x42, 0xDC, 0x10, 0x0F, 0xD1, 0x46, 0x88,  // .B....F.
+                /* 0738 */  0xFA, 0x3C, 0xED, 0x09, 0xBD, 0x46, 0x81, 0x57,  // .<...F.W
+                /* 0740 */  0xD0, 0x35, 0x0A, 0xA0, 0xC9, 0xFD, 0x08, 0x77,  // .5.....w
+                /* 0748 */  0x8D, 0x02, 0xCB, 0xBD, 0x81, 0x9D, 0x87, 0xF8,  // ........
+                /* 0750 */  0x95, 0xC8, 0xD7, 0x06, 0x18, 0xF7, 0x28, 0x38,  // ......(8
+                /* 0758 */  0xFF, 0xFF, 0x7B, 0x14, 0x60, 0x23, 0xCC, 0x3D,  // ..{.`#.=
+                /* 0760 */  0x8A, 0x06, 0xB9, 0x47, 0xA1, 0x4E, 0x26, 0xBE,  // ...G.N&.
+                /* 0768 */  0xD4, 0x79, 0xA2, 0xE0, 0x08, 0x7F, 0x91, 0x42,  // .y.....B
+                /* 0770 */  0xC5, 0x26, 0x51, 0xE8, 0xC3, 0x10, 0x2A, 0xE6,  // .&Q...*.
+                /* 0778 */  0x61, 0x84, 0x82, 0x18, 0xD0, 0x19, 0x4E, 0x14,  // a.....N.
+                /* 0780 */  0x68, 0x15, 0x27, 0x0A, 0x72, 0x8B, 0xF1, 0xA4,  // h.'.r...
+                /* 0788 */  0x1E, 0xA3, 0x00, 0x5F, 0xCB, 0xF4, 0x50, 0x79,  // ..._..Py
+                /* 0790 */  0xE4, 0xA1, 0x52, 0x10, 0x0F, 0xD5, 0x71, 0x86,  // ..R...q.
+                /* 0798 */  0x8A, 0x9E, 0xA4, 0xE7, 0x8F, 0xF9, 0xFF, 0x1F,  // ........
+                /* 07A0 */  0x1C, 0xB0, 0x07, 0x29, 0x80, 0x17, 0x0A, 0x6D,  // ...)...m
+                /* 07A8 */  0xFA, 0xD4, 0x68, 0xD4, 0xAA, 0x41, 0x99, 0x1A,  // ..h..A..
+                /* 07B0 */  0x65, 0x1A, 0xD4, 0xEA, 0x53, 0xA9, 0x31, 0x63,  // e...S.1c
+                /* 07B8 */  0xE7, 0x50, 0x4B, 0x3B, 0x4B, 0x50, 0x31, 0x8B,  // .PK;KP1.
+                /* 07C0 */  0xD1, 0x68, 0x1C, 0x05, 0x84, 0xCA, 0xFE, 0x9B,  // .h......
+                /* 07C8 */  0x0B, 0xC4, 0x21, 0x9F, 0x3A, 0x02, 0x74, 0xB0,  // ..!.:.t.
+                /* 07D0 */  0x17, 0x95, 0x80, 0x2C, 0x6B, 0x6D, 0x02, 0x71,  // ...,km.q
+                /* 07D8 */  0x7C, 0x13, 0x10, 0x8D, 0x80, 0x48, 0xCB, 0x63,  // |....H.c
+                /* 07E0 */  0x42, 0x40, 0xCE, 0x0D, 0x22, 0x20, 0xAB, 0x58,  // B@.." .X
+                /* 07E8 */  0x93, 0x80, 0xAC, 0xF9, 0x01, 0x23, 0x70, 0xEB,  // .....#p.
+                /* 07F0 */  0xD4, 0x01, 0xC4, 0x52, 0x82, 0xD0, 0x44, 0x0B,  // ...R..D.
+                /* 07F8 */  0x17, 0xA8, 0xE3, 0x81, 0x68, 0x30, 0x84, 0x46,  // ....h0.F
+                /* 0800 */  0x40, 0x0E, 0x46, 0x21, 0x20, 0xCB, 0xF8, 0x74,  // @.F! ..t
+                /* 0808 */  0x0B, 0xDC, 0x02, 0xAC, 0x00, 0x31, 0xF9, 0x20,  // .....1. 
+                /* 0810 */  0x54, 0xB0, 0x17, 0x50, 0xA6, 0x1E, 0x44, 0x40,  // T..P..D@
+                /* 0818 */  0x56, 0xBA, 0x56, 0x01, 0x59, 0x37, 0x88, 0x80,  // V.V.Y7..
+                /* 0820 */  0xFE, 0xFF, 0x2F, 0x83, 0x32, 0x03, 0xCE, 0x32,  // ../.2..2
+                /* 0828 */  0xBA, 0x01, 0x62, 0x0A, 0x1F, 0x0A, 0x02, 0xB1,  // ..b.....
+                /* 0830 */  0x26, 0x3D, 0xA0, 0x4C, 0x20, 0x88, 0xAE, 0x1C,  // &=.L ...
+                /* 0838 */  0xC4, 0x0F, 0x10, 0x93, 0x06, 0x22, 0x20, 0xC7,  // ....." .
+                /* 0840 */  0x39, 0x98, 0x08, 0xDC, 0x71, 0x14, 0x01, 0x52,  // 9...q..R
+                /* 0848 */  0x47, 0xC3, 0xA5, 0x20, 0x54, 0xFC, 0xF3, 0x44,  // G.. T..D
+                /* 0850 */  0x20, 0x16, 0x64, 0x09, 0x8C, 0x82, 0xD0, 0x08,  //  .d.....
+                /* 0858 */  0x9A, 0x40, 0x98, 0x3C, 0x4F, 0x20, 0x2C, 0xD4,  // .@.<O ,.
+                /* 0860 */  0x9F, 0x5C, 0xA7, 0x15, 0xA2, 0x6A, 0x88, 0xD4,  // .\...j..
+                /* 0868 */  0x15, 0x08, 0x0B, 0xFC, 0x30, 0xD0, 0x60, 0x9C,  // ....0.`.
+                /* 0870 */  0x1E, 0x44, 0x40, 0x4E, 0xFA, 0xA7, 0x0A, 0x44,  // .D@N...D
+                /* 0878 */  0x72, 0x83, 0x08, 0xC8, 0xF9, 0x9F, 0x22, 0x02,  // r.....".
+                /* 0880 */  0x77, 0xEA, 0xD7, 0x84, 0x86, 0x4F, 0xBE, 0x58,  // w....O.X
+                /* 0888 */  0x41, 0x88, 0xB8, 0x87, 0x55, 0x50, 0xA2, 0x14,  // A...UP..
+                /* 0890 */  0x44, 0x40, 0x56, 0xF6, 0xB4, 0x12, 0x90, 0x75,  // D@V....u
+                /* 0898 */  0x82, 0x08, 0xC8, 0xFF, 0x7F                     // .....
             })
         }
 
@@ -31215,23 +30908,23 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (_UID, 0x02)  // _UID: Unique ID
             Name (_WDG, Buffer (0x64)
             {
-                /* 0000 */  0xF1, 0x24, 0xB4, 0xFC, 0x5A, 0x07, 0x0E, 0x4E,  /* .$..Z..N */
-                /* 0008 */  0xBF, 0xC4, 0x62, 0xF3, 0xE7, 0x17, 0x71, 0xFA,  /* ..b...q. */
-                /* 0010 */  0x41, 0x37, 0x01, 0x01, 0xE3, 0x5E, 0xBE, 0xE2,  /* A7...^.. */
-                /* 0018 */  0xDA, 0x42, 0xDB, 0x49, 0x83, 0x78, 0x1F, 0x52,  /* .B.I.x.R */
-                /* 0020 */  0x47, 0x38, 0x82, 0x02, 0x41, 0x38, 0x01, 0x02,  /* G8..A8.. */
-                /* 0028 */  0x9A, 0x01, 0x30, 0x74, 0xE9, 0xDC, 0x48, 0x45,  /* ..0t..HE */
-                /* 0030 */  0xBA, 0xB0, 0x9F, 0xDE, 0x09, 0x35, 0xCA, 0xFF,  /* .....5.. */
-                /* 0038 */  0x41, 0x39, 0x0A, 0x05, 0x03, 0x70, 0xF4, 0x7F,  /* A9...p.. */
-                /* 0040 */  0x6C, 0x3B, 0x5E, 0x4E, 0xA2, 0x27, 0xE9, 0x79,  /* l;^N.'.y */
-                /* 0048 */  0x82, 0x4A, 0x85, 0xD1, 0x41, 0x41, 0x01, 0x06,  /* .J..AA.. */
-                /* 0050 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  /* !...f... */
-                /* 0058 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  /* ......). */
-                /* 0060 */  0x42, 0x42, 0x01, 0x00                           /* BB.. */
+                /* 0000 */  0xF1, 0x24, 0xB4, 0xFC, 0x5A, 0x07, 0x0E, 0x4E,  // .$..Z..N
+                /* 0008 */  0xBF, 0xC4, 0x62, 0xF3, 0xE7, 0x17, 0x71, 0xFA,  // ..b...q.
+                /* 0010 */  0x41, 0x37, 0x01, 0x01, 0xE3, 0x5E, 0xBE, 0xE2,  // A7...^..
+                /* 0018 */  0xDA, 0x42, 0xDB, 0x49, 0x83, 0x78, 0x1F, 0x52,  // .B.I.x.R
+                /* 0020 */  0x47, 0x38, 0x82, 0x02, 0x41, 0x38, 0x01, 0x02,  // G8..A8..
+                /* 0028 */  0x9A, 0x01, 0x30, 0x74, 0xE9, 0xDC, 0x48, 0x45,  // ..0t..HE
+                /* 0030 */  0xBA, 0xB0, 0x9F, 0xDE, 0x09, 0x35, 0xCA, 0xFF,  // .....5..
+                /* 0038 */  0x41, 0x39, 0x0A, 0x05, 0x03, 0x70, 0xF4, 0x7F,  // A9...p..
+                /* 0040 */  0x6C, 0x3B, 0x5E, 0x4E, 0xA2, 0x27, 0xE9, 0x79,  // l;^N.'.y
+                /* 0048 */  0x82, 0x4A, 0x85, 0xD1, 0x41, 0x41, 0x01, 0x06,  // .J..AA..
+                /* 0050 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  // !...f...
+                /* 0058 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  // ......).
+                /* 0060 */  0x42, 0x42, 0x01, 0x00                           // BB..
             })
             Name (PREL, Buffer (0x08)
             {
-                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   /* ........ */
+                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00   // ........
             })
             Method (WQA7, 1, NotSerialized)
             {
@@ -31397,173 +31090,173 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Name (WQBB, Buffer (0x0538)
             {
-                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  /* FOMB.... */
-                /* 0008 */  0x28, 0x05, 0x00, 0x00, 0xAE, 0x18, 0x00, 0x00,  /* (....... */
-                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  /* DS...}.T */
-                /* 0018 */  0x98, 0xDE, 0x8B, 0x00, 0x01, 0x06, 0x18, 0x42,  /* .......B */
-                /* 0020 */  0x10, 0x0D, 0x10, 0x8A, 0x0D, 0x21, 0x02, 0x0B,  /* .....!.. */
-                /* 0028 */  0x83, 0x50, 0x50, 0x18, 0x14, 0xA0, 0x45, 0x41,  /* .PP...EA */
-                /* 0030 */  0xC8, 0x05, 0x14, 0x95, 0x02, 0x21, 0xC3, 0x02,  /* .....!.. */
-                /* 0038 */  0x14, 0x0B, 0x70, 0x2E, 0x40, 0xBA, 0x00, 0xE5,  /* ..p.@... */
-                /* 0040 */  0x28, 0x72, 0x0C, 0x22, 0x02, 0xF7, 0xEF, 0x0F,  /* (r.".... */
-                /* 0048 */  0x31, 0x10, 0x88, 0x14, 0x40, 0x48, 0x28, 0x84,  /* 1...@H(. */
-                /* 0050 */  0x44, 0x00, 0x53, 0x21, 0x70, 0x84, 0xA0, 0x5F,  /* D.S!p.._ */
-                /* 0058 */  0x01, 0x08, 0x1D, 0x0A, 0x90, 0x29, 0xC0, 0xA0,  /* .....).. */
-                /* 0060 */  0x00, 0xA7, 0x08, 0x22, 0x88, 0xD2, 0xB2, 0x00,  /* ...".... */
-                /* 0068 */  0xDD, 0x02, 0x7C, 0x0B, 0xD0, 0x0E, 0x21, 0xB4,  /* ..|...!. */
-                /* 0070 */  0xC8, 0x95, 0x0A, 0xB0, 0x08, 0x25, 0x9F, 0x80,  /* .....%.. */
-                /* 0078 */  0x92, 0x88, 0x22, 0xD9, 0x78, 0xB2, 0x8D, 0x48,  /* ..".x..H */
-                /* 0080 */  0xE6, 0x61, 0x91, 0x83, 0x40, 0x89, 0x19, 0x04,  /* .a..@... */
-                /* 0088 */  0x4A, 0x27, 0xAE, 0x6C, 0xE2, 0x6A, 0x10, 0x07,  /* J'.l.j.. */
-                /* 0090 */  0x10, 0xE5, 0x3C, 0xA2, 0x24, 0x38, 0xAA, 0x83,  /* ..<.$8.. */
-                /* 0098 */  0x88, 0x10, 0xBB, 0x5C, 0x01, 0x92, 0x07, 0x20,  /* ...\...  */
-                /* 00A0 */  0xCD, 0x13, 0x93, 0xF5, 0x39, 0x68, 0x64, 0x6C,  /* ....9hdl */
-                /* 00A8 */  0x04, 0x3C, 0x98, 0x04, 0x10, 0x16, 0x65, 0x9D,  /* .<....e. */
-                /* 00B0 */  0x8A, 0x02, 0x83, 0xF2, 0x00, 0x22, 0x39, 0x63,  /* ....."9c */
-                /* 00B8 */  0x45, 0x01, 0xDB, 0xEB, 0x44, 0x64, 0x72, 0xA0,  /* E...Ddr. */
-                /* 00C0 */  0x54, 0x12, 0x1C, 0x6A, 0x98, 0x9E, 0x5A, 0xF3,  /* T..j..Z. */
-                /* 00C8 */  0x13, 0xD3, 0x44, 0x4E, 0xAD, 0xE9, 0x21, 0x0B,  /* ..DN..!. */
-                /* 00D0 */  0x92, 0x49, 0x1B, 0x0A, 0x6A, 0xEC, 0x9E, 0xD6,  /* .I..j... */
-                /* 00D8 */  0x49, 0x79, 0xA6, 0x11, 0x0F, 0xCA, 0x30, 0x09,  /* Iy....0. */
-                /* 00E0 */  0x3C, 0x0A, 0x86, 0xC6, 0x09, 0xCA, 0x82, 0x90,  /* <....... */
-                /* 00E8 */  0x83, 0x81, 0xA2, 0x00, 0x4F, 0xC2, 0x73, 0x2C,  /* ....O.s, */
-                /* 00F0 */  0x5E, 0x80, 0xF0, 0x11, 0x93, 0xB3, 0x40, 0x8C,  /* ^.....@. */
-                /* 00F8 */  0x04, 0x3E, 0x13, 0x78, 0xE4, 0xC7, 0x8C, 0x1D,  /* .>.x.... */
-                /* 0100 */  0x51, 0xB8, 0x80, 0xE7, 0x73, 0x0C, 0x91, 0xE3,  /* Q...s... */
-                /* 0108 */  0x1E, 0x6A, 0x8C, 0xA3, 0x88, 0x7C, 0x38, 0x0C,  /* .j...|8. */
-                /* 0110 */  0xED, 0x74, 0xE3, 0x1C, 0xD8, 0xE9, 0x14, 0x04,  /* .t...... */
-                /* 0118 */  0x2E, 0x90, 0x60, 0x3D, 0xCF, 0x59, 0x20, 0xFF,  /* ..`=.Y . */
-                /* 0120 */  0xFF, 0x18, 0x07, 0xC1, 0xF0, 0x8E, 0x01, 0x23,  /* .......# */
-                /* 0128 */  0x03, 0x42, 0x1E, 0x05, 0x58, 0x1D, 0x96, 0x26,  /* .B..X..& */
-                /* 0130 */  0x91, 0xC0, 0xEE, 0x05, 0x68, 0xBC, 0x04, 0x48,  /* ....h..H */
-                /* 0138 */  0xE1, 0x20, 0xA5, 0x0C, 0x42, 0x30, 0x8D, 0x09,  /* . ..B0.. */
-                /* 0140 */  0xB0, 0x75, 0x68, 0x90, 0x37, 0x01, 0xD6, 0xAE,  /* .uh.7... */
-                /* 0148 */  0x02, 0x42, 0x89, 0x74, 0x02, 0x71, 0x42, 0x44,  /* .B.t.qBD */
-                /* 0150 */  0x89, 0x18, 0xD4, 0x40, 0x51, 0x6A, 0x43, 0x15,  /* ...@QjC. */
-                /* 0158 */  0x4C, 0x67, 0xC3, 0x13, 0x66, 0xDC, 0x10, 0x31,  /* Lg..f..1 */
-                /* 0160 */  0x0C, 0x14, 0xB7, 0xFD, 0x41, 0x90, 0x61, 0xE3,  /* ....A.a. */
-                /* 0168 */  0xC6, 0xEF, 0x41, 0x9D, 0xD6, 0xD9, 0x1D, 0xD3,  /* ..A..... */
-                /* 0170 */  0xAB, 0x82, 0x09, 0x3C, 0xE9, 0x37, 0x84, 0xA7,  /* ...<.7.. */
-                /* 0178 */  0x83, 0xA3, 0x38, 0xDA, 0xA8, 0x31, 0x9A, 0x23,  /* ..8..1.# */
-                /* 0180 */  0x65, 0xAB, 0xD6, 0xB9, 0xC2, 0x91, 0xE0, 0x51,  /* e......Q */
-                /* 0188 */  0xE7, 0x05, 0x9F, 0x0C, 0x3C, 0xB4, 0xC3, 0xF6,  /* ....<... */
-                /* 0190 */  0x60, 0xCF, 0xD2, 0x43, 0x38, 0x82, 0x67, 0x86,  /* `..C8.g. */
-                /* 0198 */  0x47, 0x02, 0x8F, 0x81, 0xDD, 0x15, 0x7C, 0x08,  /* G.....|. */
-                /* 01A0 */  0xF0, 0x19, 0x01, 0xEF, 0x1A, 0x50, 0x97, 0x83,  /* .....P.. */
-                /* 01A8 */  0x47, 0x03, 0x36, 0xE9, 0x70, 0x98, 0xF1, 0x7A,  /* G.6.p..z */
-                /* 01B0 */  0xEE, 0x9E, 0xBA, 0xCF, 0x18, 0xFC, 0xBC, 0xE1,  /* ........ */
-                /* 01B8 */  0xC1, 0xE1, 0x46, 0x7A, 0x32, 0x47, 0x56, 0xAA,  /* ..Fz2GV. */
-                /* 01C0 */  0x00, 0xB3, 0xD7, 0x00, 0x1D, 0x25, 0x7C, 0xE0,  /* .....%|. */
-                /* 01C8 */  0x60, 0x77, 0x81, 0xA7, 0x00, 0x13, 0x58, 0xFE,  /* `w....X. */
-                /* 01D0 */  0x20, 0x50, 0x23, 0x33, 0xB4, 0xC7, 0xFB, 0xDE,  /*  P#3.... */
-                /* 01D8 */  0x61, 0xC8, 0x27, 0x85, 0xC3, 0x62, 0x62, 0x0F,  /* a.'..bb. */
-                /* 01E0 */  0x1E, 0x74, 0x3C, 0xE0, 0xBF, 0x8F, 0x3C, 0x69,  /* .t<...<i */
-                /* 01E8 */  0x78, 0xFA, 0x9E, 0xAF, 0x09, 0x06, 0x86, 0x90,  /* x....... */
-                /* 01F0 */  0x95, 0xF1, 0xA0, 0x06, 0x62, 0xE8, 0x57, 0x85,  /* ....b.W. */
-                /* 01F8 */  0xC3, 0x38, 0x0D, 0x9F, 0x40, 0x7C, 0x0E, 0x08,  /* .8..@|.. */
-                /* 0200 */  0x12, 0xE3, 0x98, 0x3C, 0x38, 0xFF, 0xFF, 0x09,  /* ...<8... */
-                /* 0208 */  0x1C, 0x6B, 0xE4, 0xF4, 0x9C, 0xE2, 0xF3, 0x04,  /* .k...... */
-                /* 0210 */  0x3F, 0x5C, 0xF8, 0x3C, 0xC1, 0x4E, 0x0C, 0xA7,  /* ?\.<.N.. */
-                /* 0218 */  0xF1, 0x1C, 0xE0, 0xE1, 0x9C, 0x95, 0x8F, 0x13,  /* ........ */
-                /* 0220 */  0xC0, 0x02, 0xE2, 0x75, 0x82, 0x0F, 0x14, 0x3E,  /* ...u...> */
-                /* 0228 */  0xEC, 0xA1, 0x79, 0x14, 0x2F, 0x11, 0x6F, 0x0F,  /* ..y./.o. */
-                /* 0230 */  0x26, 0x88, 0xF6, 0x10, 0x03, 0xC6, 0x19, 0xE1,  /* &....... */
-                /* 0238 */  0xCE, 0x1B, 0x70, 0x4E, 0x31, 0xC0, 0x03, 0xEA,  /* ..pN1... */
-                /* 0240 */  0x10, 0x30, 0x87, 0x09, 0x0F, 0x81, 0x0F, 0xE0,  /* .0...... */
-                /* 0248 */  0x19, 0xE4, 0x1C, 0x7D, 0xCC, 0x39, 0x33, 0xDC,  /* ...}.93. */
-                /* 0250 */  0x71, 0x07, 0x6C, 0xC3, 0xE0, 0x91, 0x2D, 0x80,  /* q.l...-. */
-                /* 0258 */  0xB0, 0x38, 0x4F, 0x02, 0x05, 0x7C, 0x1B, 0x50,  /* .8O..|.P */
-                /* 0260 */  0x18, 0x1F, 0x6E, 0xC0, 0xFB, 0xFF, 0x3F, 0xDC,  /* ..n...?. */
-                /* 0268 */  0x00, 0xD7, 0xF3, 0x01, 0xEE, 0xF8, 0x00, 0xF7,  /* ........ */
-                /* 0270 */  0x62, 0xC1, 0x0E, 0x0F, 0x8F, 0x37, 0xC0, 0x60,  /* b....7.` */
-                /* 0278 */  0x48, 0x8F, 0x34, 0x6F, 0x35, 0x31, 0x5E, 0x6D,  /* H.4o51^m */
-                /* 0280 */  0x42, 0x44, 0x78, 0xA8, 0x79, 0xB7, 0x31, 0x52,  /* BDx.y.1R */
-                /* 0288 */  0xBC, 0xC7, 0x1B, 0x76, 0x8D, 0x39, 0x8B, 0x07,  /* ...v.9.. */
-                /* 0290 */  0x90, 0x28, 0xC5, 0xA1, 0xE9, 0x62, 0x13, 0x23,  /* .(...b.# */
-                /* 0298 */  0xCA, 0x9B, 0x8D, 0x61, 0xDF, 0x74, 0x0C, 0x14,  /* ...a.t.. */
-                /* 02A0 */  0x2A, 0x52, 0x84, 0x30, 0x2F, 0x16, 0x21, 0x1E,  /* *R.0/.!. */
-                /* 02A8 */  0x6F, 0xC0, 0x2C, 0xE9, 0xA5, 0xA2, 0xCF, 0x81,  /* o.,..... */
-                /* 02B0 */  0x8F, 0x37, 0x80, 0x97, 0xFF, 0xFF, 0xF1, 0x06,  /* .7...... */
-                /* 02B8 */  0xF0, 0x30, 0x0C, 0x1F, 0x53, 0xC0, 0x76, 0x73,  /* .0..S.vs */
-                /* 02C0 */  0x60, 0xF7, 0x14, 0xF8, 0xE7, 0x14, 0xC0, 0x91,  /* `....... */
-                /* 02C8 */  0x90, 0x47, 0x80, 0x0E, 0x1E, 0x16, 0x01, 0x22,  /* .G....." */
-                /* 02D0 */  0x1B, 0xCF, 0x00, 0x9F, 0x89, 0xA8, 0x40, 0x2A,  /* ......@* */
-                /* 02D8 */  0xCD, 0x14, 0x2C, 0xE3, 0x14, 0xAC, 0x4E, 0x88,  /* ..,...N. */
-                /* 02E0 */  0x5C, 0x06, 0x85, 0x44, 0x40, 0x68, 0x64, 0x86,  /* \..D@hd. */
-                /* 02E8 */  0xF3, 0x21, 0xD1, 0x60, 0x06, 0xF1, 0xF9, 0xC0,  /* .!.`.... */
-                /* 02F0 */  0x67, 0x0A, 0x9F, 0x9C, 0xF8, 0xFF, 0xFF, 0xE4,  /* g....... */
-                /* 02F8 */  0x04, 0x9E, 0x83, 0xC9, 0x43, 0x05, 0x2C, 0x44,  /* ....C.,D */
-                /* 0300 */  0x9F, 0x16, 0x38, 0x9C, 0xCF, 0x2C, 0x1C, 0xCE,  /* ..8..,.. */
-                /* 0308 */  0x47, 0x12, 0x7E, 0x80, 0xE4, 0x47, 0x25, 0x70,  /* G.~..G%p */
-                /* 0310 */  0x09, 0x3C, 0x34, 0x80, 0x02, 0xC8, 0xF7, 0x03,  /* .<4..... */
-                /* 0318 */  0x9F, 0x03, 0x9E, 0x11, 0xD8, 0x1C, 0x1E, 0x09,  /* ........ */
-                /* 0320 */  0x7C, 0x20, 0x60, 0xF0, 0x3C, 0xDA, 0xA8, 0xE8,  /* | `.<... */
-                /* 0328 */  0xD1, 0xC6, 0xC3, 0xE3, 0x47, 0x06, 0xCF, 0xE7,  /* ....G... */
-                /* 0330 */  0x81, 0xE0, 0x28, 0x1F, 0x09, 0x70, 0x18, 0xEF,  /* ..(..p.. */
-                /* 0338 */  0x17, 0x1E, 0xA2, 0x4F, 0x39, 0xB0, 0x26, 0x72,  /* ...O9.&r */
-                /* 0340 */  0xD4, 0x16, 0x7D, 0x22, 0x10, 0xE8, 0x33, 0x17,  /* ..}"..3. */
-                /* 0348 */  0xE6, 0x94, 0x03, 0x9C, 0x82, 0x8F, 0x1E, 0x15,  /* ........ */
-                /* 0350 */  0xF5, 0x40, 0x0A, 0xDA, 0x93, 0x82, 0xCF, 0x0A,  /* .@...... */
-                /* 0358 */  0x3E, 0x7C, 0xC1, 0xFF, 0xFF, 0x1F, 0xBE, 0xE0,  /* >|...... */
-                /* 0360 */  0xCC, 0xEB, 0x65, 0xCD, 0x07, 0x8E, 0x38, 0x67,  /* ..e...8g */
-                /* 0368 */  0x71, 0xBA, 0xEF, 0x16, 0xF8, 0x13, 0x29, 0x30,  /* q.....)0 */
-                /* 0370 */  0x0B, 0x72, 0x22, 0x45, 0xC1, 0xF8, 0x44, 0x0A,  /* .r"E..D. */
-                /* 0378 */  0xD8, 0xBC, 0x05, 0x60, 0xAF, 0x0B, 0x4F, 0x22,  /* ...`..O" */
-                /* 0380 */  0x30, 0xCE, 0x11, 0xCF, 0x58, 0x30, 0x0F, 0x55,  /* 0...X0.U */
-                /* 0388 */  0xA7, 0xF8, 0x52, 0xF5, 0xC6, 0x10, 0xE1, 0xC9,  /* ..R..... */
-                /* 0390 */  0xEA, 0x35, 0xEA, 0x01, 0xCB, 0x60, 0x2F, 0x02,  /* .5...`/. */
-                /* 0398 */  0x86, 0x79, 0xC5, 0xF2, 0xE9, 0x2A, 0xC4, 0x03,  /* .y...*.. */
-                /* 03A0 */  0x96, 0xCF, 0x5A, 0xD1, 0x42, 0x84, 0x8C, 0x12,  /* ..Z.B... */
-                /* 03A8 */  0xEC, 0x15, 0xEB, 0x55, 0xC6, 0x47, 0x2A, 0x83,  /* ...U.G*. */
-                /* 03B0 */  0x07, 0x0C, 0x1B, 0x2D, 0x52, 0x84, 0x47, 0x2C,  /* ...-R.G, */
-                /* 03B8 */  0xFC, 0xFF, 0xFF, 0x88, 0x05, 0x1E, 0x09, 0x07,  /* ........ */
-                /* 03C0 */  0x52, 0x80, 0x2A, 0x03, 0xC7, 0x1D, 0x48, 0x81,  /* R.*...H. */
-                /* 03C8 */  0xFD, 0x69, 0x02, 0x7F, 0xBD, 0xF0, 0x78, 0xB0,  /* .i....x. */
-                /* 03D0 */  0xFF, 0xFF, 0x73, 0x00, 0xF8, 0x0E, 0x31, 0xC0,  /* ..s...1. */
-                /* 03D8 */  0x60, 0xC0, 0x30, 0x0E, 0x31, 0xC0, 0x43, 0xF0,  /* `.0.1.C. */
-                /* 03E0 */  0xC9, 0x0C, 0xF4, 0xC7, 0x1D, 0xF8, 0xE3, 0xE0,  /* ........ */
-                /* 03E8 */  0x19, 0x9F, 0x1C, 0x26, 0x50, 0x98, 0x13, 0x29,  /* ...&P..) */
-                /* 03F0 */  0x0A, 0xC6, 0x27, 0x52, 0xC0, 0xD9, 0xFF, 0xFF,  /* ..'R.... */
-                /* 03F8 */  0x70, 0x05, 0x86, 0xE3, 0x0D, 0xF8, 0x6F, 0x33,  /* p.....o3 */
-                /* 0400 */  0x3E, 0x84, 0xFA, 0x7C, 0xE3, 0x0B, 0xA9, 0x21,  /* >..|...! */
-                /* 0408 */  0x5E, 0x6C, 0xDE, 0xD4, 0x5E, 0x09, 0x5E, 0xDF,  /* ^l..^.^. */
-                /* 0410 */  0xD9, 0xB5, 0xE6, 0xF5, 0xDD, 0xA7, 0x82, 0x27,  /* .......' */
-                /* 0418 */  0xD1, 0x08, 0x21, 0xA3, 0xBC, 0xE4, 0x18, 0x24,  /* ..!....$ */
-                /* 0420 */  0xC4, 0xEB, 0xA8, 0x01, 0x83, 0x05, 0x89, 0x78,  /* .......x */
-                /* 0428 */  0x0A, 0x4F, 0x3B, 0x8F, 0x37, 0xE0, 0x15, 0x75,  /* .O;.7..u */
-                /* 0430 */  0x20, 0x05, 0xE8, 0xF1, 0xFF, 0x3F, 0x90, 0x02,  /*  ....?.. */
-                /* 0438 */  0x83, 0x7B, 0x0A, 0xEC, 0x73, 0x0A, 0xE0, 0x29,  /* .{..s..) */
-                /* 0440 */  0xF9, 0x89, 0x94, 0xA6, 0x3E, 0x91, 0xA2, 0x15,  /* ....>... */
-                /* 0448 */  0x01, 0x69, 0xAA, 0x60, 0x21, 0x98, 0xFE, 0x44,  /* .i.`!..D */
-                /* 0450 */  0x4A, 0x0F, 0x06, 0xCE, 0x4D, 0xA2, 0xE4, 0x43,  /* J...M..C */
-                /* 0458 */  0xA3, 0x70, 0xCE, 0x7A, 0x20, 0xA1, 0x20, 0x06,  /* .p.z . . */
-                /* 0460 */  0x74, 0x90, 0x43, 0x05, 0xFA, 0xAC, 0xE2, 0x03,  /* t.C..... */
-                /* 0468 */  0xC9, 0x81, 0x3C, 0x22, 0x7A, 0x58, 0x3E, 0x54,  /* ..<"zX>T */
-                /* 0470 */  0xFA, 0xAE, 0xE2, 0x73, 0x88, 0x8F, 0x14, 0x1E,  /* ...s.... */
-                /* 0478 */  0xBF, 0x0F, 0x0B, 0xFC, 0x3F, 0xE3, 0xE3, 0x28,  /* ....?..( */
-                /* 0480 */  0x03, 0xAF, 0xE6, 0xBC, 0x82, 0x02, 0xF3, 0x69,  /* .......i */
-                /* 0488 */  0x14, 0xA3, 0xEB, 0x3E, 0x01, 0x92, 0xFF, 0xFF,  /* ...>.... */
-                /* 0490 */  0xFC, 0xB8, 0xBE, 0xC3, 0x28, 0xC8, 0xD1, 0x79,  /* ....(..y */
-                /* 0498 */  0xF8, 0xC9, 0xA2, 0xE2, 0x4E, 0x96, 0x82, 0x78,  /* ....N..x */
-                /* 04A0 */  0xB2, 0x8E, 0x32, 0x59, 0xF4, 0x4C, 0x7C, 0xBB,  /* ..2Y.L|. */
-                /* 04A8 */  0xF0, 0x8C, 0xDE, 0xBB, 0x7C, 0x83, 0x65, 0x37,  /* ....|.e7 */
-                /* 04B0 */  0x59, 0x78, 0x97, 0x81, 0x90, 0x8F, 0x06, 0xBE,  /* Yx...... */
-                /* 04B8 */  0xC9, 0xC2, 0x1D, 0x8B, 0x2F, 0x23, 0xE0, 0xBB,  /* ..../#.. */
-                /* 04C0 */  0xC9, 0x02, 0x5E, 0x47, 0xE3, 0xB3, 0x05, 0x3B,  /* ..^G...; */
-                /* 04C8 */  0x85, 0xF8, 0xBA, 0x06, 0x4B, 0xA1, 0x4D, 0x9F,  /* ....K.M. */
-                /* 04D0 */  0x1A, 0x8D, 0x5A, 0xFD, 0xFF, 0x1B, 0x94, 0xA9,  /* ..Z..... */
-                /* 04D8 */  0x51, 0xA6, 0x41, 0xAD, 0x3E, 0x95, 0x1A, 0x33,  /* Q.A.>..3 */
-                /* 04E0 */  0x76, 0xA1, 0xB0, 0xB8, 0x0B, 0x06, 0x95, 0xB4,  /* v....... */
-                /* 04E8 */  0x2C, 0x8D, 0xCB, 0x81, 0x40, 0x68, 0x80, 0x5B,  /* ,...@h.[ */
-                /* 04F0 */  0xA9, 0x40, 0x1C, 0xFA, 0x0B, 0xA4, 0x53, 0x02,  /* .@....S. */
-                /* 04F8 */  0xF9, 0x6A, 0x09, 0xC8, 0x62, 0x57, 0x25, 0x10,  /* .j..bW%. */
-                /* 0500 */  0xCB, 0x54, 0x01, 0xD1, 0xC8, 0xDD, 0xC2, 0x20,  /* .T.....  */
-                /* 0508 */  0x02, 0x72, 0xBC, 0x4F, 0x8D, 0x40, 0x1D, 0x49,  /* .r.O.@.I */
-                /* 0510 */  0x07, 0x10, 0x13, 0xE4, 0x63, 0xAC, 0xF4, 0x25,  /* ....c..% */
-                /* 0518 */  0x20, 0x10, 0xCB, 0xA6, 0x15, 0xA0, 0xE5, 0x3A,  /*  ......: */
-                /* 0520 */  0x01, 0x62, 0x61, 0x41, 0x68, 0xC0, 0x5F, 0xB5,  /* .baAh._. */
-                /* 0528 */  0x86, 0xE0, 0xB4, 0x20, 0x02, 0x72, 0x32, 0x2D,  /* ... .r2- */
-                /* 0530 */  0x40, 0x2C, 0x27, 0x88, 0x80, 0xFC, 0xFF, 0x07   /* @,'..... */
+                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  // FOMB....
+                /* 0008 */  0x28, 0x05, 0x00, 0x00, 0xAE, 0x18, 0x00, 0x00,  // (.......
+                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  // DS...}.T
+                /* 0018 */  0x98, 0xDE, 0x8B, 0x00, 0x01, 0x06, 0x18, 0x42,  // .......B
+                /* 0020 */  0x10, 0x0D, 0x10, 0x8A, 0x0D, 0x21, 0x02, 0x0B,  // .....!..
+                /* 0028 */  0x83, 0x50, 0x50, 0x18, 0x14, 0xA0, 0x45, 0x41,  // .PP...EA
+                /* 0030 */  0xC8, 0x05, 0x14, 0x95, 0x02, 0x21, 0xC3, 0x02,  // .....!..
+                /* 0038 */  0x14, 0x0B, 0x70, 0x2E, 0x40, 0xBA, 0x00, 0xE5,  // ..p.@...
+                /* 0040 */  0x28, 0x72, 0x0C, 0x22, 0x02, 0xF7, 0xEF, 0x0F,  // (r."....
+                /* 0048 */  0x31, 0x10, 0x88, 0x14, 0x40, 0x48, 0x28, 0x84,  // 1...@H(.
+                /* 0050 */  0x44, 0x00, 0x53, 0x21, 0x70, 0x84, 0xA0, 0x5F,  // D.S!p.._
+                /* 0058 */  0x01, 0x08, 0x1D, 0x0A, 0x90, 0x29, 0xC0, 0xA0,  // .....)..
+                /* 0060 */  0x00, 0xA7, 0x08, 0x22, 0x88, 0xD2, 0xB2, 0x00,  // ..."....
+                /* 0068 */  0xDD, 0x02, 0x7C, 0x0B, 0xD0, 0x0E, 0x21, 0xB4,  // ..|...!.
+                /* 0070 */  0xC8, 0x95, 0x0A, 0xB0, 0x08, 0x25, 0x9F, 0x80,  // .....%..
+                /* 0078 */  0x92, 0x88, 0x22, 0xD9, 0x78, 0xB2, 0x8D, 0x48,  // ..".x..H
+                /* 0080 */  0xE6, 0x61, 0x91, 0x83, 0x40, 0x89, 0x19, 0x04,  // .a..@...
+                /* 0088 */  0x4A, 0x27, 0xAE, 0x6C, 0xE2, 0x6A, 0x10, 0x07,  // J'.l.j..
+                /* 0090 */  0x10, 0xE5, 0x3C, 0xA2, 0x24, 0x38, 0xAA, 0x83,  // ..<.$8..
+                /* 0098 */  0x88, 0x10, 0xBB, 0x5C, 0x01, 0x92, 0x07, 0x20,  // ...\... 
+                /* 00A0 */  0xCD, 0x13, 0x93, 0xF5, 0x39, 0x68, 0x64, 0x6C,  // ....9hdl
+                /* 00A8 */  0x04, 0x3C, 0x98, 0x04, 0x10, 0x16, 0x65, 0x9D,  // .<....e.
+                /* 00B0 */  0x8A, 0x02, 0x83, 0xF2, 0x00, 0x22, 0x39, 0x63,  // ....."9c
+                /* 00B8 */  0x45, 0x01, 0xDB, 0xEB, 0x44, 0x64, 0x72, 0xA0,  // E...Ddr.
+                /* 00C0 */  0x54, 0x12, 0x1C, 0x6A, 0x98, 0x9E, 0x5A, 0xF3,  // T..j..Z.
+                /* 00C8 */  0x13, 0xD3, 0x44, 0x4E, 0xAD, 0xE9, 0x21, 0x0B,  // ..DN..!.
+                /* 00D0 */  0x92, 0x49, 0x1B, 0x0A, 0x6A, 0xEC, 0x9E, 0xD6,  // .I..j...
+                /* 00D8 */  0x49, 0x79, 0xA6, 0x11, 0x0F, 0xCA, 0x30, 0x09,  // Iy....0.
+                /* 00E0 */  0x3C, 0x0A, 0x86, 0xC6, 0x09, 0xCA, 0x82, 0x90,  // <.......
+                /* 00E8 */  0x83, 0x81, 0xA2, 0x00, 0x4F, 0xC2, 0x73, 0x2C,  // ....O.s,
+                /* 00F0 */  0x5E, 0x80, 0xF0, 0x11, 0x93, 0xB3, 0x40, 0x8C,  // ^.....@.
+                /* 00F8 */  0x04, 0x3E, 0x13, 0x78, 0xE4, 0xC7, 0x8C, 0x1D,  // .>.x....
+                /* 0100 */  0x51, 0xB8, 0x80, 0xE7, 0x73, 0x0C, 0x91, 0xE3,  // Q...s...
+                /* 0108 */  0x1E, 0x6A, 0x8C, 0xA3, 0x88, 0x7C, 0x38, 0x0C,  // .j...|8.
+                /* 0110 */  0xED, 0x74, 0xE3, 0x1C, 0xD8, 0xE9, 0x14, 0x04,  // .t......
+                /* 0118 */  0x2E, 0x90, 0x60, 0x3D, 0xCF, 0x59, 0x20, 0xFF,  // ..`=.Y .
+                /* 0120 */  0xFF, 0x18, 0x07, 0xC1, 0xF0, 0x8E, 0x01, 0x23,  // .......#
+                /* 0128 */  0x03, 0x42, 0x1E, 0x05, 0x58, 0x1D, 0x96, 0x26,  // .B..X..&
+                /* 0130 */  0x91, 0xC0, 0xEE, 0x05, 0x68, 0xBC, 0x04, 0x48,  // ....h..H
+                /* 0138 */  0xE1, 0x20, 0xA5, 0x0C, 0x42, 0x30, 0x8D, 0x09,  // . ..B0..
+                /* 0140 */  0xB0, 0x75, 0x68, 0x90, 0x37, 0x01, 0xD6, 0xAE,  // .uh.7...
+                /* 0148 */  0x02, 0x42, 0x89, 0x74, 0x02, 0x71, 0x42, 0x44,  // .B.t.qBD
+                /* 0150 */  0x89, 0x18, 0xD4, 0x40, 0x51, 0x6A, 0x43, 0x15,  // ...@QjC.
+                /* 0158 */  0x4C, 0x67, 0xC3, 0x13, 0x66, 0xDC, 0x10, 0x31,  // Lg..f..1
+                /* 0160 */  0x0C, 0x14, 0xB7, 0xFD, 0x41, 0x90, 0x61, 0xE3,  // ....A.a.
+                /* 0168 */  0xC6, 0xEF, 0x41, 0x9D, 0xD6, 0xD9, 0x1D, 0xD3,  // ..A.....
+                /* 0170 */  0xAB, 0x82, 0x09, 0x3C, 0xE9, 0x37, 0x84, 0xA7,  // ...<.7..
+                /* 0178 */  0x83, 0xA3, 0x38, 0xDA, 0xA8, 0x31, 0x9A, 0x23,  // ..8..1.#
+                /* 0180 */  0x65, 0xAB, 0xD6, 0xB9, 0xC2, 0x91, 0xE0, 0x51,  // e......Q
+                /* 0188 */  0xE7, 0x05, 0x9F, 0x0C, 0x3C, 0xB4, 0xC3, 0xF6,  // ....<...
+                /* 0190 */  0x60, 0xCF, 0xD2, 0x43, 0x38, 0x82, 0x67, 0x86,  // `..C8.g.
+                /* 0198 */  0x47, 0x02, 0x8F, 0x81, 0xDD, 0x15, 0x7C, 0x08,  // G.....|.
+                /* 01A0 */  0xF0, 0x19, 0x01, 0xEF, 0x1A, 0x50, 0x97, 0x83,  // .....P..
+                /* 01A8 */  0x47, 0x03, 0x36, 0xE9, 0x70, 0x98, 0xF1, 0x7A,  // G.6.p..z
+                /* 01B0 */  0xEE, 0x9E, 0xBA, 0xCF, 0x18, 0xFC, 0xBC, 0xE1,  // ........
+                /* 01B8 */  0xC1, 0xE1, 0x46, 0x7A, 0x32, 0x47, 0x56, 0xAA,  // ..Fz2GV.
+                /* 01C0 */  0x00, 0xB3, 0xD7, 0x00, 0x1D, 0x25, 0x7C, 0xE0,  // .....%|.
+                /* 01C8 */  0x60, 0x77, 0x81, 0xA7, 0x00, 0x13, 0x58, 0xFE,  // `w....X.
+                /* 01D0 */  0x20, 0x50, 0x23, 0x33, 0xB4, 0xC7, 0xFB, 0xDE,  //  P#3....
+                /* 01D8 */  0x61, 0xC8, 0x27, 0x85, 0xC3, 0x62, 0x62, 0x0F,  // a.'..bb.
+                /* 01E0 */  0x1E, 0x74, 0x3C, 0xE0, 0xBF, 0x8F, 0x3C, 0x69,  // .t<...<i
+                /* 01E8 */  0x78, 0xFA, 0x9E, 0xAF, 0x09, 0x06, 0x86, 0x90,  // x.......
+                /* 01F0 */  0x95, 0xF1, 0xA0, 0x06, 0x62, 0xE8, 0x57, 0x85,  // ....b.W.
+                /* 01F8 */  0xC3, 0x38, 0x0D, 0x9F, 0x40, 0x7C, 0x0E, 0x08,  // .8..@|..
+                /* 0200 */  0x12, 0xE3, 0x98, 0x3C, 0x38, 0xFF, 0xFF, 0x09,  // ...<8...
+                /* 0208 */  0x1C, 0x6B, 0xE4, 0xF4, 0x9C, 0xE2, 0xF3, 0x04,  // .k......
+                /* 0210 */  0x3F, 0x5C, 0xF8, 0x3C, 0xC1, 0x4E, 0x0C, 0xA7,  // ?\.<.N..
+                /* 0218 */  0xF1, 0x1C, 0xE0, 0xE1, 0x9C, 0x95, 0x8F, 0x13,  // ........
+                /* 0220 */  0xC0, 0x02, 0xE2, 0x75, 0x82, 0x0F, 0x14, 0x3E,  // ...u...>
+                /* 0228 */  0xEC, 0xA1, 0x79, 0x14, 0x2F, 0x11, 0x6F, 0x0F,  // ..y./.o.
+                /* 0230 */  0x26, 0x88, 0xF6, 0x10, 0x03, 0xC6, 0x19, 0xE1,  // &.......
+                /* 0238 */  0xCE, 0x1B, 0x70, 0x4E, 0x31, 0xC0, 0x03, 0xEA,  // ..pN1...
+                /* 0240 */  0x10, 0x30, 0x87, 0x09, 0x0F, 0x81, 0x0F, 0xE0,  // .0......
+                /* 0248 */  0x19, 0xE4, 0x1C, 0x7D, 0xCC, 0x39, 0x33, 0xDC,  // ...}.93.
+                /* 0250 */  0x71, 0x07, 0x6C, 0xC3, 0xE0, 0x91, 0x2D, 0x80,  // q.l...-.
+                /* 0258 */  0xB0, 0x38, 0x4F, 0x02, 0x05, 0x7C, 0x1B, 0x50,  // .8O..|.P
+                /* 0260 */  0x18, 0x1F, 0x6E, 0xC0, 0xFB, 0xFF, 0x3F, 0xDC,  // ..n...?.
+                /* 0268 */  0x00, 0xD7, 0xF3, 0x01, 0xEE, 0xF8, 0x00, 0xF7,  // ........
+                /* 0270 */  0x62, 0xC1, 0x0E, 0x0F, 0x8F, 0x37, 0xC0, 0x60,  // b....7.`
+                /* 0278 */  0x48, 0x8F, 0x34, 0x6F, 0x35, 0x31, 0x5E, 0x6D,  // H.4o51^m
+                /* 0280 */  0x42, 0x44, 0x78, 0xA8, 0x79, 0xB7, 0x31, 0x52,  // BDx.y.1R
+                /* 0288 */  0xBC, 0xC7, 0x1B, 0x76, 0x8D, 0x39, 0x8B, 0x07,  // ...v.9..
+                /* 0290 */  0x90, 0x28, 0xC5, 0xA1, 0xE9, 0x62, 0x13, 0x23,  // .(...b.#
+                /* 0298 */  0xCA, 0x9B, 0x8D, 0x61, 0xDF, 0x74, 0x0C, 0x14,  // ...a.t..
+                /* 02A0 */  0x2A, 0x52, 0x84, 0x30, 0x2F, 0x16, 0x21, 0x1E,  // *R.0/.!.
+                /* 02A8 */  0x6F, 0xC0, 0x2C, 0xE9, 0xA5, 0xA2, 0xCF, 0x81,  // o.,.....
+                /* 02B0 */  0x8F, 0x37, 0x80, 0x97, 0xFF, 0xFF, 0xF1, 0x06,  // .7......
+                /* 02B8 */  0xF0, 0x30, 0x0C, 0x1F, 0x53, 0xC0, 0x76, 0x73,  // .0..S.vs
+                /* 02C0 */  0x60, 0xF7, 0x14, 0xF8, 0xE7, 0x14, 0xC0, 0x91,  // `.......
+                /* 02C8 */  0x90, 0x47, 0x80, 0x0E, 0x1E, 0x16, 0x01, 0x22,  // .G....."
+                /* 02D0 */  0x1B, 0xCF, 0x00, 0x9F, 0x89, 0xA8, 0x40, 0x2A,  // ......@*
+                /* 02D8 */  0xCD, 0x14, 0x2C, 0xE3, 0x14, 0xAC, 0x4E, 0x88,  // ..,...N.
+                /* 02E0 */  0x5C, 0x06, 0x85, 0x44, 0x40, 0x68, 0x64, 0x86,  // \..D@hd.
+                /* 02E8 */  0xF3, 0x21, 0xD1, 0x60, 0x06, 0xF1, 0xF9, 0xC0,  // .!.`....
+                /* 02F0 */  0x67, 0x0A, 0x9F, 0x9C, 0xF8, 0xFF, 0xFF, 0xE4,  // g.......
+                /* 02F8 */  0x04, 0x9E, 0x83, 0xC9, 0x43, 0x05, 0x2C, 0x44,  // ....C.,D
+                /* 0300 */  0x9F, 0x16, 0x38, 0x9C, 0xCF, 0x2C, 0x1C, 0xCE,  // ..8..,..
+                /* 0308 */  0x47, 0x12, 0x7E, 0x80, 0xE4, 0x47, 0x25, 0x70,  // G.~..G%p
+                /* 0310 */  0x09, 0x3C, 0x34, 0x80, 0x02, 0xC8, 0xF7, 0x03,  // .<4.....
+                /* 0318 */  0x9F, 0x03, 0x9E, 0x11, 0xD8, 0x1C, 0x1E, 0x09,  // ........
+                /* 0320 */  0x7C, 0x20, 0x60, 0xF0, 0x3C, 0xDA, 0xA8, 0xE8,  // | `.<...
+                /* 0328 */  0xD1, 0xC6, 0xC3, 0xE3, 0x47, 0x06, 0xCF, 0xE7,  // ....G...
+                /* 0330 */  0x81, 0xE0, 0x28, 0x1F, 0x09, 0x70, 0x18, 0xEF,  // ..(..p..
+                /* 0338 */  0x17, 0x1E, 0xA2, 0x4F, 0x39, 0xB0, 0x26, 0x72,  // ...O9.&r
+                /* 0340 */  0xD4, 0x16, 0x7D, 0x22, 0x10, 0xE8, 0x33, 0x17,  // ..}"..3.
+                /* 0348 */  0xE6, 0x94, 0x03, 0x9C, 0x82, 0x8F, 0x1E, 0x15,  // ........
+                /* 0350 */  0xF5, 0x40, 0x0A, 0xDA, 0x93, 0x82, 0xCF, 0x0A,  // .@......
+                /* 0358 */  0x3E, 0x7C, 0xC1, 0xFF, 0xFF, 0x1F, 0xBE, 0xE0,  // >|......
+                /* 0360 */  0xCC, 0xEB, 0x65, 0xCD, 0x07, 0x8E, 0x38, 0x67,  // ..e...8g
+                /* 0368 */  0x71, 0xBA, 0xEF, 0x16, 0xF8, 0x13, 0x29, 0x30,  // q.....)0
+                /* 0370 */  0x0B, 0x72, 0x22, 0x45, 0xC1, 0xF8, 0x44, 0x0A,  // .r"E..D.
+                /* 0378 */  0xD8, 0xBC, 0x05, 0x60, 0xAF, 0x0B, 0x4F, 0x22,  // ...`..O"
+                /* 0380 */  0x30, 0xCE, 0x11, 0xCF, 0x58, 0x30, 0x0F, 0x55,  // 0...X0.U
+                /* 0388 */  0xA7, 0xF8, 0x52, 0xF5, 0xC6, 0x10, 0xE1, 0xC9,  // ..R.....
+                /* 0390 */  0xEA, 0x35, 0xEA, 0x01, 0xCB, 0x60, 0x2F, 0x02,  // .5...`/.
+                /* 0398 */  0x86, 0x79, 0xC5, 0xF2, 0xE9, 0x2A, 0xC4, 0x03,  // .y...*..
+                /* 03A0 */  0x96, 0xCF, 0x5A, 0xD1, 0x42, 0x84, 0x8C, 0x12,  // ..Z.B...
+                /* 03A8 */  0xEC, 0x15, 0xEB, 0x55, 0xC6, 0x47, 0x2A, 0x83,  // ...U.G*.
+                /* 03B0 */  0x07, 0x0C, 0x1B, 0x2D, 0x52, 0x84, 0x47, 0x2C,  // ...-R.G,
+                /* 03B8 */  0xFC, 0xFF, 0xFF, 0x88, 0x05, 0x1E, 0x09, 0x07,  // ........
+                /* 03C0 */  0x52, 0x80, 0x2A, 0x03, 0xC7, 0x1D, 0x48, 0x81,  // R.*...H.
+                /* 03C8 */  0xFD, 0x69, 0x02, 0x7F, 0xBD, 0xF0, 0x78, 0xB0,  // .i....x.
+                /* 03D0 */  0xFF, 0xFF, 0x73, 0x00, 0xF8, 0x0E, 0x31, 0xC0,  // ..s...1.
+                /* 03D8 */  0x60, 0xC0, 0x30, 0x0E, 0x31, 0xC0, 0x43, 0xF0,  // `.0.1.C.
+                /* 03E0 */  0xC9, 0x0C, 0xF4, 0xC7, 0x1D, 0xF8, 0xE3, 0xE0,  // ........
+                /* 03E8 */  0x19, 0x9F, 0x1C, 0x26, 0x50, 0x98, 0x13, 0x29,  // ...&P..)
+                /* 03F0 */  0x0A, 0xC6, 0x27, 0x52, 0xC0, 0xD9, 0xFF, 0xFF,  // ..'R....
+                /* 03F8 */  0x70, 0x05, 0x86, 0xE3, 0x0D, 0xF8, 0x6F, 0x33,  // p.....o3
+                /* 0400 */  0x3E, 0x84, 0xFA, 0x7C, 0xE3, 0x0B, 0xA9, 0x21,  // >..|...!
+                /* 0408 */  0x5E, 0x6C, 0xDE, 0xD4, 0x5E, 0x09, 0x5E, 0xDF,  // ^l..^.^.
+                /* 0410 */  0xD9, 0xB5, 0xE6, 0xF5, 0xDD, 0xA7, 0x82, 0x27,  // .......'
+                /* 0418 */  0xD1, 0x08, 0x21, 0xA3, 0xBC, 0xE4, 0x18, 0x24,  // ..!....$
+                /* 0420 */  0xC4, 0xEB, 0xA8, 0x01, 0x83, 0x05, 0x89, 0x78,  // .......x
+                /* 0428 */  0x0A, 0x4F, 0x3B, 0x8F, 0x37, 0xE0, 0x15, 0x75,  // .O;.7..u
+                /* 0430 */  0x20, 0x05, 0xE8, 0xF1, 0xFF, 0x3F, 0x90, 0x02,  //  ....?..
+                /* 0438 */  0x83, 0x7B, 0x0A, 0xEC, 0x73, 0x0A, 0xE0, 0x29,  // .{..s..)
+                /* 0440 */  0xF9, 0x89, 0x94, 0xA6, 0x3E, 0x91, 0xA2, 0x15,  // ....>...
+                /* 0448 */  0x01, 0x69, 0xAA, 0x60, 0x21, 0x98, 0xFE, 0x44,  // .i.`!..D
+                /* 0450 */  0x4A, 0x0F, 0x06, 0xCE, 0x4D, 0xA2, 0xE4, 0x43,  // J...M..C
+                /* 0458 */  0xA3, 0x70, 0xCE, 0x7A, 0x20, 0xA1, 0x20, 0x06,  // .p.z . .
+                /* 0460 */  0x74, 0x90, 0x43, 0x05, 0xFA, 0xAC, 0xE2, 0x03,  // t.C.....
+                /* 0468 */  0xC9, 0x81, 0x3C, 0x22, 0x7A, 0x58, 0x3E, 0x54,  // ..<"zX>T
+                /* 0470 */  0xFA, 0xAE, 0xE2, 0x73, 0x88, 0x8F, 0x14, 0x1E,  // ...s....
+                /* 0478 */  0xBF, 0x0F, 0x0B, 0xFC, 0x3F, 0xE3, 0xE3, 0x28,  // ....?..(
+                /* 0480 */  0x03, 0xAF, 0xE6, 0xBC, 0x82, 0x02, 0xF3, 0x69,  // .......i
+                /* 0488 */  0x14, 0xA3, 0xEB, 0x3E, 0x01, 0x92, 0xFF, 0xFF,  // ...>....
+                /* 0490 */  0xFC, 0xB8, 0xBE, 0xC3, 0x28, 0xC8, 0xD1, 0x79,  // ....(..y
+                /* 0498 */  0xF8, 0xC9, 0xA2, 0xE2, 0x4E, 0x96, 0x82, 0x78,  // ....N..x
+                /* 04A0 */  0xB2, 0x8E, 0x32, 0x59, 0xF4, 0x4C, 0x7C, 0xBB,  // ..2Y.L|.
+                /* 04A8 */  0xF0, 0x8C, 0xDE, 0xBB, 0x7C, 0x83, 0x65, 0x37,  // ....|.e7
+                /* 04B0 */  0x59, 0x78, 0x97, 0x81, 0x90, 0x8F, 0x06, 0xBE,  // Yx......
+                /* 04B8 */  0xC9, 0xC2, 0x1D, 0x8B, 0x2F, 0x23, 0xE0, 0xBB,  // ..../#..
+                /* 04C0 */  0xC9, 0x02, 0x5E, 0x47, 0xE3, 0xB3, 0x05, 0x3B,  // ..^G...;
+                /* 04C8 */  0x85, 0xF8, 0xBA, 0x06, 0x4B, 0xA1, 0x4D, 0x9F,  // ....K.M.
+                /* 04D0 */  0x1A, 0x8D, 0x5A, 0xFD, 0xFF, 0x1B, 0x94, 0xA9,  // ..Z.....
+                /* 04D8 */  0x51, 0xA6, 0x41, 0xAD, 0x3E, 0x95, 0x1A, 0x33,  // Q.A.>..3
+                /* 04E0 */  0x76, 0xA1, 0xB0, 0xB8, 0x0B, 0x06, 0x95, 0xB4,  // v.......
+                /* 04E8 */  0x2C, 0x8D, 0xCB, 0x81, 0x40, 0x68, 0x80, 0x5B,  // ,...@h.[
+                /* 04F0 */  0xA9, 0x40, 0x1C, 0xFA, 0x0B, 0xA4, 0x53, 0x02,  // .@....S.
+                /* 04F8 */  0xF9, 0x6A, 0x09, 0xC8, 0x62, 0x57, 0x25, 0x10,  // .j..bW%.
+                /* 0500 */  0xCB, 0x54, 0x01, 0xD1, 0xC8, 0xDD, 0xC2, 0x20,  // .T..... 
+                /* 0508 */  0x02, 0x72, 0xBC, 0x4F, 0x8D, 0x40, 0x1D, 0x49,  // .r.O.@.I
+                /* 0510 */  0x07, 0x10, 0x13, 0xE4, 0x63, 0xAC, 0xF4, 0x25,  // ....c..%
+                /* 0518 */  0x20, 0x10, 0xCB, 0xA6, 0x15, 0xA0, 0xE5, 0x3A,  //  ......:
+                /* 0520 */  0x01, 0x62, 0x61, 0x41, 0x68, 0xC0, 0x5F, 0xB5,  // .baAh._.
+                /* 0528 */  0x86, 0xE0, 0xB4, 0x20, 0x02, 0x72, 0x32, 0x2D,  // ... .r2-
+                /* 0530 */  0x40, 0x2C, 0x27, 0x88, 0x80, 0xFC, 0xFF, 0x07   // @,'.....
             })
         }
 
@@ -31573,14 +31266,14 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (_UID, 0x03)  // _UID: Unique ID
             Name (_WDG, /**** Is ResourceTemplate, but EndTag not at buffer end ****/ Buffer (0x3C)
             {
-                /* 0000 */  0x79, 0x36, 0x4D, 0x8F, 0x9E, 0x74, 0x79, 0x44,  /* y6M..tyD */
-                /* 0008 */  0x9B, 0x16, 0xC6, 0x26, 0x01, 0xFD, 0x25, 0xF0,  /* ...&..%. */
-                /* 0010 */  0x41, 0x42, 0x01, 0x02, 0x69, 0xE8, 0xD2, 0x85,  /* AB..i... */
-                /* 0018 */  0x5A, 0x36, 0xCE, 0x4A, 0xA4, 0xD3, 0xCD, 0x69,  /* Z6.J...i */
-                /* 0020 */  0x2B, 0x16, 0x98, 0xA0, 0x41, 0x43, 0x01, 0x02,  /* +...AC.. */
-                /* 0028 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  /* !...f... */
-                /* 0030 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  /* ......). */
-                /* 0038 */  0x42, 0x43, 0x01, 0x00                           /* BC.. */
+                /* 0000 */  0x79, 0x36, 0x4D, 0x8F, 0x9E, 0x74, 0x79, 0x44,  // y6M..tyD
+                /* 0008 */  0x9B, 0x16, 0xC6, 0x26, 0x01, 0xFD, 0x25, 0xF0,  // ...&..%.
+                /* 0010 */  0x41, 0x42, 0x01, 0x02, 0x69, 0xE8, 0xD2, 0x85,  // AB..i...
+                /* 0018 */  0x5A, 0x36, 0xCE, 0x4A, 0xA4, 0xD3, 0xCD, 0x69,  // Z6.J...i
+                /* 0020 */  0x2B, 0x16, 0x98, 0xA0, 0x41, 0x43, 0x01, 0x02,  // +...AC..
+                /* 0028 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  // !...f...
+                /* 0030 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  // ......).
+                /* 0038 */  0x42, 0x43, 0x01, 0x00                           // BC..
             })
             Method (WMAB, 3, NotSerialized)
             {
@@ -31612,136 +31305,136 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Name (WQBC, Buffer (0x040A)
             {
-                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  /* FOMB.... */
-                /* 0008 */  0xFA, 0x03, 0x00, 0x00, 0x32, 0x12, 0x00, 0x00,  /* ....2... */
-                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  /* DS...}.T */
-                /* 0018 */  0x98, 0xC3, 0x88, 0x00, 0x01, 0x06, 0x18, 0x42,  /* .......B */
-                /* 0020 */  0x10, 0x07, 0x10, 0x8A, 0x0D, 0x21, 0x02, 0x0B,  /* .....!.. */
-                /* 0028 */  0x83, 0x50, 0x50, 0x18, 0x14, 0xA0, 0x45, 0x41,  /* .PP...EA */
-                /* 0030 */  0xC8, 0x05, 0x14, 0x95, 0x02, 0x21, 0xC3, 0x02,  /* .....!.. */
-                /* 0038 */  0x14, 0x0B, 0x70, 0x2E, 0x40, 0xBA, 0x00, 0xE5,  /* ..p.@... */
-                /* 0040 */  0x28, 0x72, 0x0C, 0x22, 0x02, 0xF7, 0xEF, 0x0F,  /* (r.".... */
-                /* 0048 */  0x31, 0x10, 0x88, 0x14, 0x40, 0x48, 0x28, 0x84,  /* 1...@H(. */
-                /* 0050 */  0x44, 0x00, 0x53, 0x21, 0x70, 0x84, 0xA0, 0x5F,  /* D.S!p.._ */
-                /* 0058 */  0x01, 0x08, 0x1D, 0x0A, 0x90, 0x29, 0xC0, 0xA0,  /* .....).. */
-                /* 0060 */  0x00, 0xA7, 0x08, 0x22, 0x88, 0xD2, 0xB2, 0x00,  /* ...".... */
-                /* 0068 */  0xDD, 0x02, 0x7C, 0x0B, 0xD0, 0x0E, 0x21, 0xB4,  /* ..|...!. */
-                /* 0070 */  0x58, 0x07, 0x11, 0x21, 0xD2, 0x31, 0x34, 0x29,  /* X..!.14) */
-                /* 0078 */  0x40, 0xA2, 0x00, 0x8B, 0x02, 0x64, 0xC3, 0xC8,  /* @....d.. */
-                /* 0080 */  0x36, 0x22, 0x99, 0x87, 0x45, 0x0E, 0x02, 0x25,  /* 6"..E..% */
-                /* 0088 */  0x66, 0x10, 0x28, 0x9D, 0xE0, 0xB2, 0x89, 0xAB,  /* f.(..... */
-                /* 0090 */  0x41, 0x9C, 0x4C, 0x94, 0xF3, 0x88, 0x92, 0xE0,  /* A.L..... */
-                /* 0098 */  0xA8, 0x0E, 0x22, 0x42, 0xEC, 0x72, 0x05, 0x48,  /* .."B.r.H */
-                /* 00A0 */  0x1E, 0x80, 0x34, 0x4F, 0x4C, 0xD6, 0xE7, 0xA0,  /* ..4OL... */
-                /* 00A8 */  0x91, 0xB1, 0x11, 0xF0, 0x94, 0x1A, 0x40, 0x58,  /* ......@X */
-                /* 00B0 */  0xA0, 0x75, 0x2A, 0xE0, 0x7A, 0x0D, 0x43, 0x3D,  /* .u*.z.C= */
-                /* 00B8 */  0x80, 0x48, 0xCE, 0x58, 0x51, 0xC0, 0xF6, 0x3A,  /* .H.XQ..: */
-                /* 00C0 */  0x11, 0x8D, 0xEA, 0x40, 0x99, 0x24, 0x38, 0xD4,  /* ...@.$8. */
-                /* 00C8 */  0x30, 0x3D, 0xB5, 0xE6, 0x27, 0xA6, 0x89, 0x9C,  /* 0=..'... */
-                /* 00D0 */  0x5A, 0xD3, 0x43, 0x16, 0x24, 0x93, 0x36, 0x14,  /* Z.C.$.6. */
-                /* 00D8 */  0xD4, 0xD8, 0x3D, 0xAD, 0x93, 0xF2, 0x4C, 0x23,  /* ..=...L# */
-                /* 00E0 */  0x1E, 0x94, 0x61, 0x12, 0x78, 0x14, 0x0C, 0x8D,  /* ..a.x... */
-                /* 00E8 */  0x13, 0x94, 0x75, 0x22, 0xA0, 0x03, 0xE5, 0x80,  /* ..u".... */
-                /* 00F0 */  0x27, 0xE1, 0x39, 0x16, 0x2F, 0x40, 0xF8, 0x88,  /* '.9./@.. */
-                /* 00F8 */  0xC9, 0xB4, 0x4D, 0xE0, 0x33, 0x81, 0x87, 0x79,  /* ..M.3..y */
-                /* 0100 */  0xCC, 0xD8, 0x11, 0x85, 0x0B, 0x78, 0x3E, 0xC7,  /* .....x>. */
-                /* 0108 */  0x10, 0x39, 0xEE, 0xA1, 0xC6, 0x38, 0x8A, 0xC8,  /* .9...8.. */
-                /* 0110 */  0x47, 0x60, 0x24, 0x03, 0xC5, 0x2B, 0x08, 0x89,  /* G`$..+.. */
-                /* 0118 */  0x80, 0xF8, 0x76, 0x70, 0x70, 0x91, 0xFC, 0xFF,  /* ..vpp... */
-                /* 0120 */  0x47, 0x89, 0x11, 0x2A, 0xC6, 0xDB, 0x00, 0x6E,  /* G..*...n */
-                /* 0128 */  0x5E, 0x09, 0x8A, 0x1E, 0x07, 0x4A, 0x06, 0x84,  /* ^....J.. */
-                /* 0130 */  0x3C, 0x0A, 0xB0, 0x7A, 0x28, 0x20, 0x04, 0x16,  /* <..z( .. */
-                /* 0138 */  0x27, 0x40, 0xE3, 0x38, 0x05, 0xD3, 0x99, 0x00,  /* '@.8.... */
-                /* 0140 */  0x6D, 0x02, 0xBC, 0x09, 0x30, 0x27, 0xC0, 0x16,  /* m...0'.. */
-                /* 0148 */  0x86, 0x80, 0x82, 0x9C, 0x59, 0x94, 0x20, 0x11,  /* ....Y. . */
-                /* 0150 */  0x42, 0x31, 0x88, 0x0A, 0x05, 0x18, 0x43, 0x14,  /* B1....C. */
-                /* 0158 */  0xCA, 0x3B, 0x41, 0x8C, 0xCA, 0x20, 0x74, 0x82,  /* .;A.. t. */
-                /* 0160 */  0x08, 0x14, 0x3D, 0x78, 0x98, 0xD6, 0x40, 0x74,  /* ..=x..@t */
-                /* 0168 */  0x89, 0xF0, 0xC8, 0xB1, 0x47, 0x00, 0x9F, 0x19,  /* ....G... */
-                /* 0170 */  0xCE, 0xE9, 0x04, 0x1F, 0x01, 0xDE, 0x16, 0x4C,  /* .......L */
-                /* 0178 */  0xE0, 0x79, 0xBF, 0x24, 0x1C, 0x6A, 0xD8, 0x03,  /* .y.$.j.. */
-                /* 0180 */  0x8E, 0x1A, 0xE3, 0x28, 0x12, 0x58, 0xD0, 0x33,  /* ...(.X.3 */
-                /* 0188 */  0x42, 0x16, 0x40, 0x14, 0x09, 0x1E, 0x75, 0x64,  /* B.@...ud */
-                /* 0190 */  0xF0, 0xE1, 0xC0, 0x23, 0x3B, 0x72, 0xCF, 0xF0,  /* ...#;r.. */
-                /* 0198 */  0x04, 0x82, 0x1C, 0xC2, 0x11, 0x3C, 0x36, 0x3C,  /* .....<6< */
-                /* 01A0 */  0x15, 0x78, 0x0C, 0xEC, 0xBA, 0xE0, 0x73, 0x80,  /* .x....s. */
-                /* 01A8 */  0x8F, 0x09, 0x78, 0xD7, 0x80, 0x9A, 0xF3, 0xD3,  /* ..x..... */
-                /* 01B0 */  0x01, 0x9B, 0x72, 0x38, 0xCC, 0x70, 0x3D, 0xFD,  /* ..r8.p=. */
-                /* 01B8 */  0x70, 0x27, 0x70, 0xD2, 0x06, 0x64, 0xB3, 0xF3,  /* p'p..d.. */
-                /* 01C0 */  0xE0, 0x70, 0xE3, 0x3C, 0x99, 0x23, 0x2B, 0x55,  /* .p.<.#+U */
-                /* 01C8 */  0x80, 0xD9, 0x13, 0x82, 0x4E, 0x13, 0x3E, 0x73,  /* ....N.>s */
-                /* 01D0 */  0xB0, 0xBB, 0xC0, 0xF9, 0xF4, 0x0C, 0x49, 0xE4,  /* ......I. */
-                /* 01D8 */  0x0F, 0x02, 0x35, 0x32, 0x43, 0xFB, 0x2C, 0xF0,  /* ..52C.,. */
-                /* 01E0 */  0xEA, 0x61, 0xC8, 0x87, 0x85, 0xC3, 0x62, 0x62,  /* .a....bb */
-                /* 01E8 */  0xCF, 0x1E, 0x74, 0x3C, 0xE0, 0x3F, 0x25, 0x3C,  /* ..t<.?%< */
-                /* 01F0 */  0x6C, 0x78, 0xFA, 0x9E, 0xAF, 0x09, 0xA2, 0x3D,  /* lx.....= */
-                /* 01F8 */  0x8F, 0x80, 0xE1, 0xFF, 0x7F, 0x1E, 0x81, 0x39,  /* .......9 */
-                /* 0200 */  0x9C, 0x07, 0x84, 0x27, 0x07, 0x76, 0x80, 0xC0,  /* ...'.v.. */
-                /* 0208 */  0x1C, 0x48, 0x80, 0xC9, 0xF9, 0x02, 0x77, 0x28,  /* .H....w( */
-                /* 0210 */  0xF0, 0x10, 0xF8, 0x00, 0x1E, 0x25, 0xCE, 0xD1,  /* .....%.. */
-                /* 0218 */  0x4A, 0x67, 0x86, 0x3C, 0xB9, 0x80, 0x2D, 0xFB,  /* Jg.<..-. */
-                /* 0220 */  0x1B, 0x40, 0x07, 0x0F, 0xE7, 0x06, 0x91, 0x8D,  /* .@...... */
-                /* 0228 */  0x57, 0x80, 0x09, 0x74, 0x38, 0xB1, 0x1E, 0x20,  /* W..t8..  */
-                /* 0230 */  0x4D, 0x14, 0x0C, 0x04, 0xD3, 0xD3, 0x6B, 0x00,  /* M.....k. */
-                /* 0238 */  0x3E, 0x15, 0x38, 0x37, 0x89, 0x92, 0x0F, 0x8C,  /* >.87.... */
-                /* 0240 */  0xC2, 0x39, 0xEB, 0x79, 0x84, 0x82, 0x18, 0xD0,  /* .9.y.... */
-                /* 0248 */  0x41, 0x20, 0xE4, 0xE4, 0xA0, 0x80, 0x3A, 0xAA,  /* A ....:. */
-                /* 0250 */  0xF8, 0x3C, 0x72, 0xAA, 0x0F, 0x3D, 0x9E, 0x94,  /* .<r..=.. */
-                /* 0258 */  0x47, 0xE1, 0xAB, 0x8A, 0x0F, 0x21, 0x3E, 0x4F,  /* G....!>O */
-                /* 0260 */  0x78, 0xF4, 0x3E, 0x29, 0xF0, 0xEF, 0x8C, 0xAF,  /* x.>).... */
-                /* 0268 */  0x0E, 0x46, 0xB7, 0x9A, 0xE3, 0x0A, 0x0A, 0xCC,  /* .F...... */
-                /* 0270 */  0x67, 0x11, 0x4E, 0x50, 0xD7, 0x6D, 0x01, 0xFA,  /* g.NP.m.. */
-                /* 0278 */  0x29, 0xE0, 0x08, 0x3C, 0x94, 0x77, 0x92, 0xC7,  /* )..<.w.. */
-                /* 0280 */  0x90, 0x04, 0xF5, 0x9D, 0x16, 0x40, 0x01, 0xE4,  /* .....@.. */
-                /* 0288 */  0x9B, 0x81, 0x4F, 0x02, 0x21, 0xFE, 0xFF, 0x4F,  /* ..O.!..O */
-                /* 0290 */  0x07, 0x1E, 0xC3, 0xC3, 0x80, 0xD1, 0x8C, 0xCE,  /* ........ */
-                /* 0298 */  0xC3, 0x4F, 0x16, 0x15, 0x77, 0xB2, 0x14, 0xC4,  /* .O..w... */
-                /* 02A0 */  0x93, 0x75, 0x94, 0xC9, 0xA2, 0x67, 0xE2, 0xAB,  /* .u...g.. */
-                /* 02A8 */  0x85, 0x27, 0x74, 0x4A, 0x41, 0xCE, 0xD1, 0x13,  /* .'tJA... */
-                /* 02B0 */  0xF6, 0x55, 0x04, 0xD6, 0xF9, 0x20, 0xE4, 0x8B,  /* .U... .. */
-                /* 02B8 */  0x81, 0xA7, 0x61, 0x38, 0x4F, 0x96, 0xC3, 0x79,  /* ..a8O..y */
-                /* 02C0 */  0xB2, 0x7C, 0x2C, 0xBE, 0x6A, 0xC0, 0x1F, 0x2D,  /* .|,.j..- */
-                /* 02C8 */  0x96, 0xA0, 0xC0, 0xD9, 0x82, 0x1C, 0x1E, 0x13,  /* ........ */
-                /* 02D0 */  0x6F, 0x54, 0xF4, 0x46, 0xE4, 0xE1, 0xF1, 0xCB,  /* oT.F.... */
-                /* 02D8 */  0x81, 0xE7, 0xF3, 0x8C, 0x70, 0x94, 0x6F, 0x12,  /* ....p.o. */
-                /* 02E0 */  0x38, 0x8C, 0xC7, 0x12, 0x0F, 0xD1, 0x97, 0x23,  /* 8......# */
-                /* 02E8 */  0x58, 0x13, 0x39, 0x69, 0xDF, 0x16, 0x4E, 0x36,  /* X.9i..N6 */
-                /* 02F0 */  0xE8, 0x4B, 0x10, 0xBB, 0x1C, 0x01, 0xBF, 0x88,  /* .K...... */
-                /* 02F8 */  0x26, 0x86, 0xC1, 0x22, 0x2D, 0x45, 0x11, 0x17,  /* &.."-E.. */
-                /* 0300 */  0x45, 0x61, 0x7C, 0xC5, 0x82, 0xFD, 0xFF, 0xBF,  /* Ea|..... */
-                /* 0308 */  0x62, 0x01, 0x16, 0x04, 0x0F, 0x1B, 0x34, 0x87,  /* b.....4. */
-                /* 0310 */  0x83, 0x97, 0x1E, 0x36, 0x6B, 0x38, 0x07, 0x99,  /* ...6k8.. */
-                /* 0318 */  0xD3, 0xF1, 0x48, 0x4E, 0x1B, 0xC6, 0x1D, 0x0B,  /* ..HN.... */
-                /* 0320 */  0xFE, 0x9D, 0xEA, 0xA9, 0xCA, 0xD3, 0x8A, 0xF2,  /* ........ */
-                /* 0328 */  0x64, 0xF5, 0x7A, 0xE5, 0x63, 0x96, 0xA1, 0xCE,  /* d.z.c... */
-                /* 0330 */  0xE0, 0x1D, 0xCB, 0xB7, 0x3C, 0x4F, 0x21, 0x4A,  /* ....<O!J */
-                /* 0338 */  0x9C, 0x97, 0x2D, 0x76, 0xC7, 0x32, 0x48, 0x50,  /* ..-v.2HP */
-                /* 0340 */  0x23, 0x3F, 0x68, 0x31, 0x94, 0xE0, 0xF1, 0xDE,  /* #?h1.... */
-                /* 0348 */  0xB1, 0x00, 0x6F, 0xFF, 0xFF, 0x3B, 0x16, 0x60,  /* ..o..;.` */
-                /* 0350 */  0xFC, 0x04, 0xC1, 0x09, 0x7C, 0xC7, 0x02, 0x1C,  /* ....|... */
-                /* 0358 */  0xC5, 0x7E, 0x37, 0xE8, 0x4A, 0x45, 0xEE, 0x58,  /* .~7.JE.X */
-                /* 0360 */  0x28, 0x0E, 0xAB, 0xB9, 0x63, 0x41, 0x9C, 0x28,  /* (...cA.( */
-                /* 0368 */  0xE6, 0x8A, 0x05, 0x86, 0xFF, 0xFF, 0x15, 0x0B,  /* ........ */
-                /* 0370 */  0xE0, 0x75, 0xC0, 0x2B, 0x16, 0x68, 0xFE, 0xFF,  /* .u.+.h.. */
-                /* 0378 */  0x57, 0x2C, 0xF0, 0x5E, 0x8E, 0x80, 0xDF, 0x09,  /* W,.^.... */
-                /* 0380 */  0xD1, 0x77, 0x0D, 0x7E, 0x9A, 0xB6, 0xA2, 0xBB,  /* .w.~.... */
-                /* 0388 */  0x06, 0x94, 0x19, 0xBE, 0x07, 0xF9, 0xB0, 0x13,  /* ........ */
-                /* 0390 */  0x2C, 0xD2, 0xA3, 0x8D, 0x6F, 0x49, 0xE1, 0x7C,  /* ,...oI.| */
-                /* 0398 */  0xDB, 0x00, 0xD8, 0xF2, 0xFF, 0xBF, 0x6D, 0x00,  /* ......m. */
-                /* 03A0 */  0x4C, 0x19, 0xBF, 0x6F, 0x1B, 0xC0, 0x4F, 0xA1,  /* L..o..O. */
-                /* 03A8 */  0x4D, 0x9F, 0x1A, 0x8D, 0x5A, 0x35, 0x28, 0x53,  /* M...Z5(S */
-                /* 03B0 */  0xA3, 0x4C, 0x83, 0x5A, 0x7D, 0x2A, 0x35, 0x66,  /* .L.Z}*5f */
-                /* 03B8 */  0x4C, 0xC9, 0xC1, 0xCE, 0x77, 0x0C, 0x2A, 0x6C,  /* L...w.*l */
-                /* 03C0 */  0x65, 0x1A, 0x9A, 0x63, 0x81, 0xD0, 0x10, 0xC7,  /* e..c.... */
-                /* 03C8 */  0x26, 0x19, 0x01, 0x51, 0x22, 0x10, 0x01, 0x59,  /* &..Q"..Y */
-                /* 03D0 */  0xFD, 0x6F, 0x42, 0x40, 0xCE, 0x02, 0x22, 0x20,  /* .oB@.."  */
-                /* 03D8 */  0x2B, 0x58, 0x9A, 0xC0, 0x9D, 0xFF, 0xD8, 0x28,  /* +X.....( */
-                /* 03E0 */  0x40, 0xA2, 0x02, 0x84, 0x29, 0x7D, 0x93, 0x09,  /* @...)}.. */
-                /* 03E8 */  0xD4, 0xB2, 0x41, 0x04, 0xF4, 0xFF, 0x3F, 0x42,  /* ..A...?B */
-                /* 03F0 */  0xD9, 0x00, 0x62, 0x82, 0x41, 0x04, 0x64, 0x91,  /* ..b.A.d. */
-                /* 03F8 */  0x3E, 0x80, 0x98, 0x62, 0x10, 0x01, 0x59, 0xDD,  /* >..b..Y. */
-                /* 0400 */  0xA3, 0x40, 0x40, 0xD6, 0x0A, 0x22, 0x20, 0xFF,  /* .@@.." . */
-                /* 0408 */  0xFF, 0x01                                       /* .. */
+                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  // FOMB....
+                /* 0008 */  0xFA, 0x03, 0x00, 0x00, 0x32, 0x12, 0x00, 0x00,  // ....2...
+                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  // DS...}.T
+                /* 0018 */  0x98, 0xC3, 0x88, 0x00, 0x01, 0x06, 0x18, 0x42,  // .......B
+                /* 0020 */  0x10, 0x07, 0x10, 0x8A, 0x0D, 0x21, 0x02, 0x0B,  // .....!..
+                /* 0028 */  0x83, 0x50, 0x50, 0x18, 0x14, 0xA0, 0x45, 0x41,  // .PP...EA
+                /* 0030 */  0xC8, 0x05, 0x14, 0x95, 0x02, 0x21, 0xC3, 0x02,  // .....!..
+                /* 0038 */  0x14, 0x0B, 0x70, 0x2E, 0x40, 0xBA, 0x00, 0xE5,  // ..p.@...
+                /* 0040 */  0x28, 0x72, 0x0C, 0x22, 0x02, 0xF7, 0xEF, 0x0F,  // (r."....
+                /* 0048 */  0x31, 0x10, 0x88, 0x14, 0x40, 0x48, 0x28, 0x84,  // 1...@H(.
+                /* 0050 */  0x44, 0x00, 0x53, 0x21, 0x70, 0x84, 0xA0, 0x5F,  // D.S!p.._
+                /* 0058 */  0x01, 0x08, 0x1D, 0x0A, 0x90, 0x29, 0xC0, 0xA0,  // .....)..
+                /* 0060 */  0x00, 0xA7, 0x08, 0x22, 0x88, 0xD2, 0xB2, 0x00,  // ..."....
+                /* 0068 */  0xDD, 0x02, 0x7C, 0x0B, 0xD0, 0x0E, 0x21, 0xB4,  // ..|...!.
+                /* 0070 */  0x58, 0x07, 0x11, 0x21, 0xD2, 0x31, 0x34, 0x29,  // X..!.14)
+                /* 0078 */  0x40, 0xA2, 0x00, 0x8B, 0x02, 0x64, 0xC3, 0xC8,  // @....d..
+                /* 0080 */  0x36, 0x22, 0x99, 0x87, 0x45, 0x0E, 0x02, 0x25,  // 6"..E..%
+                /* 0088 */  0x66, 0x10, 0x28, 0x9D, 0xE0, 0xB2, 0x89, 0xAB,  // f.(.....
+                /* 0090 */  0x41, 0x9C, 0x4C, 0x94, 0xF3, 0x88, 0x92, 0xE0,  // A.L.....
+                /* 0098 */  0xA8, 0x0E, 0x22, 0x42, 0xEC, 0x72, 0x05, 0x48,  // .."B.r.H
+                /* 00A0 */  0x1E, 0x80, 0x34, 0x4F, 0x4C, 0xD6, 0xE7, 0xA0,  // ..4OL...
+                /* 00A8 */  0x91, 0xB1, 0x11, 0xF0, 0x94, 0x1A, 0x40, 0x58,  // ......@X
+                /* 00B0 */  0xA0, 0x75, 0x2A, 0xE0, 0x7A, 0x0D, 0x43, 0x3D,  // .u*.z.C=
+                /* 00B8 */  0x80, 0x48, 0xCE, 0x58, 0x51, 0xC0, 0xF6, 0x3A,  // .H.XQ..:
+                /* 00C0 */  0x11, 0x8D, 0xEA, 0x40, 0x99, 0x24, 0x38, 0xD4,  // ...@.$8.
+                /* 00C8 */  0x30, 0x3D, 0xB5, 0xE6, 0x27, 0xA6, 0x89, 0x9C,  // 0=..'...
+                /* 00D0 */  0x5A, 0xD3, 0x43, 0x16, 0x24, 0x93, 0x36, 0x14,  // Z.C.$.6.
+                /* 00D8 */  0xD4, 0xD8, 0x3D, 0xAD, 0x93, 0xF2, 0x4C, 0x23,  // ..=...L#
+                /* 00E0 */  0x1E, 0x94, 0x61, 0x12, 0x78, 0x14, 0x0C, 0x8D,  // ..a.x...
+                /* 00E8 */  0x13, 0x94, 0x75, 0x22, 0xA0, 0x03, 0xE5, 0x80,  // ..u"....
+                /* 00F0 */  0x27, 0xE1, 0x39, 0x16, 0x2F, 0x40, 0xF8, 0x88,  // '.9./@..
+                /* 00F8 */  0xC9, 0xB4, 0x4D, 0xE0, 0x33, 0x81, 0x87, 0x79,  // ..M.3..y
+                /* 0100 */  0xCC, 0xD8, 0x11, 0x85, 0x0B, 0x78, 0x3E, 0xC7,  // .....x>.
+                /* 0108 */  0x10, 0x39, 0xEE, 0xA1, 0xC6, 0x38, 0x8A, 0xC8,  // .9...8..
+                /* 0110 */  0x47, 0x60, 0x24, 0x03, 0xC5, 0x2B, 0x08, 0x89,  // G`$..+..
+                /* 0118 */  0x80, 0xF8, 0x76, 0x70, 0x70, 0x91, 0xFC, 0xFF,  // ..vpp...
+                /* 0120 */  0x47, 0x89, 0x11, 0x2A, 0xC6, 0xDB, 0x00, 0x6E,  // G..*...n
+                /* 0128 */  0x5E, 0x09, 0x8A, 0x1E, 0x07, 0x4A, 0x06, 0x84,  // ^....J..
+                /* 0130 */  0x3C, 0x0A, 0xB0, 0x7A, 0x28, 0x20, 0x04, 0x16,  // <..z( ..
+                /* 0138 */  0x27, 0x40, 0xE3, 0x38, 0x05, 0xD3, 0x99, 0x00,  // '@.8....
+                /* 0140 */  0x6D, 0x02, 0xBC, 0x09, 0x30, 0x27, 0xC0, 0x16,  // m...0'..
+                /* 0148 */  0x86, 0x80, 0x82, 0x9C, 0x59, 0x94, 0x20, 0x11,  // ....Y. .
+                /* 0150 */  0x42, 0x31, 0x88, 0x0A, 0x05, 0x18, 0x43, 0x14,  // B1....C.
+                /* 0158 */  0xCA, 0x3B, 0x41, 0x8C, 0xCA, 0x20, 0x74, 0x82,  // .;A.. t.
+                /* 0160 */  0x08, 0x14, 0x3D, 0x78, 0x98, 0xD6, 0x40, 0x74,  // ..=x..@t
+                /* 0168 */  0x89, 0xF0, 0xC8, 0xB1, 0x47, 0x00, 0x9F, 0x19,  // ....G...
+                /* 0170 */  0xCE, 0xE9, 0x04, 0x1F, 0x01, 0xDE, 0x16, 0x4C,  // .......L
+                /* 0178 */  0xE0, 0x79, 0xBF, 0x24, 0x1C, 0x6A, 0xD8, 0x03,  // .y.$.j..
+                /* 0180 */  0x8E, 0x1A, 0xE3, 0x28, 0x12, 0x58, 0xD0, 0x33,  // ...(.X.3
+                /* 0188 */  0x42, 0x16, 0x40, 0x14, 0x09, 0x1E, 0x75, 0x64,  // B.@...ud
+                /* 0190 */  0xF0, 0xE1, 0xC0, 0x23, 0x3B, 0x72, 0xCF, 0xF0,  // ...#;r..
+                /* 0198 */  0x04, 0x82, 0x1C, 0xC2, 0x11, 0x3C, 0x36, 0x3C,  // .....<6<
+                /* 01A0 */  0x15, 0x78, 0x0C, 0xEC, 0xBA, 0xE0, 0x73, 0x80,  // .x....s.
+                /* 01A8 */  0x8F, 0x09, 0x78, 0xD7, 0x80, 0x9A, 0xF3, 0xD3,  // ..x.....
+                /* 01B0 */  0x01, 0x9B, 0x72, 0x38, 0xCC, 0x70, 0x3D, 0xFD,  // ..r8.p=.
+                /* 01B8 */  0x70, 0x27, 0x70, 0xD2, 0x06, 0x64, 0xB3, 0xF3,  // p'p..d..
+                /* 01C0 */  0xE0, 0x70, 0xE3, 0x3C, 0x99, 0x23, 0x2B, 0x55,  // .p.<.#+U
+                /* 01C8 */  0x80, 0xD9, 0x13, 0x82, 0x4E, 0x13, 0x3E, 0x73,  // ....N.>s
+                /* 01D0 */  0xB0, 0xBB, 0xC0, 0xF9, 0xF4, 0x0C, 0x49, 0xE4,  // ......I.
+                /* 01D8 */  0x0F, 0x02, 0x35, 0x32, 0x43, 0xFB, 0x2C, 0xF0,  // ..52C.,.
+                /* 01E0 */  0xEA, 0x61, 0xC8, 0x87, 0x85, 0xC3, 0x62, 0x62,  // .a....bb
+                /* 01E8 */  0xCF, 0x1E, 0x74, 0x3C, 0xE0, 0x3F, 0x25, 0x3C,  // ..t<.?%<
+                /* 01F0 */  0x6C, 0x78, 0xFA, 0x9E, 0xAF, 0x09, 0xA2, 0x3D,  // lx.....=
+                /* 01F8 */  0x8F, 0x80, 0xE1, 0xFF, 0x7F, 0x1E, 0x81, 0x39,  // .......9
+                /* 0200 */  0x9C, 0x07, 0x84, 0x27, 0x07, 0x76, 0x80, 0xC0,  // ...'.v..
+                /* 0208 */  0x1C, 0x48, 0x80, 0xC9, 0xF9, 0x02, 0x77, 0x28,  // .H....w(
+                /* 0210 */  0xF0, 0x10, 0xF8, 0x00, 0x1E, 0x25, 0xCE, 0xD1,  // .....%..
+                /* 0218 */  0x4A, 0x67, 0x86, 0x3C, 0xB9, 0x80, 0x2D, 0xFB,  // Jg.<..-.
+                /* 0220 */  0x1B, 0x40, 0x07, 0x0F, 0xE7, 0x06, 0x91, 0x8D,  // .@......
+                /* 0228 */  0x57, 0x80, 0x09, 0x74, 0x38, 0xB1, 0x1E, 0x20,  // W..t8.. 
+                /* 0230 */  0x4D, 0x14, 0x0C, 0x04, 0xD3, 0xD3, 0x6B, 0x00,  // M.....k.
+                /* 0238 */  0x3E, 0x15, 0x38, 0x37, 0x89, 0x92, 0x0F, 0x8C,  // >.87....
+                /* 0240 */  0xC2, 0x39, 0xEB, 0x79, 0x84, 0x82, 0x18, 0xD0,  // .9.y....
+                /* 0248 */  0x41, 0x20, 0xE4, 0xE4, 0xA0, 0x80, 0x3A, 0xAA,  // A ....:.
+                /* 0250 */  0xF8, 0x3C, 0x72, 0xAA, 0x0F, 0x3D, 0x9E, 0x94,  // .<r..=..
+                /* 0258 */  0x47, 0xE1, 0xAB, 0x8A, 0x0F, 0x21, 0x3E, 0x4F,  // G....!>O
+                /* 0260 */  0x78, 0xF4, 0x3E, 0x29, 0xF0, 0xEF, 0x8C, 0xAF,  // x.>)....
+                /* 0268 */  0x0E, 0x46, 0xB7, 0x9A, 0xE3, 0x0A, 0x0A, 0xCC,  // .F......
+                /* 0270 */  0x67, 0x11, 0x4E, 0x50, 0xD7, 0x6D, 0x01, 0xFA,  // g.NP.m..
+                /* 0278 */  0x29, 0xE0, 0x08, 0x3C, 0x94, 0x77, 0x92, 0xC7,  // )..<.w..
+                /* 0280 */  0x90, 0x04, 0xF5, 0x9D, 0x16, 0x40, 0x01, 0xE4,  // .....@..
+                /* 0288 */  0x9B, 0x81, 0x4F, 0x02, 0x21, 0xFE, 0xFF, 0x4F,  // ..O.!..O
+                /* 0290 */  0x07, 0x1E, 0xC3, 0xC3, 0x80, 0xD1, 0x8C, 0xCE,  // ........
+                /* 0298 */  0xC3, 0x4F, 0x16, 0x15, 0x77, 0xB2, 0x14, 0xC4,  // .O..w...
+                /* 02A0 */  0x93, 0x75, 0x94, 0xC9, 0xA2, 0x67, 0xE2, 0xAB,  // .u...g..
+                /* 02A8 */  0x85, 0x27, 0x74, 0x4A, 0x41, 0xCE, 0xD1, 0x13,  // .'tJA...
+                /* 02B0 */  0xF6, 0x55, 0x04, 0xD6, 0xF9, 0x20, 0xE4, 0x8B,  // .U... ..
+                /* 02B8 */  0x81, 0xA7, 0x61, 0x38, 0x4F, 0x96, 0xC3, 0x79,  // ..a8O..y
+                /* 02C0 */  0xB2, 0x7C, 0x2C, 0xBE, 0x6A, 0xC0, 0x1F, 0x2D,  // .|,.j..-
+                /* 02C8 */  0x96, 0xA0, 0xC0, 0xD9, 0x82, 0x1C, 0x1E, 0x13,  // ........
+                /* 02D0 */  0x6F, 0x54, 0xF4, 0x46, 0xE4, 0xE1, 0xF1, 0xCB,  // oT.F....
+                /* 02D8 */  0x81, 0xE7, 0xF3, 0x8C, 0x70, 0x94, 0x6F, 0x12,  // ....p.o.
+                /* 02E0 */  0x38, 0x8C, 0xC7, 0x12, 0x0F, 0xD1, 0x97, 0x23,  // 8......#
+                /* 02E8 */  0x58, 0x13, 0x39, 0x69, 0xDF, 0x16, 0x4E, 0x36,  // X.9i..N6
+                /* 02F0 */  0xE8, 0x4B, 0x10, 0xBB, 0x1C, 0x01, 0xBF, 0x88,  // .K......
+                /* 02F8 */  0x26, 0x86, 0xC1, 0x22, 0x2D, 0x45, 0x11, 0x17,  // &.."-E..
+                /* 0300 */  0x45, 0x61, 0x7C, 0xC5, 0x82, 0xFD, 0xFF, 0xBF,  // Ea|.....
+                /* 0308 */  0x62, 0x01, 0x16, 0x04, 0x0F, 0x1B, 0x34, 0x87,  // b.....4.
+                /* 0310 */  0x83, 0x97, 0x1E, 0x36, 0x6B, 0x38, 0x07, 0x99,  // ...6k8..
+                /* 0318 */  0xD3, 0xF1, 0x48, 0x4E, 0x1B, 0xC6, 0x1D, 0x0B,  // ..HN....
+                /* 0320 */  0xFE, 0x9D, 0xEA, 0xA9, 0xCA, 0xD3, 0x8A, 0xF2,  // ........
+                /* 0328 */  0x64, 0xF5, 0x7A, 0xE5, 0x63, 0x96, 0xA1, 0xCE,  // d.z.c...
+                /* 0330 */  0xE0, 0x1D, 0xCB, 0xB7, 0x3C, 0x4F, 0x21, 0x4A,  // ....<O!J
+                /* 0338 */  0x9C, 0x97, 0x2D, 0x76, 0xC7, 0x32, 0x48, 0x50,  // ..-v.2HP
+                /* 0340 */  0x23, 0x3F, 0x68, 0x31, 0x94, 0xE0, 0xF1, 0xDE,  // #?h1....
+                /* 0348 */  0xB1, 0x00, 0x6F, 0xFF, 0xFF, 0x3B, 0x16, 0x60,  // ..o..;.`
+                /* 0350 */  0xFC, 0x04, 0xC1, 0x09, 0x7C, 0xC7, 0x02, 0x1C,  // ....|...
+                /* 0358 */  0xC5, 0x7E, 0x37, 0xE8, 0x4A, 0x45, 0xEE, 0x58,  // .~7.JE.X
+                /* 0360 */  0x28, 0x0E, 0xAB, 0xB9, 0x63, 0x41, 0x9C, 0x28,  // (...cA.(
+                /* 0368 */  0xE6, 0x8A, 0x05, 0x86, 0xFF, 0xFF, 0x15, 0x0B,  // ........
+                /* 0370 */  0xE0, 0x75, 0xC0, 0x2B, 0x16, 0x68, 0xFE, 0xFF,  // .u.+.h..
+                /* 0378 */  0x57, 0x2C, 0xF0, 0x5E, 0x8E, 0x80, 0xDF, 0x09,  // W,.^....
+                /* 0380 */  0xD1, 0x77, 0x0D, 0x7E, 0x9A, 0xB6, 0xA2, 0xBB,  // .w.~....
+                /* 0388 */  0x06, 0x94, 0x19, 0xBE, 0x07, 0xF9, 0xB0, 0x13,  // ........
+                /* 0390 */  0x2C, 0xD2, 0xA3, 0x8D, 0x6F, 0x49, 0xE1, 0x7C,  // ,...oI.|
+                /* 0398 */  0xDB, 0x00, 0xD8, 0xF2, 0xFF, 0xBF, 0x6D, 0x00,  // ......m.
+                /* 03A0 */  0x4C, 0x19, 0xBF, 0x6F, 0x1B, 0xC0, 0x4F, 0xA1,  // L..o..O.
+                /* 03A8 */  0x4D, 0x9F, 0x1A, 0x8D, 0x5A, 0x35, 0x28, 0x53,  // M...Z5(S
+                /* 03B0 */  0xA3, 0x4C, 0x83, 0x5A, 0x7D, 0x2A, 0x35, 0x66,  // .L.Z}*5f
+                /* 03B8 */  0x4C, 0xC9, 0xC1, 0xCE, 0x77, 0x0C, 0x2A, 0x6C,  // L...w.*l
+                /* 03C0 */  0x65, 0x1A, 0x9A, 0x63, 0x81, 0xD0, 0x10, 0xC7,  // e..c....
+                /* 03C8 */  0x26, 0x19, 0x01, 0x51, 0x22, 0x10, 0x01, 0x59,  // &..Q"..Y
+                /* 03D0 */  0xFD, 0x6F, 0x42, 0x40, 0xCE, 0x02, 0x22, 0x20,  // .oB@.." 
+                /* 03D8 */  0x2B, 0x58, 0x9A, 0xC0, 0x9D, 0xFF, 0xD8, 0x28,  // +X.....(
+                /* 03E0 */  0x40, 0xA2, 0x02, 0x84, 0x29, 0x7D, 0x93, 0x09,  // @...)}..
+                /* 03E8 */  0xD4, 0xB2, 0x41, 0x04, 0xF4, 0xFF, 0x3F, 0x42,  // ..A...?B
+                /* 03F0 */  0xD9, 0x00, 0x62, 0x82, 0x41, 0x04, 0x64, 0x91,  // ..b.A.d.
+                /* 03F8 */  0x3E, 0x80, 0x98, 0x62, 0x10, 0x01, 0x59, 0xDD,  // >..b..Y.
+                /* 0400 */  0xA3, 0x40, 0x40, 0xD6, 0x0A, 0x22, 0x20, 0xFF,  // .@@.." .
+                /* 0408 */  0xFF, 0x01                                       // ..
             })
         }
 
@@ -31749,10 +31442,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         {
             Name (B2ED, Buffer (0x1C)
             {
-                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                /* 0010 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* ........ */
-                /* 0018 */  0x00, 0x00, 0x00, 0x00                           /* .... */
+                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                /* 0010 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // ........
+                /* 0018 */  0x00, 0x00, 0x00, 0x00                           // ....
             })
             Method (WH15, 2, NotSerialized)
             {
@@ -31796,28 +31489,28 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Name (WMID, 0x00)
                 Name (B0ED, Buffer (0x04)
                 {
-                     0x00, 0x00, 0x00, 0x00                           /* .... */
+                     0x00, 0x00, 0x00, 0x00                           // ....
                 })
                 CreateDWordField (B0ED, 0x00, WLID)
                 Name (B1ED, Buffer (0x04)
                 {
-                     0x00, 0x00, 0x00, 0x00                           /* .... */
+                     0x00, 0x00, 0x00, 0x00                           // ....
                 })
                 Name (_WDG, Buffer (0x64)
                 {
-                    /* 0000 */  0x81, 0x17, 0xF4, 0xD9, 0x33, 0xF6, 0x00, 0x44,  /* ....3..D */
-                    /* 0008 */  0x93, 0x55, 0x60, 0x17, 0x70, 0xBE, 0xC5, 0x10,  /* .U`.p... */
-                    /* 0010 */  0x41, 0x41, 0x01, 0x00, 0x1D, 0x37, 0xC3, 0x67,  /* AA...7.g */
-                    /* 0018 */  0xA3, 0x95, 0x37, 0x4C, 0xBB, 0x61, 0xDD, 0x47,  /* ..7L.a.G */
-                    /* 0020 */  0xB4, 0x91, 0xDA, 0xAB, 0x41, 0x42, 0x01, 0x02,  /* ....AB.. */
-                    /* 0028 */  0xED, 0x16, 0x1F, 0x43, 0x2B, 0x0C, 0x4C, 0x44,  /* ...C+.LD */
-                    /* 0030 */  0xB2, 0x67, 0x27, 0xDE, 0xB1, 0x40, 0xCF, 0x9C,  /* .g'..@.. */
-                    /* 0038 */  0x41, 0x43, 0x01, 0x02, 0x71, 0xBF, 0xD1, 0x40,  /* AC..q..@ */
-                    /* 0040 */  0x2D, 0xA8, 0x59, 0x4E, 0xA1, 0x68, 0x39, 0x85,  /* -.YN.h9. */
-                    /* 0048 */  0xE0, 0x3B, 0x2E, 0x87, 0xB0, 0x00, 0x01, 0x08,  /* .;...... */
-                    /* 0050 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  /* !...f... */
-                    /* 0058 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  /* ......). */
-                    /* 0060 */  0x44, 0x44, 0x01, 0x00                           /* DD.. */
+                    /* 0000 */  0x81, 0x17, 0xF4, 0xD9, 0x33, 0xF6, 0x00, 0x44,  // ....3..D
+                    /* 0008 */  0x93, 0x55, 0x60, 0x17, 0x70, 0xBE, 0xC5, 0x10,  // .U`.p...
+                    /* 0010 */  0x41, 0x41, 0x01, 0x00, 0x1D, 0x37, 0xC3, 0x67,  // AA...7.g
+                    /* 0018 */  0xA3, 0x95, 0x37, 0x4C, 0xBB, 0x61, 0xDD, 0x47,  // ..7L.a.G
+                    /* 0020 */  0xB4, 0x91, 0xDA, 0xAB, 0x41, 0x42, 0x01, 0x02,  // ....AB..
+                    /* 0028 */  0xED, 0x16, 0x1F, 0x43, 0x2B, 0x0C, 0x4C, 0x44,  // ...C+.LD
+                    /* 0030 */  0xB2, 0x67, 0x27, 0xDE, 0xB1, 0x40, 0xCF, 0x9C,  // .g'..@..
+                    /* 0038 */  0x41, 0x43, 0x01, 0x02, 0x71, 0xBF, 0xD1, 0x40,  // AC..q..@
+                    /* 0040 */  0x2D, 0xA8, 0x59, 0x4E, 0xA1, 0x68, 0x39, 0x85,  // -.YN.h9.
+                    /* 0048 */  0xE0, 0x3B, 0x2E, 0x87, 0xB0, 0x00, 0x01, 0x08,  // .;......
+                    /* 0050 */  0x21, 0x12, 0x90, 0x05, 0x66, 0xD5, 0xD1, 0x11,  // !...f...
+                    /* 0058 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  // ......).
+                    /* 0060 */  0x44, 0x44, 0x01, 0x00                           // DD..
                 })
                 Method (_WED, 1, NotSerialized)  // _Wxx: Wake Event
                 {
@@ -31862,178 +31555,178 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
         {
             Name (WQDD, Buffer (0x0560)
             {
-                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  /* FOMB.... */
-                /* 0008 */  0x50, 0x05, 0x00, 0x00, 0x70, 0x1D, 0x00, 0x00,  /* P...p... */
-                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  /* DS...}.T */
-                /* 0018 */  0x18, 0xCB, 0x8D, 0x00, 0x01, 0x06, 0x18, 0x42,  /* .......B */
-                /* 0020 */  0x10, 0x09, 0x10, 0x8A, 0xE7, 0x80, 0x42, 0x04,  /* ......B. */
-                /* 0028 */  0x0A, 0x0D, 0xA1, 0x40, 0x30, 0x28, 0x38, 0x4B,  /* ...@0(8K */
-                /* 0030 */  0x82, 0x90, 0x0B, 0x26, 0x26, 0x40, 0x08, 0x84,  /* ...&&@.. */
-                /* 0038 */  0x24, 0x0A, 0x30, 0x2F, 0x40, 0xB7, 0x00, 0xC3,  /* $.0/@... */
-                /* 0040 */  0x02, 0x6C, 0x0B, 0x30, 0x2D, 0xC0, 0x31, 0x90,  /* .l.0-.1. */
-                /* 0048 */  0xFA, 0xF7, 0x87, 0x28, 0x0D, 0x44, 0x22, 0x20,  /* ...(.D"  */
-                /* 0050 */  0xA9, 0x14, 0x08, 0x09, 0x15, 0xA0, 0x5C, 0x80,  /* ......\. */
-                /* 0058 */  0x6F, 0x01, 0xDA, 0x11, 0x25, 0x59, 0x80, 0x65,  /* o...%Y.e */
-                /* 0060 */  0x18, 0x11, 0xD8, 0x2B, 0x32, 0x41, 0xE3, 0x04,  /* ...+2A.. */
-                /* 0068 */  0xE5, 0x0C, 0x03, 0x05, 0x6F, 0xC0, 0x36, 0x05,  /* ....o.6. */
-                /* 0070 */  0x98, 0x1C, 0x04, 0x95, 0x3D, 0x08, 0x94, 0x0C,  /* ....=... */
-                /* 0078 */  0x08, 0x79, 0x14, 0x60, 0x15, 0x4E, 0xD3, 0x49,  /* .y.`.N.I */
-                /* 0080 */  0x60, 0xF7, 0x73, 0x91, 0x30, 0x18, 0x19, 0x13,  /* `.s.0... */
-                /* 0088 */  0xA0, 0x50, 0x80, 0x46, 0x01, 0xDE, 0x40, 0x64,  /* .P.F..@d */
-                /* 0090 */  0x4B, 0x80, 0x41, 0x01, 0xE2, 0x04, 0x28, 0x83,  /* K.A...(. */
-                /* 0098 */  0x12, 0x4A, 0xB8, 0x83, 0x69, 0x4D, 0x80, 0x39,  /* .J..iM.9 */
-                /* 00A0 */  0x28, 0x82, 0x56, 0x1B, 0x98, 0x50, 0x3A, 0x03,  /* (.V..P:. */
-                /* 00A8 */  0x12, 0x48, 0xAC, 0x16, 0xC1, 0x05, 0x13, 0x3B,  /* .H.....; */
-                /* 00B0 */  0x6A, 0x94, 0x40, 0xD1, 0xDB, 0x1F, 0x04, 0x09,  /* j.@..... */
-                /* 00B8 */  0xA7, 0x00, 0xA2, 0x06, 0x10, 0x45, 0x1A, 0x0D,  /* .....E.. */
-                /* 00C0 */  0x6A, 0x44, 0x09, 0x0E, 0xCC, 0xA3, 0x39, 0xD5,  /* jD....9. */
-                /* 00C8 */  0xCE, 0x05, 0x48, 0x9F, 0xAB, 0x40, 0x8E, 0xF5,  /* ..H..@.. */
-                /* 00D0 */  0x34, 0xEA, 0x1C, 0x2E, 0x01, 0x49, 0x60, 0xAC,  /* 4....I`. */
-                /* 00D8 */  0x04, 0xB7, 0xEE, 0x21, 0xE2, 0x5D, 0x03, 0x6A,  /* ...!.].j */
-                /* 00E0 */  0xE2, 0x87, 0xC8, 0x04, 0xC1, 0xA1, 0x86, 0xE8,  /* ........ */
-                /* 00E8 */  0xF1, 0x86, 0x3B, 0x81, 0xA3, 0x3E, 0x12, 0x06,  /* ..;..>.. */
-                /* 00F0 */  0x71, 0x50, 0x47, 0x83, 0x39, 0x07, 0xD8, 0xE1,  /* qPG.9... */
-                /* 00F8 */  0x64, 0x34, 0xE3, 0x52, 0x05, 0x98, 0x1D, 0xBA,  /* d4.R.... */
-                /* 0100 */  0x46, 0x96, 0xE0, 0x78, 0x0C, 0x7D, 0xF6, 0xE7,  /* F..x.}.. */
-                /* 0108 */  0xD3, 0x33, 0x24, 0x91, 0x3F, 0x08, 0xD4, 0xC8,  /* .3$.?... */
-                /* 0110 */  0x0C, 0xED, 0xA1, 0x9E, 0x56, 0xCC, 0x90, 0x4F,  /* ....V..O */
-                /* 0118 */  0x01, 0x87, 0xC5, 0xC4, 0x42, 0x68, 0x93, 0x1A,  /* ....Bh.. */
-                /* 0120 */  0x0F, 0xC4, 0xFF, 0xFF, 0x78, 0xC0, 0xA3, 0xF8,  /* ....x... */
-                /* 0128 */  0x68, 0x20, 0x84, 0x57, 0x82, 0xD8, 0x1E, 0x50,  /* h .W...P */
-                /* 0130 */  0x82, 0x01, 0x21, 0xE4, 0x64, 0x3C, 0xA8, 0x51,  /* ..!.d<.Q */
-                /* 0138 */  0x18, 0x35, 0xDC, 0x61, 0x1C, 0xB5, 0x8F, 0x0F,  /* .5.a.... */
-                /* 0140 */  0x3A, 0x3C, 0x50, 0x51, 0xC3, 0xA6, 0x67, 0x06,  /* :<PQ..g. */
-                /* 0148 */  0x7E, 0x5C, 0x60, 0xE7, 0x82, 0x98, 0x8F, 0x00,  /* ~\`..... */
-                /* 0150 */  0x1E, 0xC9, 0x09, 0xF9, 0x38, 0xE1, 0x81, 0xC1,  /* ....8... */
-                /* 0158 */  0x07, 0xC4, 0x7B, 0x9F, 0x32, 0x19, 0xC1, 0x99,  /* ..{.2... */
-                /* 0160 */  0x7A, 0x80, 0xE0, 0xB0, 0x3E, 0x7C, 0x02, 0xFC,  /* z...>|.. */
-                /* 0168 */  0xB2, 0xF0, 0xB0, 0x90, 0xC0, 0xF7, 0x07, 0x03,  /* ........ */
-                /* 0170 */  0xE3, 0x46, 0x68, 0xBF, 0x02, 0x10, 0x82, 0x97,  /* .Fh..... */
-                /* 0178 */  0x79, 0x02, 0x90, 0x53, 0x04, 0x8D, 0xCD, 0xD0,  /* y..S.... */
-                /* 0180 */  0x4F, 0x03, 0x2F, 0x0E, 0xE1, 0x83, 0x47, 0x38,  /* O./...G8 */
-                /* 0188 */  0xDF, 0x03, 0x38, 0x85, 0xC7, 0x00, 0x0F, 0xC1,  /* ..8..... */
-                /* 0190 */  0x04, 0x16, 0x39, 0x02, 0x94, 0x98, 0x11, 0xA0,  /* ..9..... */
-                /* 0198 */  0x8E, 0x0D, 0x27, 0x70, 0x3C, 0x61, 0x8F, 0xE0,  /* ..'p<a.. */
-                /* 01A0 */  0x78, 0xA2, 0x9C, 0xC4, 0x01, 0xF9, 0xA8, 0x61,  /* x......a */
-                /* 01A8 */  0x84, 0xE0, 0xE5, 0x9E, 0x38, 0x88, 0xE6, 0x71,  /* ....8..q */
-                /* 01B0 */  0x6A, 0x16, 0xEF, 0x00, 0x87, 0xC0, 0xC6, 0x84,  /* j....... */
-                /* 01B8 */  0x3B, 0x40, 0x78, 0x08, 0x7C, 0x00, 0x8F, 0x1A,  /* ;@x.|... */
-                /* 01C0 */  0xE7, 0x67, 0xA5, 0xB3, 0x42, 0x9E, 0x3B, 0xF8,  /* .g..B.;. */
-                /* 01C8 */  0x98, 0xB0, 0x03, 0xE0, 0xD2, 0x0F, 0x27, 0x28,  /* ......'( */
-                /* 01D0 */  0xB1, 0xE7, 0x13, 0x50, 0xFC, 0xFF, 0xCF, 0x27,  /* ...P...' */
-                /* 01D8 */  0xC0, 0x1E, 0xE4, 0x99, 0xE4, 0xED, 0xE4, 0x68,  /* .......h */
-                /* 01E0 */  0x9E, 0x4B, 0x1E, 0x48, 0x9E, 0x48, 0x9E, 0x4F,  /* .K.H.H.O */
-                /* 01E8 */  0x8C, 0xF3, 0x66, 0xF2, 0x64, 0x10, 0xE1, 0xF9,  /* ..f.d... */
-                /* 01F0 */  0xC4, 0xD7, 0x14, 0x23, 0x44, 0x09, 0x19, 0xE8,  /* ...#D... */
-                /* 01F8 */  0xE1, 0x24, 0x42, 0x94, 0x70, 0x81, 0xC2, 0x1A,  /* .$B.p... */
-                /* 0200 */  0x21, 0xC8, 0x63, 0xC1, 0x09, 0x1F, 0x76, 0xAC,  /* !.c...v. */
-                /* 0208 */  0x40, 0x61, 0x9E, 0x4F, 0x98, 0xF0, 0xA7, 0x86,  /* @a.O.... */
-                /* 0210 */  0x2C, 0x9C, 0x4F, 0x00, 0xBA, 0xFC, 0xFF, 0xCF,  /* ,.O..... */
-                /* 0218 */  0x27, 0x80, 0x33, 0x81, 0xE7, 0x13, 0x90, 0x0E,  /* '.3..... */
-                /* 0220 */  0x8F, 0x1F, 0x4F, 0x80, 0xC9, 0x08, 0xB8, 0x16,  /* ..O..... */
-                /* 0228 */  0x13, 0x87, 0x2F, 0xD4, 0xE3, 0xC0, 0xA7, 0x11,  /* ../..... */
-                /* 0230 */  0x40, 0xCE, 0x09, 0xE4, 0xFD, 0xE3, 0x38, 0x9F,  /* @.....8. */
-                /* 0238 */  0x44, 0x7C, 0xF7, 0xF2, 0xFF, 0xFF, 0xE6, 0xE5,  /* D|...... */
-                /* 0240 */  0x83, 0xC8, 0x1B, 0xC8, 0xC1, 0x3E, 0x8D, 0xB0,  /* .....>.. */
-                /* 0248 */  0x51, 0x05, 0x33, 0xCA, 0xE9, 0x47, 0x88, 0xFA,  /* Q.3..G.. */
-                /* 0250 */  0x52, 0x62, 0xC4, 0x08, 0xC1, 0x42, 0x05, 0x8A,  /* Rb...B.. */
-                /* 0258 */  0x11, 0x35, 0xB2, 0x61, 0x23, 0xC4, 0x79, 0xF8,  /* .5.a#.y. */
-                /* 0260 */  0xA2, 0x0F, 0x06, 0x0D, 0xD5, 0xA7, 0x11, 0x80,  /* ........ */
-                /* 0268 */  0x1F, 0xA7, 0x09, 0xDC, 0xE9, 0x02, 0x4C, 0x93,  /* ......L. */
-                /* 0270 */  0x38, 0x80, 0x28, 0x45, 0xC3, 0x68, 0x3A, 0x8F,  /* 8.(E.h:. */
-                /* 0278 */  0x03, 0x01, 0x9F, 0x2F, 0x80, 0x89, 0xE2, 0x97,  /* .../.... */
-                /* 0280 */  0x9E, 0xCE, 0x27, 0xFE, 0xFF, 0xAB, 0x05, 0x91,  /* ..'..... */
-                /* 0288 */  0x8D, 0xB5, 0x7A, 0x58, 0x34, 0xF3, 0x03, 0x48,  /* ..zX4..H */
-                /* 0290 */  0xF0, 0xC5, 0x03, 0x6B, 0xD8, 0x27, 0x79, 0x16,  /* ...k.'y. */
-                /* 0298 */  0x27, 0x99, 0x60, 0x56, 0x28, 0xC1, 0x7A, 0xD8,  /* '.`V(.z. */
-                /* 02A0 */  0x4E, 0x09, 0xA3, 0x04, 0x24, 0x1A, 0x8E, 0xA1,  /* N...$... */
-                /* 02A8 */  0xAD, 0x19, 0x46, 0x70, 0x06, 0xF1, 0x79, 0xC8,  /* ..Fp..y. */
-                /* 02B0 */  0x21, 0xCE, 0x31, 0x50, 0x8E, 0x0C, 0x1E, 0xC5,  /* !.1P.... */
-                /* 02B8 */  0x59, 0x3D, 0x07, 0x78, 0x8C, 0x8F, 0x0B, 0x6C,  /* Y=.x...l */
-                /* 02C0 */  0x7C, 0x3E, 0x08, 0xF0, 0xC3, 0xA0, 0x6F, 0x06,  /* |>....o. */
-                /* 02C8 */  0x46, 0xB6, 0x9A, 0xD3, 0x0C, 0x0A, 0xCC, 0xC7,  /* F....... */
-                /* 02D0 */  0x0B, 0x4E, 0x50, 0xD7, 0xCD, 0x05, 0x64, 0x43,  /* .NP...dC */
-                /* 02D8 */  0x82, 0x79, 0x10, 0x38, 0x24, 0x30, 0x4F, 0xD5,  /* .y.8$0O. */
-                /* 02E0 */  0x43, 0x02, 0x1E, 0xE0, 0x87, 0x04, 0xE6, 0x2B,  /* C......+ */
-                /* 02E8 */  0x81, 0x87, 0x04, 0x2C, 0xFE, 0xFF, 0xA8, 0x07,  /* ...,.... */
-                /* 02F0 */  0x71, 0x48, 0x60, 0x46, 0xF2, 0x90, 0xC0, 0xA6,  /* qH`F.... */
-                /* 02F8 */  0xEF, 0xC8, 0x01, 0x0A, 0x20, 0xDF, 0x30, 0x7C,  /* .... .0| */
-                /* 0300 */  0xDC, 0x7B, 0xCA, 0x60, 0x63, 0x78, 0xE2, 0x33,  /* .{.`cx.3 */
-                /* 0308 */  0x9A, 0xD1, 0xB9, 0xC4, 0xE5, 0xE8, 0x42, 0xC1,  /* ......B. */
-                /* 0310 */  0x45, 0xC1, 0xE8, 0x58, 0x60, 0x10, 0x4F, 0xCB,  /* E..X`.O. */
-                /* 0318 */  0x51, 0xA6, 0x8A, 0x9E, 0x89, 0x7D, 0x9E, 0x42,  /* Q....}.B */
-                /* 0320 */  0xC8, 0x89, 0x82, 0x5F, 0xDD, 0x74, 0x9F, 0x81,  /* ..._.t.. */
-                /* 0328 */  0x76, 0xF7, 0x08, 0xEA, 0x8B, 0x0A, 0x83, 0xF3,  /* v....... */
-                /* 0330 */  0x64, 0x39, 0x9C, 0xAF, 0x14, 0xFC, 0xAE, 0xE3,  /* d9...... */
-                /* 0338 */  0xCB, 0x15, 0xF8, 0x46, 0x05, 0xF7, 0x50, 0xC1,  /* ...F..P. */
-                /* 0340 */  0x46, 0x05, 0xF6, 0xEB, 0x88, 0x47, 0x05, 0xD6,  /* F....G.. */
-                /* 0348 */  0xFF, 0xFF, 0xA8, 0x60, 0x9D, 0x2B, 0xD8, 0xA8,  /* ...`.+.. */
-                /* 0350 */  0xC0, 0x7E, 0x26, 0xF0, 0xA8, 0x80, 0xCB, 0xD1,  /* .~&..... */
-                /* 0358 */  0x82, 0x8D, 0x0A, 0xEC, 0x1E, 0x46, 0x05, 0xCA,  /* .....F.. */
-                /* 0360 */  0x20, 0xD7, 0x0F, 0x28, 0xD0, 0x8F, 0x96, 0xAF,  /*  ..(.... */
-                /* 0368 */  0x40, 0x0F, 0x41, 0x8F, 0x51, 0x1E, 0x14, 0xB8,  /* @.A.Q... */
-                /* 0370 */  0x61, 0x7C, 0xDF, 0x03, 0x4E, 0x17, 0x10, 0x98,  /* a|..N... */
-                /* 0378 */  0xF0, 0x18, 0xC1, 0x47, 0x18, 0xF2, 0xFF, 0x27,  /* ...G...' */
-                /* 0380 */  0x28, 0x6B, 0x5C, 0xA8, 0xFB, 0x8A, 0xAF, 0x72,  /* (k\....r */
-                /* 0388 */  0xEC, 0x3A, 0x85, 0xBB, 0x2A, 0x62, 0x60, 0x3D,  /* .:..*b`= */
-                /* 0390 */  0x52, 0x0E, 0x6B, 0xB4, 0xB0, 0x07, 0xFC, 0xA6,  /* R.k..... */
-                /* 0398 */  0xE5, 0x63, 0x9A, 0x67, 0x66, 0x8C, 0xB0, 0x1E,  /* .c.gf... */
-                /* 03A0 */  0xAD, 0x95, 0x92, 0xD2, 0x2B, 0x9F, 0x23, 0xDD,  /* ....+.#. */
-                /* 03A8 */  0xFA, 0x00, 0x41, 0x73, 0x79, 0x10, 0x78, 0xCE,  /* ..Asy.x. */
-                /* 03B0 */  0x7B, 0x4B, 0x78, 0x73, 0xF7, 0x59, 0xC2, 0xC7,  /* {Kxs.Y.. */
-                /* 03B8 */  0xBD, 0xC7, 0x82, 0x97, 0x80, 0x97, 0x81, 0xF7,  /* ........ */
-                /* 03C0 */  0x92, 0x57, 0x5A, 0x76, 0xED, 0xF3, 0xAD, 0xCF,  /* .WZv.... */
-                /* 03C8 */  0x48, 0x0F, 0x80, 0x46, 0x09, 0x12, 0x23, 0xE6,  /* H..F..#. */
-                /* 03D0 */  0xFB, 0x89, 0x91, 0x1F, 0x6D, 0x7D, 0x69, 0xF0,  /* ....m}i. */
-                /* 03D8 */  0xBD, 0x2F, 0xC6, 0x5B, 0x1F, 0x8B, 0x77, 0xEB,  /* ./.[..w. */
-                /* 03E0 */  0x03, 0x44, 0xFD, 0xFF, 0x6F, 0x7D, 0xC0, 0xFE,  /* .D..o}.. */
-                /* 03E8 */  0x72, 0xF1, 0xD6, 0x07, 0x1C, 0x30, 0x23, 0xBE,  /* r....0#. */
-                /* 03F0 */  0xF6, 0x01, 0x93, 0x34, 0x2B, 0xD0, 0x59, 0xC3,  /* ...4+.Y. */
-                /* 03F8 */  0x49, 0x40, 0x74, 0xED, 0xC3, 0xE9, 0x01, 0xD2,  /* I@t..... */
-                /* 0400 */  0xB5, 0x0F, 0xAF, 0x03, 0x96, 0x8E, 0xDB, 0x0A,  /* ........ */
-                /* 0408 */  0x60, 0x94, 0xE4, 0x58, 0x85, 0xD2, 0x7E, 0xAC,  /* `..X..~. */
-                /* 0410 */  0xA2, 0x20, 0x3E, 0xCE, 0xF8, 0xDA, 0x07, 0x58,  /* . >....X */
-                /* 0418 */  0xF9, 0xFF, 0x5F, 0xFB, 0x00, 0x26, 0x0E, 0x09,  /* .._..&.. */
-                /* 0420 */  0xE6, 0xF5, 0xE2, 0x09, 0xC7, 0x43, 0x02, 0xEB,  /* .....C.. */
-                /* 0428 */  0x8D, 0xC6, 0x43, 0x82, 0xFB, 0xFF, 0x1F, 0x34,  /* ..C....4 */
-                /* 0430 */  0xD8, 0x86, 0x04, 0xE6, 0x8B, 0x9D, 0xAF, 0x8E,  /* ........ */
-                /* 0438 */  0xC0, 0x59, 0xF6, 0x82, 0x75, 0x29, 0xE1, 0x42,  /* .Y..u).B */
-                /* 0440 */  0x61, 0x74, 0xB4, 0x30, 0x88, 0x01, 0x7D, 0x75,  /* at.0..}u */
-                /* 0448 */  0x04, 0x7E, 0x17, 0x3E, 0xE0, 0x73, 0x75, 0x04,  /* .~.>.su. */
-                /* 0450 */  0x0E, 0x17, 0x3E, 0xFC, 0xFF, 0xFF, 0xEA, 0x08,  /* ..>..... */
-                /* 0458 */  0x38, 0xB8, 0xF1, 0x81, 0xF3, 0xEA, 0x08, 0xFC,  /* 8....... */
-                /* 0460 */  0x4C, 0x5C, 0x1D, 0x01, 0x1D, 0x2A, 0x46, 0x0E,  /* L\...*F. */
-                /* 0468 */  0x74, 0x4E, 0x31, 0x8C, 0xE0, 0xFF, 0x7F, 0x54,  /* tN1....T */
-                /* 0470 */  0xE0, 0x06, 0xF6, 0xF1, 0x00, 0xD8, 0x8C, 0x0A,  /* ........ */
-                /* 0478 */  0x18, 0x9C, 0x06, 0x7C, 0x09, 0x05, 0xBC, 0x2A,  /* ...|...* */
-                /* 0480 */  0xB4, 0xE9, 0x53, 0xA3, 0x51, 0xAB, 0x06, 0x65,  /* ..S.Q..e */
-                /* 0488 */  0x6A, 0x94, 0x69, 0x50, 0xAB, 0x4F, 0xA5, 0xC6,  /* j.iP.O.. */
-                /* 0490 */  0x8C, 0x5D, 0x29, 0x13, 0x8C, 0xB1, 0x02, 0x8D,  /* .])..... */
-                /* 0498 */  0xC5, 0x22, 0x96, 0x23, 0x10, 0x87, 0x04, 0xA1,  /* .".#.... */
-                /* 04A0 */  0x22, 0x1F, 0x43, 0x02, 0x71, 0x44, 0x10, 0x1A,  /* ".C.qD.. */
-                /* 04A8 */  0xE1, 0x4D, 0x23, 0x10, 0xC7, 0x5B, 0x9B, 0x40,  /* .M#..[.@ */
-                /* 04B0 */  0x2C, 0xEE, 0xA1, 0x21, 0x10, 0xFF, 0xFF, 0x83,  /* ,..!.... */
-                /* 04B8 */  0x3C, 0x23, 0x64, 0x04, 0x44, 0xA9, 0x40, 0x74,  /* <#d.D.@t */
-                /* 04C0 */  0x4B, 0x22, 0x6B, 0x12, 0x90, 0x95, 0x81, 0x08,  /* K"k..... */
-                /* 04C8 */  0xC8, 0x81, 0x80, 0x68, 0x3A, 0x20, 0x2A, 0xEA,  /* ...h: *. */
-                /* 04D0 */  0x21, 0x20, 0x20, 0x2B, 0x04, 0x11, 0x90, 0xD5,  /* !  +.... */
-                /* 04D8 */  0xD8, 0x00, 0x62, 0xDA, 0x40, 0x04, 0xE4, 0x5C,  /* ..b.@..\ */
-                /* 04E0 */  0x40, 0x34, 0x25, 0x10, 0x55, 0xA8, 0x03, 0x88,  /* @4%.U... */
-                /* 04E8 */  0xE9, 0x05, 0x11, 0x90, 0xB3, 0x02, 0xD1, 0xE4,  /* ........ */
-                /* 04F0 */  0x40, 0x54, 0xB3, 0x0F, 0x20, 0x96, 0x00, 0x44,  /* @T.. ..D */
-                /* 04F8 */  0x40, 0x4E, 0x4A, 0x23, 0x10, 0xEB, 0x54, 0x02,  /* @NJ#..T. */
-                /* 0500 */  0xC2, 0x52, 0xBD, 0x1D, 0x04, 0xE8, 0x88, 0x20,  /* .R.....  */
-                /* 0508 */  0x02, 0xB2, 0xB2, 0x2F, 0xAB, 0x80, 0x2C, 0x13,  /* .../..,. */
-                /* 0510 */  0x44, 0x40, 0x4E, 0x07, 0x44, 0xA3, 0x02, 0x51,  /* D@N.D..Q */
-                /* 0518 */  0x85, 0x56, 0x80, 0x98, 0x5C, 0x10, 0x01, 0x39,  /* .V..\..9 */
-                /* 0520 */  0x25, 0x10, 0x8D, 0x0C, 0x44, 0x95, 0x6A, 0x01,  /* %...D.j. */
-                /* 0528 */  0x62, 0xB2, 0x41, 0x04, 0x64, 0x89, 0x5E, 0x80,  /* b.A.d.^. */
-                /* 0530 */  0x98, 0x60, 0x10, 0x01, 0x39, 0x2C, 0x10, 0x8D,  /* .`..9,.. */
-                /* 0538 */  0x0E, 0x44, 0x65, 0xBF, 0x0A, 0x04, 0xE4, 0x10,  /* .De..... */
-                /* 0540 */  0x20, 0x3A, 0x25, 0x10, 0x33, 0x40, 0x4C, 0x0E,  /*  :%.3@L. */
-                /* 0548 */  0x88, 0x0E, 0x00, 0x04, 0x88, 0xC6, 0x02, 0xA2,  /* ........ */
-                /* 0550 */  0x92, 0xFE, 0x5B, 0x02, 0xB2, 0x40, 0x10, 0x01,  /* ..[..@.. */
-                /* 0558 */  0x39, 0x1C, 0x10, 0x8D, 0x0A, 0x44, 0xFF, 0xFF   /* 9....D.. */
+                /* 0000 */  0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,  // FOMB....
+                /* 0008 */  0x50, 0x05, 0x00, 0x00, 0x70, 0x1D, 0x00, 0x00,  // P...p...
+                /* 0010 */  0x44, 0x53, 0x00, 0x01, 0x1A, 0x7D, 0xDA, 0x54,  // DS...}.T
+                /* 0018 */  0x18, 0xCB, 0x8D, 0x00, 0x01, 0x06, 0x18, 0x42,  // .......B
+                /* 0020 */  0x10, 0x09, 0x10, 0x8A, 0xE7, 0x80, 0x42, 0x04,  // ......B.
+                /* 0028 */  0x0A, 0x0D, 0xA1, 0x40, 0x30, 0x28, 0x38, 0x4B,  // ...@0(8K
+                /* 0030 */  0x82, 0x90, 0x0B, 0x26, 0x26, 0x40, 0x08, 0x84,  // ...&&@..
+                /* 0038 */  0x24, 0x0A, 0x30, 0x2F, 0x40, 0xB7, 0x00, 0xC3,  // $.0/@...
+                /* 0040 */  0x02, 0x6C, 0x0B, 0x30, 0x2D, 0xC0, 0x31, 0x90,  // .l.0-.1.
+                /* 0048 */  0xFA, 0xF7, 0x87, 0x28, 0x0D, 0x44, 0x22, 0x20,  // ...(.D" 
+                /* 0050 */  0xA9, 0x14, 0x08, 0x09, 0x15, 0xA0, 0x5C, 0x80,  // ......\.
+                /* 0058 */  0x6F, 0x01, 0xDA, 0x11, 0x25, 0x59, 0x80, 0x65,  // o...%Y.e
+                /* 0060 */  0x18, 0x11, 0xD8, 0x2B, 0x32, 0x41, 0xE3, 0x04,  // ...+2A..
+                /* 0068 */  0xE5, 0x0C, 0x03, 0x05, 0x6F, 0xC0, 0x36, 0x05,  // ....o.6.
+                /* 0070 */  0x98, 0x1C, 0x04, 0x95, 0x3D, 0x08, 0x94, 0x0C,  // ....=...
+                /* 0078 */  0x08, 0x79, 0x14, 0x60, 0x15, 0x4E, 0xD3, 0x49,  // .y.`.N.I
+                /* 0080 */  0x60, 0xF7, 0x73, 0x91, 0x30, 0x18, 0x19, 0x13,  // `.s.0...
+                /* 0088 */  0xA0, 0x50, 0x80, 0x46, 0x01, 0xDE, 0x40, 0x64,  // .P.F..@d
+                /* 0090 */  0x4B, 0x80, 0x41, 0x01, 0xE2, 0x04, 0x28, 0x83,  // K.A...(.
+                /* 0098 */  0x12, 0x4A, 0xB8, 0x83, 0x69, 0x4D, 0x80, 0x39,  // .J..iM.9
+                /* 00A0 */  0x28, 0x82, 0x56, 0x1B, 0x98, 0x50, 0x3A, 0x03,  // (.V..P:.
+                /* 00A8 */  0x12, 0x48, 0xAC, 0x16, 0xC1, 0x05, 0x13, 0x3B,  // .H.....;
+                /* 00B0 */  0x6A, 0x94, 0x40, 0xD1, 0xDB, 0x1F, 0x04, 0x09,  // j.@.....
+                /* 00B8 */  0xA7, 0x00, 0xA2, 0x06, 0x10, 0x45, 0x1A, 0x0D,  // .....E..
+                /* 00C0 */  0x6A, 0x44, 0x09, 0x0E, 0xCC, 0xA3, 0x39, 0xD5,  // jD....9.
+                /* 00C8 */  0xCE, 0x05, 0x48, 0x9F, 0xAB, 0x40, 0x8E, 0xF5,  // ..H..@..
+                /* 00D0 */  0x34, 0xEA, 0x1C, 0x2E, 0x01, 0x49, 0x60, 0xAC,  // 4....I`.
+                /* 00D8 */  0x04, 0xB7, 0xEE, 0x21, 0xE2, 0x5D, 0x03, 0x6A,  // ...!.].j
+                /* 00E0 */  0xE2, 0x87, 0xC8, 0x04, 0xC1, 0xA1, 0x86, 0xE8,  // ........
+                /* 00E8 */  0xF1, 0x86, 0x3B, 0x81, 0xA3, 0x3E, 0x12, 0x06,  // ..;..>..
+                /* 00F0 */  0x71, 0x50, 0x47, 0x83, 0x39, 0x07, 0xD8, 0xE1,  // qPG.9...
+                /* 00F8 */  0x64, 0x34, 0xE3, 0x52, 0x05, 0x98, 0x1D, 0xBA,  // d4.R....
+                /* 0100 */  0x46, 0x96, 0xE0, 0x78, 0x0C, 0x7D, 0xF6, 0xE7,  // F..x.}..
+                /* 0108 */  0xD3, 0x33, 0x24, 0x91, 0x3F, 0x08, 0xD4, 0xC8,  // .3$.?...
+                /* 0110 */  0x0C, 0xED, 0xA1, 0x9E, 0x56, 0xCC, 0x90, 0x4F,  // ....V..O
+                /* 0118 */  0x01, 0x87, 0xC5, 0xC4, 0x42, 0x68, 0x93, 0x1A,  // ....Bh..
+                /* 0120 */  0x0F, 0xC4, 0xFF, 0xFF, 0x78, 0xC0, 0xA3, 0xF8,  // ....x...
+                /* 0128 */  0x68, 0x20, 0x84, 0x57, 0x82, 0xD8, 0x1E, 0x50,  // h .W...P
+                /* 0130 */  0x82, 0x01, 0x21, 0xE4, 0x64, 0x3C, 0xA8, 0x51,  // ..!.d<.Q
+                /* 0138 */  0x18, 0x35, 0xDC, 0x61, 0x1C, 0xB5, 0x8F, 0x0F,  // .5.a....
+                /* 0140 */  0x3A, 0x3C, 0x50, 0x51, 0xC3, 0xA6, 0x67, 0x06,  // :<PQ..g.
+                /* 0148 */  0x7E, 0x5C, 0x60, 0xE7, 0x82, 0x98, 0x8F, 0x00,  // ~\`.....
+                /* 0150 */  0x1E, 0xC9, 0x09, 0xF9, 0x38, 0xE1, 0x81, 0xC1,  // ....8...
+                /* 0158 */  0x07, 0xC4, 0x7B, 0x9F, 0x32, 0x19, 0xC1, 0x99,  // ..{.2...
+                /* 0160 */  0x7A, 0x80, 0xE0, 0xB0, 0x3E, 0x7C, 0x02, 0xFC,  // z...>|..
+                /* 0168 */  0xB2, 0xF0, 0xB0, 0x90, 0xC0, 0xF7, 0x07, 0x03,  // ........
+                /* 0170 */  0xE3, 0x46, 0x68, 0xBF, 0x02, 0x10, 0x82, 0x97,  // .Fh.....
+                /* 0178 */  0x79, 0x02, 0x90, 0x53, 0x04, 0x8D, 0xCD, 0xD0,  // y..S....
+                /* 0180 */  0x4F, 0x03, 0x2F, 0x0E, 0xE1, 0x83, 0x47, 0x38,  // O./...G8
+                /* 0188 */  0xDF, 0x03, 0x38, 0x85, 0xC7, 0x00, 0x0F, 0xC1,  // ..8.....
+                /* 0190 */  0x04, 0x16, 0x39, 0x02, 0x94, 0x98, 0x11, 0xA0,  // ..9.....
+                /* 0198 */  0x8E, 0x0D, 0x27, 0x70, 0x3C, 0x61, 0x8F, 0xE0,  // ..'p<a..
+                /* 01A0 */  0x78, 0xA2, 0x9C, 0xC4, 0x01, 0xF9, 0xA8, 0x61,  // x......a
+                /* 01A8 */  0x84, 0xE0, 0xE5, 0x9E, 0x38, 0x88, 0xE6, 0x71,  // ....8..q
+                /* 01B0 */  0x6A, 0x16, 0xEF, 0x00, 0x87, 0xC0, 0xC6, 0x84,  // j.......
+                /* 01B8 */  0x3B, 0x40, 0x78, 0x08, 0x7C, 0x00, 0x8F, 0x1A,  // ;@x.|...
+                /* 01C0 */  0xE7, 0x67, 0xA5, 0xB3, 0x42, 0x9E, 0x3B, 0xF8,  // .g..B.;.
+                /* 01C8 */  0x98, 0xB0, 0x03, 0xE0, 0xD2, 0x0F, 0x27, 0x28,  // ......'(
+                /* 01D0 */  0xB1, 0xE7, 0x13, 0x50, 0xFC, 0xFF, 0xCF, 0x27,  // ...P...'
+                /* 01D8 */  0xC0, 0x1E, 0xE4, 0x99, 0xE4, 0xED, 0xE4, 0x68,  // .......h
+                /* 01E0 */  0x9E, 0x4B, 0x1E, 0x48, 0x9E, 0x48, 0x9E, 0x4F,  // .K.H.H.O
+                /* 01E8 */  0x8C, 0xF3, 0x66, 0xF2, 0x64, 0x10, 0xE1, 0xF9,  // ..f.d...
+                /* 01F0 */  0xC4, 0xD7, 0x14, 0x23, 0x44, 0x09, 0x19, 0xE8,  // ...#D...
+                /* 01F8 */  0xE1, 0x24, 0x42, 0x94, 0x70, 0x81, 0xC2, 0x1A,  // .$B.p...
+                /* 0200 */  0x21, 0xC8, 0x63, 0xC1, 0x09, 0x1F, 0x76, 0xAC,  // !.c...v.
+                /* 0208 */  0x40, 0x61, 0x9E, 0x4F, 0x98, 0xF0, 0xA7, 0x86,  // @a.O....
+                /* 0210 */  0x2C, 0x9C, 0x4F, 0x00, 0xBA, 0xFC, 0xFF, 0xCF,  // ,.O.....
+                /* 0218 */  0x27, 0x80, 0x33, 0x81, 0xE7, 0x13, 0x90, 0x0E,  // '.3.....
+                /* 0220 */  0x8F, 0x1F, 0x4F, 0x80, 0xC9, 0x08, 0xB8, 0x16,  // ..O.....
+                /* 0228 */  0x13, 0x87, 0x2F, 0xD4, 0xE3, 0xC0, 0xA7, 0x11,  // ../.....
+                /* 0230 */  0x40, 0xCE, 0x09, 0xE4, 0xFD, 0xE3, 0x38, 0x9F,  // @.....8.
+                /* 0238 */  0x44, 0x7C, 0xF7, 0xF2, 0xFF, 0xFF, 0xE6, 0xE5,  // D|......
+                /* 0240 */  0x83, 0xC8, 0x1B, 0xC8, 0xC1, 0x3E, 0x8D, 0xB0,  // .....>..
+                /* 0248 */  0x51, 0x05, 0x33, 0xCA, 0xE9, 0x47, 0x88, 0xFA,  // Q.3..G..
+                /* 0250 */  0x52, 0x62, 0xC4, 0x08, 0xC1, 0x42, 0x05, 0x8A,  // Rb...B..
+                /* 0258 */  0x11, 0x35, 0xB2, 0x61, 0x23, 0xC4, 0x79, 0xF8,  // .5.a#.y.
+                /* 0260 */  0xA2, 0x0F, 0x06, 0x0D, 0xD5, 0xA7, 0x11, 0x80,  // ........
+                /* 0268 */  0x1F, 0xA7, 0x09, 0xDC, 0xE9, 0x02, 0x4C, 0x93,  // ......L.
+                /* 0270 */  0x38, 0x80, 0x28, 0x45, 0xC3, 0x68, 0x3A, 0x8F,  // 8.(E.h:.
+                /* 0278 */  0x03, 0x01, 0x9F, 0x2F, 0x80, 0x89, 0xE2, 0x97,  // .../....
+                /* 0280 */  0x9E, 0xCE, 0x27, 0xFE, 0xFF, 0xAB, 0x05, 0x91,  // ..'.....
+                /* 0288 */  0x8D, 0xB5, 0x7A, 0x58, 0x34, 0xF3, 0x03, 0x48,  // ..zX4..H
+                /* 0290 */  0xF0, 0xC5, 0x03, 0x6B, 0xD8, 0x27, 0x79, 0x16,  // ...k.'y.
+                /* 0298 */  0x27, 0x99, 0x60, 0x56, 0x28, 0xC1, 0x7A, 0xD8,  // '.`V(.z.
+                /* 02A0 */  0x4E, 0x09, 0xA3, 0x04, 0x24, 0x1A, 0x8E, 0xA1,  // N...$...
+                /* 02A8 */  0xAD, 0x19, 0x46, 0x70, 0x06, 0xF1, 0x79, 0xC8,  // ..Fp..y.
+                /* 02B0 */  0x21, 0xCE, 0x31, 0x50, 0x8E, 0x0C, 0x1E, 0xC5,  // !.1P....
+                /* 02B8 */  0x59, 0x3D, 0x07, 0x78, 0x8C, 0x8F, 0x0B, 0x6C,  // Y=.x...l
+                /* 02C0 */  0x7C, 0x3E, 0x08, 0xF0, 0xC3, 0xA0, 0x6F, 0x06,  // |>....o.
+                /* 02C8 */  0x46, 0xB6, 0x9A, 0xD3, 0x0C, 0x0A, 0xCC, 0xC7,  // F.......
+                /* 02D0 */  0x0B, 0x4E, 0x50, 0xD7, 0xCD, 0x05, 0x64, 0x43,  // .NP...dC
+                /* 02D8 */  0x82, 0x79, 0x10, 0x38, 0x24, 0x30, 0x4F, 0xD5,  // .y.8$0O.
+                /* 02E0 */  0x43, 0x02, 0x1E, 0xE0, 0x87, 0x04, 0xE6, 0x2B,  // C......+
+                /* 02E8 */  0x81, 0x87, 0x04, 0x2C, 0xFE, 0xFF, 0xA8, 0x07,  // ...,....
+                /* 02F0 */  0x71, 0x48, 0x60, 0x46, 0xF2, 0x90, 0xC0, 0xA6,  // qH`F....
+                /* 02F8 */  0xEF, 0xC8, 0x01, 0x0A, 0x20, 0xDF, 0x30, 0x7C,  // .... .0|
+                /* 0300 */  0xDC, 0x7B, 0xCA, 0x60, 0x63, 0x78, 0xE2, 0x33,  // .{.`cx.3
+                /* 0308 */  0x9A, 0xD1, 0xB9, 0xC4, 0xE5, 0xE8, 0x42, 0xC1,  // ......B.
+                /* 0310 */  0x45, 0xC1, 0xE8, 0x58, 0x60, 0x10, 0x4F, 0xCB,  // E..X`.O.
+                /* 0318 */  0x51, 0xA6, 0x8A, 0x9E, 0x89, 0x7D, 0x9E, 0x42,  // Q....}.B
+                /* 0320 */  0xC8, 0x89, 0x82, 0x5F, 0xDD, 0x74, 0x9F, 0x81,  // ..._.t..
+                /* 0328 */  0x76, 0xF7, 0x08, 0xEA, 0x8B, 0x0A, 0x83, 0xF3,  // v.......
+                /* 0330 */  0x64, 0x39, 0x9C, 0xAF, 0x14, 0xFC, 0xAE, 0xE3,  // d9......
+                /* 0338 */  0xCB, 0x15, 0xF8, 0x46, 0x05, 0xF7, 0x50, 0xC1,  // ...F..P.
+                /* 0340 */  0x46, 0x05, 0xF6, 0xEB, 0x88, 0x47, 0x05, 0xD6,  // F....G..
+                /* 0348 */  0xFF, 0xFF, 0xA8, 0x60, 0x9D, 0x2B, 0xD8, 0xA8,  // ...`.+..
+                /* 0350 */  0xC0, 0x7E, 0x26, 0xF0, 0xA8, 0x80, 0xCB, 0xD1,  // .~&.....
+                /* 0358 */  0x82, 0x8D, 0x0A, 0xEC, 0x1E, 0x46, 0x05, 0xCA,  // .....F..
+                /* 0360 */  0x20, 0xD7, 0x0F, 0x28, 0xD0, 0x8F, 0x96, 0xAF,  //  ..(....
+                /* 0368 */  0x40, 0x0F, 0x41, 0x8F, 0x51, 0x1E, 0x14, 0xB8,  // @.A.Q...
+                /* 0370 */  0x61, 0x7C, 0xDF, 0x03, 0x4E, 0x17, 0x10, 0x98,  // a|..N...
+                /* 0378 */  0xF0, 0x18, 0xC1, 0x47, 0x18, 0xF2, 0xFF, 0x27,  // ...G...'
+                /* 0380 */  0x28, 0x6B, 0x5C, 0xA8, 0xFB, 0x8A, 0xAF, 0x72,  // (k\....r
+                /* 0388 */  0xEC, 0x3A, 0x85, 0xBB, 0x2A, 0x62, 0x60, 0x3D,  // .:..*b`=
+                /* 0390 */  0x52, 0x0E, 0x6B, 0xB4, 0xB0, 0x07, 0xFC, 0xA6,  // R.k.....
+                /* 0398 */  0xE5, 0x63, 0x9A, 0x67, 0x66, 0x8C, 0xB0, 0x1E,  // .c.gf...
+                /* 03A0 */  0xAD, 0x95, 0x92, 0xD2, 0x2B, 0x9F, 0x23, 0xDD,  // ....+.#.
+                /* 03A8 */  0xFA, 0x00, 0x41, 0x73, 0x79, 0x10, 0x78, 0xCE,  // ..Asy.x.
+                /* 03B0 */  0x7B, 0x4B, 0x78, 0x73, 0xF7, 0x59, 0xC2, 0xC7,  // {Kxs.Y..
+                /* 03B8 */  0xBD, 0xC7, 0x82, 0x97, 0x80, 0x97, 0x81, 0xF7,  // ........
+                /* 03C0 */  0x92, 0x57, 0x5A, 0x76, 0xED, 0xF3, 0xAD, 0xCF,  // .WZv....
+                /* 03C8 */  0x48, 0x0F, 0x80, 0x46, 0x09, 0x12, 0x23, 0xE6,  // H..F..#.
+                /* 03D0 */  0xFB, 0x89, 0x91, 0x1F, 0x6D, 0x7D, 0x69, 0xF0,  // ....m}i.
+                /* 03D8 */  0xBD, 0x2F, 0xC6, 0x5B, 0x1F, 0x8B, 0x77, 0xEB,  // ./.[..w.
+                /* 03E0 */  0x03, 0x44, 0xFD, 0xFF, 0x6F, 0x7D, 0xC0, 0xFE,  // .D..o}..
+                /* 03E8 */  0x72, 0xF1, 0xD6, 0x07, 0x1C, 0x30, 0x23, 0xBE,  // r....0#.
+                /* 03F0 */  0xF6, 0x01, 0x93, 0x34, 0x2B, 0xD0, 0x59, 0xC3,  // ...4+.Y.
+                /* 03F8 */  0x49, 0x40, 0x74, 0xED, 0xC3, 0xE9, 0x01, 0xD2,  // I@t.....
+                /* 0400 */  0xB5, 0x0F, 0xAF, 0x03, 0x96, 0x8E, 0xDB, 0x0A,  // ........
+                /* 0408 */  0x60, 0x94, 0xE4, 0x58, 0x85, 0xD2, 0x7E, 0xAC,  // `..X..~.
+                /* 0410 */  0xA2, 0x20, 0x3E, 0xCE, 0xF8, 0xDA, 0x07, 0x58,  // . >....X
+                /* 0418 */  0xF9, 0xFF, 0x5F, 0xFB, 0x00, 0x26, 0x0E, 0x09,  // .._..&..
+                /* 0420 */  0xE6, 0xF5, 0xE2, 0x09, 0xC7, 0x43, 0x02, 0xEB,  // .....C..
+                /* 0428 */  0x8D, 0xC6, 0x43, 0x82, 0xFB, 0xFF, 0x1F, 0x34,  // ..C....4
+                /* 0430 */  0xD8, 0x86, 0x04, 0xE6, 0x8B, 0x9D, 0xAF, 0x8E,  // ........
+                /* 0438 */  0xC0, 0x59, 0xF6, 0x82, 0x75, 0x29, 0xE1, 0x42,  // .Y..u).B
+                /* 0440 */  0x61, 0x74, 0xB4, 0x30, 0x88, 0x01, 0x7D, 0x75,  // at.0..}u
+                /* 0448 */  0x04, 0x7E, 0x17, 0x3E, 0xE0, 0x73, 0x75, 0x04,  // .~.>.su.
+                /* 0450 */  0x0E, 0x17, 0x3E, 0xFC, 0xFF, 0xFF, 0xEA, 0x08,  // ..>.....
+                /* 0458 */  0x38, 0xB8, 0xF1, 0x81, 0xF3, 0xEA, 0x08, 0xFC,  // 8.......
+                /* 0460 */  0x4C, 0x5C, 0x1D, 0x01, 0x1D, 0x2A, 0x46, 0x0E,  // L\...*F.
+                /* 0468 */  0x74, 0x4E, 0x31, 0x8C, 0xE0, 0xFF, 0x7F, 0x54,  // tN1....T
+                /* 0470 */  0xE0, 0x06, 0xF6, 0xF1, 0x00, 0xD8, 0x8C, 0x0A,  // ........
+                /* 0478 */  0x18, 0x9C, 0x06, 0x7C, 0x09, 0x05, 0xBC, 0x2A,  // ...|...*
+                /* 0480 */  0xB4, 0xE9, 0x53, 0xA3, 0x51, 0xAB, 0x06, 0x65,  // ..S.Q..e
+                /* 0488 */  0x6A, 0x94, 0x69, 0x50, 0xAB, 0x4F, 0xA5, 0xC6,  // j.iP.O..
+                /* 0490 */  0x8C, 0x5D, 0x29, 0x13, 0x8C, 0xB1, 0x02, 0x8D,  // .]).....
+                /* 0498 */  0xC5, 0x22, 0x96, 0x23, 0x10, 0x87, 0x04, 0xA1,  // .".#....
+                /* 04A0 */  0x22, 0x1F, 0x43, 0x02, 0x71, 0x44, 0x10, 0x1A,  // ".C.qD..
+                /* 04A8 */  0xE1, 0x4D, 0x23, 0x10, 0xC7, 0x5B, 0x9B, 0x40,  // .M#..[.@
+                /* 04B0 */  0x2C, 0xEE, 0xA1, 0x21, 0x10, 0xFF, 0xFF, 0x83,  // ,..!....
+                /* 04B8 */  0x3C, 0x23, 0x64, 0x04, 0x44, 0xA9, 0x40, 0x74,  // <#d.D.@t
+                /* 04C0 */  0x4B, 0x22, 0x6B, 0x12, 0x90, 0x95, 0x81, 0x08,  // K"k.....
+                /* 04C8 */  0xC8, 0x81, 0x80, 0x68, 0x3A, 0x20, 0x2A, 0xEA,  // ...h: *.
+                /* 04D0 */  0x21, 0x20, 0x20, 0x2B, 0x04, 0x11, 0x90, 0xD5,  // !  +....
+                /* 04D8 */  0xD8, 0x00, 0x62, 0xDA, 0x40, 0x04, 0xE4, 0x5C,  // ..b.@..\
+                /* 04E0 */  0x40, 0x34, 0x25, 0x10, 0x55, 0xA8, 0x03, 0x88,  // @4%.U...
+                /* 04E8 */  0xE9, 0x05, 0x11, 0x90, 0xB3, 0x02, 0xD1, 0xE4,  // ........
+                /* 04F0 */  0x40, 0x54, 0xB3, 0x0F, 0x20, 0x96, 0x00, 0x44,  // @T.. ..D
+                /* 04F8 */  0x40, 0x4E, 0x4A, 0x23, 0x10, 0xEB, 0x54, 0x02,  // @NJ#..T.
+                /* 0500 */  0xC2, 0x52, 0xBD, 0x1D, 0x04, 0xE8, 0x88, 0x20,  // .R..... 
+                /* 0508 */  0x02, 0xB2, 0xB2, 0x2F, 0xAB, 0x80, 0x2C, 0x13,  // .../..,.
+                /* 0510 */  0x44, 0x40, 0x4E, 0x07, 0x44, 0xA3, 0x02, 0x51,  // D@N.D..Q
+                /* 0518 */  0x85, 0x56, 0x80, 0x98, 0x5C, 0x10, 0x01, 0x39,  // .V..\..9
+                /* 0520 */  0x25, 0x10, 0x8D, 0x0C, 0x44, 0x95, 0x6A, 0x01,  // %...D.j.
+                /* 0528 */  0x62, 0xB2, 0x41, 0x04, 0x64, 0x89, 0x5E, 0x80,  // b.A.d.^.
+                /* 0530 */  0x98, 0x60, 0x10, 0x01, 0x39, 0x2C, 0x10, 0x8D,  // .`..9,..
+                /* 0538 */  0x0E, 0x44, 0x65, 0xBF, 0x0A, 0x04, 0xE4, 0x10,  // .De.....
+                /* 0540 */  0x20, 0x3A, 0x25, 0x10, 0x33, 0x40, 0x4C, 0x0E,  //  :%.3@L.
+                /* 0548 */  0x88, 0x0E, 0x00, 0x04, 0x88, 0xC6, 0x02, 0xA2,  // ........
+                /* 0550 */  0x92, 0xFE, 0x5B, 0x02, 0xB2, 0x40, 0x10, 0x01,  // ..[..@..
+                /* 0558 */  0x39, 0x1C, 0x10, 0x8D, 0x0A, 0x44, 0xFF, 0xFF   // 9....D..
             })
         }
 
@@ -32108,9 +31801,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 {
                     Name (RBUF, ResourceTemplate ()
                     {
-                        I2cSerialBus (0x0029, ControllerInitiated, 0x00061A80,
+                        I2cSerialBusV2 (0x0029, ControllerInitiated, 0x00061A80,
                             AddressingMode7Bit, "\\_SB.PCI0.I2C0",
-                            0x00, ResourceConsumer, ,
+                            0x00, ResourceConsumer, , Exclusive,
                             )
                         GpioInt (Level, ActiveHigh, Exclusive, PullNone, 0x0000,
                             "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
@@ -32868,7 +32561,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (_Q3B, 0, NotSerialized)  // _Qxx: EC Query
         {
-            If ((\WLAC == 0x02)) {}
+            If ((\WLAC == 0x02)){}
             ElseIf ((ELNK && (\WLAC == 0x01)))
             {
                 DCWL = 0x00
@@ -33422,7 +33115,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         \_SB.PCI0.SAT0.SCND.GTME = 0x00
                     }
                 }
-                ElseIf (HPBU) {}
+                ElseIf (HPBU){}
                 Else
                 {
                     BDEV = Local0
@@ -33548,7 +33241,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         {
                             If (HPBU)
                             {
-                                If ((Arg0 <= 0x02)) {}
+                                If ((Arg0 <= 0x02)){}
                                 Else
                                 {
                                     NBRE (Local0)
@@ -33659,17 +33352,39 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 {
                     Local0 = 0xFF
                 }
-                ElseIf (\H8DR)
-                {
-                    Local1 = HPBU /* \_SB_.PCI0.LPCB.EC__.HPBU */
-                    Local2 = HBID /* \_SB_.PCI0.LPCB.EC__.HBID */
-                }
                 Else
                 {
-                    Local2 = RBEC (0x47)
-                    Local1 = (Local2 & 0x01)
-                    Local2 &= 0x04
-                    Local2 >>= 0x02
+                    If (\H8DR)
+                    {
+                        Local1 = HPBU /* \_SB_.PCI0.LPCB.EC__.HPBU */
+                        Local2 = HBID /* \_SB_.PCI0.LPCB.EC__.HBID */
+                    }
+                    Else
+                    {
+                        Local2 = RBEC (0x47)
+                        Local1 = (Local2 & 0x01)
+                        Local2 &= 0x04
+                        Local2 >>= 0x02
+                    }
+
+                    If (Local2)
+                    {
+                        Local0 = 0x0F
+                    }
+                    ElseIf (HDUB)
+                    {
+                        Local0 = 0x0F
+                    }
+                    ElseIf (((\IDET == 0x03) || (\IDET == 0x06)))
+                    {
+                        Local0 = \IDET
+                    }
+                    Else
+                    {
+                        Local0 = 0x07
+                    }
+
+                    If ((Local0 == 0x0F)){}
                 }
 
                 If ((\HDUB && (Local0 < 0x0C)))
@@ -33899,7 +33614,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (MHGI, 1, NotSerialized)
             {
-                Name (RETB, Buffer (0x10) {})
+                Name (RETB, Buffer (0x10){})
                 CreateByteField (RETB, 0x00, MHGS)
                 Local0 = (0x01 << Arg0)
                 If ((INDV & Local0))
@@ -34194,7 +33909,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (MHPF, 1, NotSerialized)
             {
-                Name (RETB, Buffer (0x25) {})
+                Name (RETB, Buffer (0x25){})
                 Acquire (BFWM, 0xFFFF)
                 If ((SizeOf (Arg0) <= 0x25))
                 {
@@ -34214,7 +33929,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
             Method (MHIF, 1, NotSerialized)
             {
-                Name (RETB, Buffer (0x0A) {})
+                Name (RETB, Buffer (0x0A){})
                 Acquire (BFWM, 0xFFFF)
                 \BFWG (Arg0)
                 RETB = \BFWB
@@ -34386,7 +34101,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     Local0 += (\TCTD << 0x0C)
                     Return (Local0)
                 }
-                ElseIf ((Arg0 == 0x03)) {}
+                ElseIf ((Arg0 == 0x03)){}
                 ElseIf ((Arg0 == 0x04))
                 {
                     Local0 = \TATW
@@ -34619,15 +34334,29 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     Local1 |= 0xC0
                 }
             }
-            ElseIf (((\OSPX || \CPPX) && \SPEN))
+            Else
             {
-                Local2 = (Arg0 & 0x00FF0000)
-                Local2 >>= 0x10
-                Local0 |= Local2
-                If ((Local2 ^ \PPCR))
+                If (((\OSPX || \CPPX) && \SPEN))
                 {
-                    \PPCA = Local2
-                    \PNTF (0x80)
+                    Local2 = (Arg0 & 0x00FF0000)
+                    Local2 >>= 0x10
+                    Local0 |= Local2
+                    If ((Local2 ^ \PPCR))
+                    {
+                        \PPCA = Local2
+                        \PNTF (0x80)
+                    }
+                }
+
+                If (\WVIS)
+                {
+                    Local2 = (Arg0 & 0x1F)
+                    Local1 |= Local2
+                    If ((Local2 ^ \TPCR))
+                    {
+                        \TPCA = Local2
+                        \PNTF (0x82)
+                    }
                 }
             }
 
@@ -34638,26 +34367,21 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Method (DYTC, 1, Serialized)
         {
-            Name (_T_3, Zero)  // _T_x: Emitted by ASL Compiler
-            Name (_T_2, Zero)  // _T_x: Emitted by ASL Compiler
-            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             Local0 = Arg0
             Local1 = 0x00
             ADBG (Concatenate ("DYTC STT=", ToHexString (Local0)))
             If ((\WNTF && \TATC))
             {
-                While (One)
+                Switch (ToInteger ((Local0 & 0x01FF)))
                 {
-                    _T_0 = ToInteger ((Local0 & 0x01FF))
-                    If ((_T_0 == 0x00))
+                    Case (0x00)
                     {
                         Local1 = (0x01 << 0x08)
                         Local1 |= (0x04 << 0x1C)
                         Local1 |= (0x02 << 0x10)
                         Local1 |= 0x01
                     }
-                    ElseIf ((_T_0 == 0x01))
+                    Case (0x01)
                     {
                         Local2 = ((Local0 >> 0x0C) & 0x0F)
                         Local3 = ((Local0 >> 0x10) & 0x0F)
@@ -34666,10 +34390,10 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         ADBG (Concatenate ("ICFunc=", ToHexString (Local2)))
                         ADBG (Concatenate ("ICMode=", ToHexString (Local3)))
                         ADBG (Concatenate ("ValidF=", ToHexString (Local4)))
-                        If (((Local2 == 0x00) || ((Local2 == 0x07) || (Local2 == 0x04)))) {}
+                        If (((Local2 == 0x00) || ((Local2 == 0x07) || (Local2 == 0x04)))){}
                         ElseIf (CondRefOf (\_SB.IETM.DPTE))
                         {
-                            If ((\_SB.IETM.DPTE & 0x01)) {}
+                            If ((\_SB.IETM.DPTE & 0x01)){}
                             Else
                             {
                                 Local1 = (0x03 << 0x01)
@@ -34684,10 +34408,9 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             Return (Local1)
                         }
 
-                        While (One)
+                        Switch (Local2)
                         {
-                            _T_1 = Local2
-                            If ((_T_1 == 0x01))
+                            Case (0x01)
                             {
                                 If ((Local3 != 0x0F))
                                 {
@@ -34705,12 +34428,11 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     \VCQL = 0x01
                                 }
                             }
-                            ElseIf ((_T_1 == 0x03))
+                            Case (0x03)
                             {
-                                While (One)
+                                Switch (Local3)
                                 {
-                                    _T_2 = Local3
-                                    If ((_T_2 == 0x00))
+                                    Case (0x00)
                                     {
                                         If ((Local4 != 0x01))
                                         {
@@ -34719,7 +34441,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                             Return (Local1)
                                         }
                                     }
-                                    ElseIf ((_T_2 == 0x01))
+                                    Case (0x01)
                                     {
                                         If ((Local4 != 0x01))
                                         {
@@ -34728,7 +34450,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                             Return (Local1)
                                         }
                                     }
-                                    ElseIf ((_T_2 == 0x02))
+                                    Case (0x02)
                                     {
                                         If ((Local4 != 0x01))
                                         {
@@ -34737,7 +34459,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                             Return (Local1)
                                         }
                                     }
-                                    ElseIf ((_T_2 == 0x0F))
+                                    Case (0x0F)
                                     {
                                         If ((Local4 != 0x00))
                                         {
@@ -34746,14 +34468,13 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                             Return (Local1)
                                         }
                                     }
-                                    Else
+                                    Default
                                     {
                                         Local1 = (0x05 << 0x01)
                                         ADBG (Concatenate ("DYTC END=", ToHexString (Local1)))
                                         Return (Local1)
                                     }
 
-                                    Break
                                 }
 
                                 If ((Local4 == 0x00))
@@ -34767,7 +34488,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     \SMYH = Local3
                                 }
                             }
-                            ElseIf ((_T_1 == 0x04))
+                            Case (0x04)
                             {
                                 If ((Local3 != 0x0F))
                                 {
@@ -34785,7 +34506,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     \VSTP = 0x01
                                 }
                             }
-                            ElseIf ((_T_1 == 0x0A))
+                            Case (0x0A)
                             {
                                 If ((Local3 != 0x0F))
                                 {
@@ -34803,12 +34524,11 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     \VIFC = 0x01
                                 }
                             }
-                            ElseIf ((_T_1 == 0x0B))
+                            Case (0x0B)
                             {
-                                While (One)
+                                Switch (Local3)
                                 {
-                                    _T_3 = Local3
-                                    If ((_T_3 == 0x01))
+                                    Case (0x01)
                                     {
                                         If ((Local4 != 0x01))
                                         {
@@ -34817,7 +34537,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                             Return (Local1)
                                         }
                                     }
-                                    ElseIf ((_T_3 == 0x02))
+                                    Case (0x02)
                                     {
                                         If ((Local4 != 0x01))
                                         {
@@ -34826,7 +34546,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                             Return (Local1)
                                         }
                                     }
-                                    ElseIf ((_T_3 == 0x0F))
+                                    Case (0x0F)
                                     {
                                         If ((Local4 != 0x00))
                                         {
@@ -34835,14 +34555,13 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                             Return (Local1)
                                         }
                                     }
-                                    Else
+                                    Default
                                     {
                                         Local1 = (0x05 << 0x01)
                                         ADBG (Concatenate ("DYTC END=", ToHexString (Local1)))
                                         Return (Local1)
                                     }
 
-                                    Break
                                 }
 
                                 If ((Local4 == 0x00))
@@ -34856,7 +34575,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     \SMMC = Local3
                                 }
                             }
-                            ElseIf ((_T_1 == 0x0C))
+                            Case (0x0C)
                             {
                                 If ((Local3 != 0x0F))
                                 {
@@ -34874,7 +34593,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     \VMSC = 0x01
                                 }
                             }
-                            ElseIf ((_T_1 == 0x0D))
+                            Case (0x0D)
                             {
                                 If (((Local3 <= 0x08) && (Local3 >= 0x01)))
                                 {
@@ -34912,7 +34631,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     \SPSC = Local3
                                 }
                             }
-                            ElseIf ((_T_1 == 0x00))
+                            Case (0x00)
                             {
                                 If ((Local3 != 0x0F))
                                 {
@@ -34921,14 +34640,13 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                                     Return (Local1)
                                 }
                             }
-                            Else
+                            Default
                             {
                                 Local1 = (0x01 << 0x01)
                                 ADBG (Concatenate ("DYTC END=", ToHexString (Local1)))
                                 Return (Local1)
                             }
 
-                            Break
                         }
 
                         ADBG (" Set ODM Variable")
@@ -35168,7 +34886,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                             \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x6032)
                         }
                     }
-                    ElseIf ((_T_0 == 0x02))
+                    Case (0x02)
                     {
                         Local5 = \VSTD
                         Local5 |= (\VCQL << 0x01)
@@ -35207,17 +34925,17 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         Local1 |= (Local5 << 0x10)
                         Local1 |= 0x01
                     }
-                    ElseIf ((_T_0 == 0x03))
+                    Case (0x03)
                     {
                         Local1 = (FCAP << 0x10)
                         Local1 |= 0x01
                     }
-                    ElseIf ((_T_0 == 0x04))
+                    Case (0x04)
                     {
                         Local1 = (MYHC << 0x10)
                         Local1 |= 0x01
                     }
-                    ElseIf ((_T_0 == 0x06))
+                    Case (0x06)
                     {
                         Local2 = ((Local0 >> 0x09) & 0x0F)
                         If ((Local2 != 0x01))
@@ -35231,7 +34949,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                         Local1 |= 0x01
                     }
-                    ElseIf ((_T_0 == 0x05))
+                    Case (0x05)
                     {
                         If ((0x00 != 0x01))
                         {
@@ -35241,12 +34959,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
                         Local1 |= 0x01
                     }
-                    ElseIf ((_T_0 == 0x0100))
+                    Case (0x0100)
                     {
                         Local1 = (0x1001 << 0x10)
                         Local1 |= 0x01
                     }
-                    ElseIf ((_T_0 == 0x01FF))
+                    Case (0x01FF)
                     {
                         ADBG (" DYTC_CMD_RESET")
                         \VCQL = 0x00
@@ -35303,12 +35021,11 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                         Local1 |= (Local5 << 0x10)
                         Local1 |= 0x01
                     }
-                    Else
+                    Default
                     {
                         Local1 = (0x02 << 0x01)
                     }
 
-                    Break
                 }
             }
             Else
@@ -35344,19 +35061,22 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             If ((\_SB.PCI0.PTDP == Arg0))
             {
                 \PT0D = Arg0
-                \_SB.PCI0.CTCN (ADBG (" MMIO 1"))
+                \_SB.PCI0.CTCN ()
+                ADBG (" MMIO 1")
             }
             ElseIf ((\_SB.PCI0.PTDP > Arg0))
             {
                 If ((\_PR.CLVL >= 0x01))
                 {
                     \PT1D = Arg0
-                    \_SB.PCI0.CTCD (ADBG (" MMIO 2"))
+                    \_SB.PCI0.CTCD ()
+                    ADBG (" MMIO 2")
                 }
                 Else
                 {
                     \PT0D = Arg0
-                    \_SB.PCI0.CTCN (ADBG (" MMIO 3"))
+                    \_SB.PCI0.CTCN ()
+                    ADBG (" MMIO 3")
                 }
             }
             ElseIf ((\_SB.PCI0.PTDP < Arg0))
@@ -35364,7 +35084,8 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 If ((\_PR.CLVL > 0x02))
                 {
                     \PT0D = Arg0
-                    \_SB.PCI0.CTCN (ADBG (" MMIO 4"))
+                    \_SB.PCI0.CTCN ()
+                    ADBG (" MMIO 4")
                 }
             }
         }
@@ -35594,7 +35315,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     \_SB.PCI0.LPCB.EC.BEEP (0x04)
                 }
 
-                If ((\SPS == 0x03)) {}
+                If ((\SPS == 0x03)){}
                 Else
                 {
                     \_SB.PCI0.LPCB.EC.LED (0x00, 0x80)
