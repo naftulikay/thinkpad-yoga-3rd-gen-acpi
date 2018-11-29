@@ -1,0 +1,23 @@
+#!/bin/sh
+
+ACPI_OVERRIDE="/lib/acpi/acpi_override"
+
+PREREQ=""
+
+prereqs() {
+  echo "$PREREQ"
+}
+
+case $1 in
+  # get pre-requisites
+  prereqs)
+    prereqs
+    exit 0
+  ;;
+esac
+
+. /usr/share/initramfs-tools/hook-functions
+
+echo "*** Prepending ACPI Override into Initramfs ***"
+
+prepend_earlyinitramfs "${ACPI_OVERRIDE}"
