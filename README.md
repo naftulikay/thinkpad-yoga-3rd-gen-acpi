@@ -16,10 +16,11 @@ the utilities it's lacking.
 Next, boot into at least Ubuntu 18.04 on a live CD/USB. I'm not sure if this is necessary, but I'll explain in more
 detail below.
 
-Having compiled a recent `iasl` and having a runtime in Ubuntu 18.04, dump the ACPI DSDT table from the hardware:
+Having compiled a recent `iasl` and having a runtime in Ubuntu 18.04, and assuming this `iasl` binary lives at
+`bin/iasl`, dump the ACPI DSDT table from the hardware:
 
 ```
-cat /sys/firmware/acpi/tables/DSDT > dsdt.dsl
+cat /sys/firmware/acpi/tables/DSDT > dsdt.aml
 ```
 
 Next, decompile the table into Assembly using `iasl`:
