@@ -1,17 +1,17 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20181031 (64-bit version)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20190215 (64-bit version)
+ * Copyright (c) 2000 - 2019 Intel Corporation
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of dsdt.aml, Thu Nov 29 00:02:55 2018
+ * Disassembly of dsdt.aml, Sat May 11 19:51:34 2019
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00026BC4 (158660)
+ *     Length           0x00026C9B (158875)
  *     Revision         0x02
- *     Checksum         0xF9
+ *     Checksum         0xD4
  *     OEM ID           "LENOVO"
  *     OEM Table ID     "SKL     "
  *     OEM Revision     0x00000000 (0)
@@ -263,7 +263,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     Name (SS2, 0x00)
     Name (SS3, One)
     Name (SS4, One)
-    OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0771)
+    OperationRegion (GNVS, SystemMemory, 0x4FF4E000, 0x0791)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -3085,6 +3085,27 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     0x01800000,         // Length
                     ,, , AddressRangeMemory, TypeStatic)
             })
+            If ((TLUD >= 0x0404))
+            {
+                Device (SRRE)
+                {
+                    Name (_HID, EisaId ("PNP0C02") /* PNP Motherboard Resources */)  // _HID: Hardware ID
+                    Name (_UID, "SARESV")  // _UID: Unique ID
+                    Name (_STA, 0x03)  // _STA: Status
+                    Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                    {
+                        Name (BUF0, ResourceTemplate ()
+                        {
+                            Memory32Fixed (ReadOnly,
+                                0x40000000,         // Address Base
+                                0x00400000,         // Address Length
+                                )
+                        })
+                        Return (BUF0) /* \_SB_.PCI0.SRRE._CRS.BUF0 */
+                    }
+                }
+            }
+
             Name (EP_B, 0x00)
             Name (MH_B, 0x00)
             Name (PC_B, 0x00)
@@ -4622,7 +4643,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
     Scope (\_GPE)
     {
-        Method (_L6D, 0, Serialized)  // _Lxx: Level-Triggered GPE
+        Method (_L6D, 0, Serialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             \_SB.PCI0.XHC.GPEH ()
             \_SB.PCI0.HDAS.GPEH ()
@@ -18016,7 +18037,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Method (_Q22, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q22, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 CLPM ()
                 If (HB0A)
@@ -18025,19 +18046,19 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Method (_Q4A, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q4A, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 CLPM ()
                 Notify (BAT0, 0x81) // Information Change
             }
 
-            Method (_Q4B, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q4B, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 CLPM ()
                 Notify (BAT0, 0x80) // Status Change
             }
 
-            Method (_Q24, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q24, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 CLPM ()
                 Notify (BAT0, 0x80) // Status Change
@@ -23140,7 +23161,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
     Scope (\_GPE)
     {
-        Method (_L17, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        Method (_L17, 0, NotSerialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             Local0 = \_SB.PCI0.LPCB.EC.HWAC
             \RRBF = Local0
@@ -23168,7 +23189,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_L69, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        Method (_L69, 0, NotSerialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             If (\_SB.PCI0.RP01.PSPX)
             {
@@ -23206,19 +23227,19 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_L61, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        Method (_L61, 0, NotSerialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             L01C += 0x01
             P8XH (0x00, 0x01)
             P8XH (0x01, L01C)
         }
 
-        Method (_L62, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        Method (_L62, 0, NotSerialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             \_SB.PCI0.LPCB.SWGE = 0x00
         }
 
-        Method (_L66, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        Method (_L66, 0, NotSerialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             If (\_SB.PCI0.GFX0.GSSE)
             {
@@ -23235,13 +23256,13 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Notify (\_SB.PCI0.RP09, 0x02) // Device Wake
         }
 
-        Method (_L27, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        Method (_L27, 0, NotSerialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             ADBG ("-TBT_PCIE_WAKE")
             Notify (\_SB.PCI0.RP09, 0x02) // Device Wake
         }
 
-        Method (_L6F, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
+        Method (_L6F, 0, NotSerialized)  // _Lxx: Level-Triggered GPE, xx=0x00-0xFF
         {
             ADBG ("_L6F")
             If ((TBTS == 0x01))
@@ -28578,7 +28599,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     }
 
     Name (MACA, "_AUXMAX_#XXXXXXXXXXXX#")
-    Name (WOLD, "_S5WOL_#0017EF00000000#")
+    Name (WOLD, "_S5WOL_#0117EF00000000#")
     Scope (\_SB)
     {
         Name (RID, 0x00)
@@ -28900,7 +28921,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             {
                 /* 0000 */  0x0E, 0x23, 0xF5, 0x51, 0x77, 0x96, 0xCD, 0x46,  // .#.Qw..F
                 /* 0008 */  0xA1, 0xCF, 0xC0, 0xB2, 0x3E, 0xE3, 0x4D, 0xB7,  // ....>.M.
-                /* 0010 */  0x41, 0x30, 0x50, 0x05, 0x64, 0x9A, 0x47, 0x98,  // A0P.d.G.
+                /* 0010 */  0x41, 0x30, 0xFF, 0x05, 0x64, 0x9A, 0x47, 0x98,  // A0..d.G.
                 /* 0018 */  0xF5, 0x33, 0x33, 0x4E, 0xA7, 0x07, 0x8E, 0x25,  // .33N...%
                 /* 0020 */  0x1E, 0xBB, 0xC3, 0xA1, 0x41, 0x31, 0x01, 0x06,  // ....A1..
                 /* 0028 */  0xEF, 0x54, 0x4B, 0x6A, 0xED, 0xA5, 0x33, 0x4D,  // .TKj..3M
@@ -28930,7 +28951,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 "Access Denied", 
                 "System Busy"
             })
-            Name (ITEM, Package (0x6A)
+            Name (ITEM, Package (0x6C)
             {
                 Package (0x02)
                 {
@@ -29566,9 +29587,21 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 {
                     0x19, 
                     "ThunderboltBIOSAssistMode"
+                }, 
+
+                Package (0x02)
+                {
+                    0x1B, 
+                    "MaxPasswordAttempts"
+                }, 
+
+                Package (0x02)
+                {
+                    0x1C, 
+                    "PasswordChangeTime"
                 }
             })
-            Name (VSEL, Package (0x1B)
+            Name (VSEL, Package (0x1D)
             {
                 Package (0x02)
                 {
@@ -29761,6 +29794,20 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     "Disable", 
                     "Enable", 
                     "Pre-BootACL"
+                }, 
+
+                Package (0x04)
+                {
+                    "Unlimited", 
+                    "1", 
+                    "3", 
+                    "100"
+                }, 
+
+                Package (0x02)
+                {
+                    "Immediately", 
+                    "AfterReboot"
                 }
             })
             Name (VLST, Package (0x11)
@@ -30965,7 +31012,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 Release (\_SB.WMI1.MWMI)
             }
 
-            Name (ITEM, Package (0x08)
+            Name (ITEM, Package (0x09)
             {
                 Package (0x02)
                 {
@@ -31013,6 +31060,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 {
                     0x00, 
                     "ConfirmTpmFwUpdate"
+                }, 
+
+                Package (0x02)
+                {
+                    0x00, 
+                    "CustomPasswordMode"
                 }
             })
             Name (VSEL, Package (0x04)
@@ -31512,7 +31565,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     /* 0058 */  0xB2, 0xF0, 0x00, 0xA0, 0xC9, 0x06, 0x29, 0x10,  // ......).
                     /* 0060 */  0x44, 0x44, 0x01, 0x00                           // DD..
                 })
-                Method (_WED, 1, NotSerialized)  // _Wxx: Wake Event
+                Method (_WED, 1, NotSerialized)  // _Wxx: Wake Event, xx=0x00-0xFF
                 {
                     If ((Arg0 == 0xB0))
                     {
@@ -32251,7 +32304,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
     Scope (\_SB.PCI0.LPCB.EC)
     {
         Mutex (MCPU, 0x00)
-        Method (_Q1F, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q1F, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x00020000))
             {
@@ -32264,7 +32317,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             \UCMS (0x0E)
         }
 
-        Method (_Q16, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q16, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x40))
             {
@@ -32272,7 +32325,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q1C, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q1C, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x01000000))
             {
@@ -32280,7 +32333,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q1D, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q1D, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x02000000))
             {
@@ -32288,7 +32341,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q13, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q13, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.DHKC)
             {
@@ -32300,7 +32353,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q66, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q66, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x10000000))
             {
@@ -32308,7 +32361,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q64, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q64, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x10))
             {
@@ -32316,7 +32369,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q60, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q60, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x03, 0x00080000))
             {
@@ -32324,7 +32377,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q61, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q61, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x03, 0x00100000))
             {
@@ -32332,7 +32385,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q62, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q62, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x03, 0x00010000))
             {
@@ -32340,7 +32393,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q65, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q65, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x03, 0x00020000))
             {
@@ -32348,7 +32401,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q26, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q26, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (VIGD)
             {
@@ -32400,7 +32453,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             ATMC ()
         }
 
-        Method (_Q27, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q27, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (VIGD)
             {
@@ -32452,7 +32505,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             ATMC ()
         }
 
-        Method (_Q2A, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q2A, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             ADBG ("LIDO")
             \VCMS (0x01, \_SB.LID._LID ())
@@ -32482,7 +32535,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q2B, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q2B, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             ADBG ("LIDC")
             \UCMS (0x0D)
@@ -32513,11 +32566,11 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q3D, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q3D, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
         }
 
-        Method (_Q48, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q48, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If ((\_PR.CFGD & 0x01))
             {
@@ -32534,7 +32587,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q49, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q49, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If ((\_PR.CFGD & 0x01))
             {
@@ -32549,17 +32602,17 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q7F, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q7F, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
-            Fatal (0x01, 0x80010000, 0x00011BE9)
+            Fatal (0x01, 0x80010000, 0x00011C1F)
         }
 
-        Method (_Q46, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q46, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x6012)
         }
 
-        Method (_Q3B, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q3B, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If ((\WLAC == 0x02)){}
             ElseIf ((ELNK && (\WLAC == 0x01)))
@@ -32572,7 +32625,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q2E, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q2E, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             Local0 = \_SB.PCI0.LPCB.EC.CMMD
             If (((Local0 != 0x00) && (Local0 <= 0x06)))
@@ -32605,7 +32658,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q4F, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q4F, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             ADBG ("QUERY_METHOD_UCSI")
             If (CondRefOf (\_SB.UBTC.NTFY))
@@ -32614,12 +32667,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             }
         }
 
-        Method (_Q2F, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q2F, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             \_SB.PCI0.LPCB.EC.BFCC ()
         }
 
-        Method (_Q78, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q78, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             If (\_SB.PCI0.LPCB.EC.PSST)
             {
@@ -32635,7 +32688,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Scope (\_SB.PCI0.LPCB.EC)
         {
-            Method (_Q6A, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q6A, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 If (HDMC)
                 {
@@ -32693,7 +32746,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 PIDB,   16
             }
 
-            Method (_Q45, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q45, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 Local0 = \_SB.PCI0.LPCB.EC.DKID ()
                 If ((Local0 != 0x00))
@@ -32756,12 +32809,12 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Scope (\_SB.PCI0.LPCB.EC)
         {
-            Method (_Q3F, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q3F, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x6000)
             }
 
-            Method (_Q74, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q74, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x6060)
             }
@@ -33030,7 +33083,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                     0x04
                 }
             })
-            Method (_Q14, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q14, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x8000))
                 {
@@ -33043,7 +33096,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Method (_Q15, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q15, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x00010000))
                 {
@@ -33085,7 +33138,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
             Name (BDEV, 0xFF)
             Name (BSTS, 0x00)
             Name (BHKE, 0x00)
-            Method (_Q2C, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q2C, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 If ((BSTS == 0x00))
                 {
@@ -33094,13 +33147,13 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
                 }
             }
 
-            Method (_Q2D, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q2D, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 BDEV = BGID (0x00)
                 NBIN (BDEV)
             }
 
-            Method (_Q38, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q38, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 Local0 = BGID (0x00)
                 If ((Local0 == 0x0F))
@@ -33424,7 +33477,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Scope (\_SB.PCI0.LPCB.EC)
         {
-            Method (_Q43, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q43, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 \UCMS (0x18)
             }
@@ -33472,7 +33525,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Scope (\_SB.PCI0.LPCB.EC)
         {
-            Method (_Q19, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q19, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x00800000))
                 {
@@ -33485,7 +33538,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Scope (\_SB.PCI0.LPCB.EC)
         {
-            Method (_Q63, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q63, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 If (\_SB.PCI0.LPCB.EC.HKEY.MHKK (0x01, 0x00080000))
                 {
@@ -33498,17 +33551,17 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Scope (\_SB.PCI0.LPCB.EC)
         {
-            Method (_Q70, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q70, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 FNST ()
             }
 
-            Method (_Q72, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q72, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 FNST ()
             }
 
-            Method (_Q73, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q73, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 FNST ()
             }
@@ -33891,7 +33944,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
         Scope (\_SB.PCI0.LPCB.EC)
         {
-            Method (_Q41, 0, NotSerialized)  // _Qxx: EC Query
+            Method (_Q41, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
             {
                 \_SB.PCI0.LPCB.EC.HKEY.MHKQ (0x7000)
             }
@@ -35235,7 +35288,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "SKL     ", 0x00000001)
 
     Scope (\_SB.PCI0.LPCB.EC)
     {
-        Method (_Q40, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q40, 0, NotSerialized)  // _Qxx: EC Query, xx=0x00-0xFF
         {
             Notify (\_TZ.THM0, 0x80) // Thermal Status Change
             If (\H8DR)
